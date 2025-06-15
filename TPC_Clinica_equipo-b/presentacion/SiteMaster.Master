@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -25,8 +25,9 @@
                         <ul class="navbar-nav">
                             <!-- Opcional: otras secciones -->
                             <li class="nav-item me-3">
-                                <span class="nav-link disabled text-white">🙎 Usuario: <strong>user@server.com</strong>
-                                </span>
+                                <li class="nav-item">
+                                    <a class="btn btn-light text-success me-3" href="login.aspx" role="button">Iniciar sesión</a>
+                                </li>
                             </li>
                             <!-- Dropdown para futuras acciones -->
                             <li class="nav-item dropdown">
