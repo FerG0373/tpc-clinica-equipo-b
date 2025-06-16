@@ -25,8 +25,8 @@
                         <ul class="navbar-nav">
                             <!-- Opcional: otras secciones -->
                             <li class="nav-item me-3">
-                                <li class="nav-item">
-                                    <a class="btn btn-light text-success me-3" href="login.aspx" role="button">Iniciar sesión</a>
+                                <li class="nav-item">                                    
+                                    <asp:Button CssClass="btn btn-light text-success me-3" ID="btnIniciarSesion" OnClick="btnIniciarSesion_Click" runat="server"  Text="Iniciar Sesión" />
                                 </li>
                             </li>
                             <!-- Dropdown para futuras acciones -->
