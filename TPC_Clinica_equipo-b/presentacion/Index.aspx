@@ -32,19 +32,23 @@
 
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
 
+            <!--Botón Usuarios-->
             <asp:Button ID="btnUsuario" runat="server" OnClick="btnUsuario_Click" Text="Usuarios" Style="display: none;" />
-
             <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnUsuario.ClientID %>').click();">
                 <span class="icon-circle"><i class="fas fa-users"></i></span>
                 <span class="btn-text">Usuarios</span>
             </button>
 
-            <button class="custom-btn">
+            <!--Botón Turnos-->
+            <asp:Button ID="btnTurno" runat="server" OnClick="btnTurno_Click" Text="Turnos" Style="display: none;" />
+            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnTurno.ClientID %>').click();">
                 <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
                 <span class="btn-text">Turnos</span>
             </button>
 
-            <button class="custom-btn">
+            <!--Botón Especialidades-->
+            <asp:Button ID="btnEspecialidades" runat="server" OnClick="btnEspecialidades_Click" Text="Especialidades" Style="display: none;"/>
+            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnEspecialidades.ClientID %>').click();"">
                 <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
                 <span class="btn-text">Especialidades</span>
             </button>

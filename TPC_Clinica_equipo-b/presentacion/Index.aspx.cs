@@ -18,5 +18,15 @@ namespace presentacion
         {
             Response.Redirect("Usuario.aspx");
         }
+
+        protected void btnTurno_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Turno.aspx");
+        }
+
+        protected void btnEspecialidades_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Especialidad.aspx");
+        }
     }
 }

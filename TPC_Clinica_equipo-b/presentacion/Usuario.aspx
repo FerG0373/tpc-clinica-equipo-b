@@ -53,7 +53,6 @@
                     <div class="mb-3" id="EspecialidadGroup" style="display: none;">
                         <label for="Especialidad" class="form-label">Especialidad</label>
                         <input type="text" class="form-control" id="Especialidad" name="Especialidad">
-                        <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
                     </div>
 
                     <!-- Contraseña -->

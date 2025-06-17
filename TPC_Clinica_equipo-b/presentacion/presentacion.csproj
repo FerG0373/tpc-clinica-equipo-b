@@ -71,11 +71,12 @@
     <Content Include="assets\img\Carrousel-1.png" />
     <Content Include="assets\img\Carrousel-2.png" />
     <Content Include="Content\misestilos.css" />
+    <Content Include="Especialidad.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Registro.aspx" />
-    <Content Include="Turnos.aspx" />
+    <Content Include="Turno.aspx" />
     <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -86,6 +87,13 @@
     </Compile>
     <Compile Include="AbmUsuarios.aspx.designer.cs">
       <DependentUpon>AbmUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Especialidad.aspx.cs">
+      <DependentUpon>Especialidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Especialidad.aspx.designer.cs">
+      <DependentUpon>Especialidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -119,12 +127,12 @@
     <Compile Include="SiteMaster.Master.designer.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="Turnos.aspx.cs">
-      <DependentUpon>Turnos.aspx</DependentUpon>
+    <Compile Include="Turno.aspx.cs">
+      <DependentUpon>Turno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Turnos.aspx.designer.cs">
-      <DependentUpon>Turnos.aspx</DependentUpon>
+    <Compile Include="Turno.aspx.designer.cs">
+      <DependentUpon>Turno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuario.aspx.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
