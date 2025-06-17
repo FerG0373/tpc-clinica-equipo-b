@@ -28,5 +28,11 @@ namespace presentacion
         {
             Response.Redirect("Especialidad.aspx");
         }
+
+
+        protected void btnTurnoTrabajo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("TurnoTrabajo.aspx");
+        }
     }
 }

@@ -48,15 +48,18 @@
 
             <!--Botón Especialidades-->
             <asp:Button ID="btnEspecialidades" runat="server" OnClick="btnEspecialidades_Click" Text="Especialidades" Style="display: none;"/>
-            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnEspecialidades.ClientID %>').click();"">
+            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnEspecialidades.ClientID %>').click();">
                 <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
                 <span class="btn-text">Especialidades</span>
             </button>
 
-            <button class="custom-btn">
+            <!--Botón Turnos de Trabajo-->
+            <asp:Button ID="btnTurnoTrabajo" runat="server" OnClick="btnTurnoTrabajo_Click"  Text="Turnos de Trabajo" Style="display: none;"/>
+            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnTurnoTrabajo.ClientID %>').click();">
                 <span class="icon-circle"><i class="fas fa-briefcase-medical"></i></span>
                 <span class="btn-text">Turnos de trabajo</span>
             </button>
+
 
             <button class="custom-btn">
                 <span class="icon-circle"><i class="fas fa-user-md"></i></span>

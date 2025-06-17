@@ -75,8 +75,10 @@
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="MisTurnos.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Turno.aspx" />
+    <Content Include="TurnoTrabajo.aspx" />
     <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -112,6 +114,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MisTurnos.aspx.cs">
+      <DependentUpon>MisTurnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisTurnos.aspx.designer.cs">
+      <DependentUpon>MisTurnos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro.aspx.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
@@ -133,6 +142,13 @@
     </Compile>
     <Compile Include="Turno.aspx.designer.cs">
       <DependentUpon>Turno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TurnoTrabajo.aspx.cs">
+      <DependentUpon>TurnoTrabajo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TurnoTrabajo.aspx.designer.cs">
+      <DependentUpon>TurnoTrabajo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuario.aspx.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>

@@ -15,11 +15,12 @@
                 </div>
 
                 <!-- Botón Agregar -->
-                <asp:Button ID="btnAgregarEspecialidad" runat="server" Text="Agregar" Style="display: none;"  />
-                <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnAgregarEspecialidad.ClientID %>').click();">
-                    <span class="icon-circle"><i class="fas fa-plus"></i></span>
-                    <span class="btn-text">Agregar</span>
-                </button>
+                <asp:Button ID="btnAgregarEspecialidad" runat="server" Text="Agregar" Style="display: none;" />
+                <div class="d-grid">
+                    <button type="button" class="btn btn-success" onclick="document.getElementById('<%= btnAgregarEspecialidad.ClientID %>').click();">
+                        <i class="fas fa-calendar-plus me-2"></i>Agregar
+                    </button>
+                </div>
             </div>
         </div>
     </div>

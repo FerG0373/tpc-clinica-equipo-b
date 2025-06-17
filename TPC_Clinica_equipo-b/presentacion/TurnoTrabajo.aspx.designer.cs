@@ -11,43 +11,61 @@ namespace presentacion
 {
 
 
-    public partial class Index
+    public partial class TurnosTrabajo
     {
 
         /// <summary>
-        /// Control btnUsuario.
+        /// Control ddlMedico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUsuario;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedico;
 
         /// <summary>
-        /// Control btnTurno.
+        /// Control ddlDiaSemana.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTurno;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDiaSemana;
 
         /// <summary>
-        /// Control btnEspecialidades.
+        /// Control txtHoraInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEspecialidades;
+        protected global::System.Web.UI.WebControls.TextBox txtHoraInicio;
 
         /// <summary>
-        /// Control btnTurnoTrabajo.
+        /// Control txtHoraFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTurnoTrabajo;
+        protected global::System.Web.UI.WebControls.TextBox txtHoraFin;
+
+        /// <summary>
+        /// Control txtObservacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtObservacion;
+
+        /// <summary>
+        /// Control btnGuardarTurnoTrabajo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnGuardarTurnoTrabajo;
     }
 }

@@ -63,7 +63,7 @@
 
                     <!-- Botón -->
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Confirmar Turno</button>
+                        <button type="submit" class="btn btn-success">Confirmar Turno</button>
                     </div>
                 </form>
             </div>
