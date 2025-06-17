@@ -31,30 +31,32 @@
 
 
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
-            <button class="custom-btn">
+
+            <asp:Button ID="btnUsuario" runat="server" OnClick="btnUsuario_Click" Text="Usuarios" Style="display: none;" />
+
+            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnUsuario.ClientID %>').click();">
                 <span class="icon-circle"><i class="fas fa-users"></i></span>
-                <span class="btn-text">ABM USUARIOS</span>
+                <span class="btn-text">Usuarios</span>
             </button>
 
             <button class="custom-btn">
                 <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
-                <span class="btn-text">ABM TURNOS</span>
+                <span class="btn-text">Turnos</span>
             </button>
 
             <button class="custom-btn">
                 <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
-                <span class="btn-text">ABM ESPECIALIDADES</span>
+                <span class="btn-text">Especialidades</span>
             </button>
 
             <button class="custom-btn">
                 <span class="icon-circle"><i class="fas fa-briefcase-medical"></i></span>
-                <span class="btn-text">ABM TURNOSTRABAJO</span>
+                <span class="btn-text">Turnos de trabajo</span>
             </button>
 
             <button class="custom-btn">
                 <span class="icon-circle"><i class="fas fa-user-md"></i></span>
-                <span class="btn-text">MIS TURNOS<br>
-                    (Médico)</span>
+                <span class="btn-text">Mis Turnos</span>
             </button>
         </div>
     </main>
