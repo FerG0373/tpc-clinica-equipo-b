@@ -3,6 +3,8 @@
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
 <asp:Content ID="IndexMainContent" ContentPlaceHolderID="MainContent" runat="server">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="Content/misestilos.css" rel="stylesheet" />
     <main>
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
@@ -23,6 +25,36 @@
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+
+
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
+            <button class="custom-btn">
+                <span class="icon-circle"><i class="fas fa-users"></i></span>
+                <span class="btn-text">ABM USUARIOS</span>
+            </button>
+
+            <button class="custom-btn">
+                <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
+                <span class="btn-text">ABM TURNOS</span>
+            </button>
+
+            <button class="custom-btn">
+                <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
+                <span class="btn-text">ABM ESPECIALIDADES</span>
+            </button>
+
+            <button class="custom-btn">
+                <span class="icon-circle"><i class="fas fa-briefcase-medical"></i></span>
+                <span class="btn-text">ABM TURNOSTRABAJO</span>
+            </button>
+
+            <button class="custom-btn">
+                <span class="icon-circle"><i class="fas fa-user-md"></i></span>
+                <span class="btn-text">MIS TURNOS<br>
+                    (Médico)</span>
             </button>
         </div>
     </main>

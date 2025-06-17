@@ -31,7 +31,7 @@
                     <hr />
 
                     <div class="d-grid">
-                        <asp:Button ID="btnRegistro" class="btn btn-outline-primary w-100" OnClick="btnRegistro_Click" runat="server" Text="Registro" />
+                        <asp:Button ID="btnRegistro" class="btn btn-outline-primary w-100" OnClick="btnRegistro_Click" runat="server" Text="Crear Cuenta" />
                     </div>
 
                     <div class="mt-2">
