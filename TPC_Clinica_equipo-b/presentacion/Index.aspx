@@ -34,6 +34,7 @@
 
             <!--Botón Usuarios-->
             <asp:Button ID="btnUsuario" runat="server" OnClick="btnUsuario_Click" Text="Usuarios" Style="display: none;" />
+
             <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnUsuario.ClientID %>').click();">
                 <span class="icon-circle"><i class="fas fa-users"></i></span>
                 <span class="btn-text">Usuarios</span>
