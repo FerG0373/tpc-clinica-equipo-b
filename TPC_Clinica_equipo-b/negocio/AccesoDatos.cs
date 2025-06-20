@@ -19,7 +19,7 @@ namespace negocio
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Clinica_DB; integrated security=true;");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=Clinica_DB; integrated security=true;");
             comando = new SqlCommand();
         }
 
@@ -27,6 +27,12 @@ namespace negocio
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
+        }
+
+        public void setearProcedimiento(string procedimiento)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = procedimiento;
         }
 
         public void setearParametro(string nombre, object valor)
