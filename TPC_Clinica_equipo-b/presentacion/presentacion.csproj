@@ -177,6 +177,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{99997d12-fd9d-4b7e-98df-b6ba98199dcd}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\negocio\negocio.csproj">
       <Project>{7bf786e8-c659-44da-bac4-a46ff40998cf}</Project>
       <Name>negocio</Name>
