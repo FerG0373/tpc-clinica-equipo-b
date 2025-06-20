@@ -3,7 +3,7 @@
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <%--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">--%>
 
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow-sm" style="width: 100%; max-width: 400px;">

@@ -3,7 +3,6 @@
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
 <asp:Content ID="LoginMainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="Content/misestilos.css" rel="stylesheet" />
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
             <!-- formulario de login acá -->
             <div class="login-box text-center">

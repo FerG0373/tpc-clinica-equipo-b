@@ -3,8 +3,6 @@
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
 <asp:Content ID="IndexMainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="Content/misestilos.css" rel="stylesheet" />
     <main>
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
@@ -15,7 +13,7 @@
                     <img src="<%= ResolveUrl("~/assets/img/Carrousel-2.png") %>" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="" class="d-block w-100" alt="...">
+                    <img src="<%= ResolveUrl("~/assets/img/Carrousel-3.png") %>" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

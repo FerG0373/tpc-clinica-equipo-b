@@ -71,7 +71,8 @@
     <Content Include="AltaUsuario.aspx" />
     <Content Include="assets\img\Carrousel-1.png" />
     <Content Include="assets\img\Carrousel-2.png" />
-    <Content Include="Content\misestilos.css" />
+    <Content Include="assets\img\Carrousel-3.png" />
+    <Content Include="assets\styles\style.css" />
     <Content Include="Especialidad.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Index.aspx" />
