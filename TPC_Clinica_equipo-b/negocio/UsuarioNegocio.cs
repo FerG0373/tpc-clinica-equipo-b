@@ -9,9 +9,9 @@ namespace negocio
 {
     public class UsuarioNegocio
     {
-        public  List<Usuario> listar()
+        public  List<Persona> listar()
         {
-            List<Usuario> lista = new List<Usuario>();
+            List<Persona> lista = new List<Persona>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
@@ -19,7 +19,7 @@ namespace negocio
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
-                    Usuario aux = new Usuario();
+                    Persona aux = new Persona();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Dni = (string)datos.Lector["Dni"];
                     aux.Nombre = (string)datos.Lector["Nombre"];

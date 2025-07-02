@@ -81,7 +81,7 @@
     <Content Include="Registro.aspx" />
     <Content Include="Turno.aspx" />
     <Content Include="TurnoTrabajo.aspx" />
-    <Content Include="Usuario.aspx" />
+    <Content Include="ScrMedico.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -159,12 +159,12 @@
     <Compile Include="TurnoTrabajo.aspx.designer.cs">
       <DependentUpon>TurnoTrabajo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Usuario.aspx.cs">
-      <DependentUpon>Usuario.aspx</DependentUpon>
+    <Compile Include="ScrMedico.aspx.cs">
+      <DependentUpon>ScrMedico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuario.aspx.designer.cs">
-      <DependentUpon>Usuario.aspx</DependentUpon>
+    <Compile Include="ScrMedico.aspx.designer.cs">
+      <DependentUpon>ScrMedico.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

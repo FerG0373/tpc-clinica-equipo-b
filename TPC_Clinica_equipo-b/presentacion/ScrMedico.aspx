@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Usuario.aspx.cs" Inherits="presentacion.Usuario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="ScrMedico.aspx.cs" Inherits="presentacion.Usuario" %>
 
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
@@ -8,7 +8,7 @@
             <div class="col-md-6">
                 <h2 class="text-center mb-4">Lista de Usuarios</h2>
 
-                <asp:GridView ID="dgvUsuario" runat="server" CssClass="table"></asp:GridView>
+                <asp:GridView ID="dgvMedico" runat="server" CssClass="table"></asp:GridView>
 
                 <asp:Button ID="btnAltaUsuario" runat="server" OnClick="btnAltaUsuario_Click" Text="Alta de Usuario" Style="display: none;" />
                 <div type="d-grid">

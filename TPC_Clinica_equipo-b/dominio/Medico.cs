@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
-    public class Medico : Usuario
+    public class Medico
     {
+        public int Id { get; set; }
         public string Matricula { get; set; }
+
+        // Relación con Usuario
+        public Usuario Usuario { get; set; }
+        public int UsuarioId { get; set; }
+
+        //Relación con Especialidades
         public List<Especialidad> Especialidades { get; set; }
     }
 }

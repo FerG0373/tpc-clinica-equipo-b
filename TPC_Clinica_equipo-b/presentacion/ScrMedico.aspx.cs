@@ -13,8 +13,8 @@ namespace presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
             UsuarioNegocio negocio = new UsuarioNegocio();
-            dgvUsuario.DataSource = negocio.listar();
-            dgvUsuario.DataBind();
+            dgvMedico.DataSource = negocio.listar();
+            dgvMedico.DataBind();
         }
 
         protected void btnAltaUsuario_Click(object sender, EventArgs e)

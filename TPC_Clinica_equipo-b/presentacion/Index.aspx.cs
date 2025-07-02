@@ -14,9 +14,9 @@ namespace presentacion
 
         }
 
-        protected void btnUsuario_Click(object sender, EventArgs e)
+        protected void btnMedico_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Usuario.aspx");
+            Response.Redirect("ScrMedico.aspx");
         }
 
         protected void btnTurno_Click(object sender, EventArgs e)
