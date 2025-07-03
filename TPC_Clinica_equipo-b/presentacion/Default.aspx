@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="presentacion.Index" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="presentacion.Index" %>
 
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
@@ -26,13 +26,14 @@
             </button>
         </div>
 
-
-
         <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
-
+            <!--Botón Médicos-->
+            <a href="ScrMedico.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+                <span class="icon-circle"><i class="fas fa-users"></i></span>
+                <span class="btn-text">Médicos</span>
+            </a>
             <!--Botón Médicos-->
             <asp:Button ID="btnMedico" runat="server" OnClick="btnMedico_Click" Text="Usuarios" Style="display: none;" />
-
             <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnMedico.ClientID %>').click();">
                 <span class="icon-circle"><i class="fas fa-users"></i></span>
                 <span class="btn-text">Médicos</span>

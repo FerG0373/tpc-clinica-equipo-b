@@ -75,13 +75,14 @@
     <Content Include="assets\styles\style.css" />
     <Content Include="Especialidad.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Index.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MisTurnos.aspx" />
     <Content Include="Registro.aspx" />
+    <Content Include="ScrMedico.aspx" />
     <Content Include="Turno.aspx" />
     <Content Include="TurnoTrabajo.aspx" />
-    <Content Include="ScrMedico.aspx" />
+    <Content Include="Usuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -109,12 +110,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -138,6 +139,13 @@
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ScrMedico.aspx.cs">
+      <DependentUpon>ScrMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ScrMedico.aspx.designer.cs">
+      <DependentUpon>ScrMedico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteMaster.Master.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,12 +167,12 @@
     <Compile Include="TurnoTrabajo.aspx.designer.cs">
       <DependentUpon>TurnoTrabajo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ScrMedico.aspx.cs">
-      <DependentUpon>ScrMedico.aspx</DependentUpon>
+    <Compile Include="Usuario.aspx.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ScrMedico.aspx.designer.cs">
-      <DependentUpon>ScrMedico.aspx</DependentUpon>
+    <Compile Include="Usuario.aspx.designer.cs">
+      <DependentUpon>Usuario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
