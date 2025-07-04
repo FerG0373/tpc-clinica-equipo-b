@@ -9,13 +9,12 @@ namespace dominio
     public class Medico
     {
         public int Id { get; set; }
+        public string Dni { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public string Matricula { get; set; }
-
-        // Relación con Usuario
-        public Usuario Usuario { get; set; }
-        public int UsuarioId { get; set; }
-
-        //Relación con Especialidades
+        public string Email { get; set; }
         public List<Especialidad> Especialidades { get; set; }
+        public int Activo { get; set; }
     }
 }

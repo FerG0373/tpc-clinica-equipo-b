@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
 
 namespace presentacion
 {
@@ -11,7 +12,9 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            MedicoNegocio negocio = new MedicoNegocio();
+            dgvMedico.DataSource = negocio.listarMedicos();
+            dgvMedico.DataBind();
         }
     }
 }
