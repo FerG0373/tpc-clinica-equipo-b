@@ -13,8 +13,14 @@ namespace presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
             MedicoNegocio negocio = new MedicoNegocio();
-            dgvMedico.DataSource = negocio.listarMedicos();
-            dgvMedico.DataBind();
+            dgvMedicos.DataSource = negocio.listarMedicos();
+            dgvMedicos.DataBind();
+        }
+
+        protected void dgvMedicos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvMedicos.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioMedico.aspx?id" + id);
         }
     }
 }

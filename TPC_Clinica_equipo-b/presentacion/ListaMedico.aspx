@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <h1>Lista de Médicos</h1>
-        <asp:GridView runat="server" ID="dgvMedico" CssClass="table" AutoGenerateColumns="false">
+        <asp:GridView runat="server" ID="dgvMedicos" CssClass="table" AutoGenerateColumns="false" DataKeyNames="Id" OnSelectedIndexChanged="dgvMedicos_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField HeaderText="DNI" DataField="DNI" />
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
@@ -14,7 +14,7 @@
                 <asp:BoundField HeaderText="Email" DataField="Email" />
                 <asp:BoundField HeaderText="Especialidad(es)" DataField="Especialidades" />
                 <asp:BoundField HeaderText="Activo" DataField="Activo" />
-                <asp:BoundField HeaderText="" DataField="" />  <%--Espacio asignado para el botón de editar y eliminar--%>
+                <asp:CommandField HeaderText="" ShowSelectButton="true" SelectText="📝" />  <%--Espacio asignado para el botón de editar y eliminar--%>
             </Columns>
         </asp:GridView>
     </div>

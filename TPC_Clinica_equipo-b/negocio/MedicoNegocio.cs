@@ -11,9 +11,12 @@ namespace negocio
     {
         public List<Medico> listarMedicos()
         {
-            List<Medico> listaMedicos = new List<Medico>();
-            List<Especialidad> listaEspecialidades = new List<Especialidad>();
             AccesoDatos datos = new AccesoDatos();
+            EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
+
+            List<Medico> listaMedicos = new List<Medico>();
+            List<Especialidad> listaEspecialidades = negocioEspecialidad.listarEspecialidades();
+
             try
             {
                 datos.setearProcedimiento("SP_listarMedicos");
