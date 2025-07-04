@@ -12,9 +12,19 @@
                 <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
                 <asp:BoundField HeaderText="Matrícula" DataField="Matricula" />
                 <asp:BoundField HeaderText="Email" DataField="Email" />
-                <asp:BoundField HeaderText="Especialidad(es)" DataField="Especialidades" />
+
+                <asp:TemplateField HeaderText="Especialidad(es)">
+                    <ItemTemplate>
+                        <asp:DropDownList runat="server" ID="ddlEspecialidades" CssClass="form-control"
+                            DataSource='<%# Eval("Especialidades") %>'
+                            DataTextField="Descripcion"
+                            DataValueField="Id" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
                 <asp:BoundField HeaderText="Activo" DataField="Activo" />
-                <asp:CommandField HeaderText="" ShowSelectButton="true" SelectText="📝" />  <%--Espacio asignado para el botón de editar y eliminar--%>
+                <asp:CommandField HeaderText="" ShowSelectButton="true" SelectText="📝" />
+                <%--Espacio asignado para el botón de editar y eliminar--%>
             </Columns>
         </asp:GridView>
     </div>
