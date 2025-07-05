@@ -15,16 +15,13 @@
 
                 <asp:TemplateField HeaderText="Especialidad(es)">
                     <ItemTemplate>
-                        <asp:DropDownList runat="server" ID="ddlEspecialidades" CssClass="form-control"
-                            DataSource='<%# Eval("Especialidades") %>'
-                            DataTextField="Descripcion"
-                            DataValueField="Id" />
+                        <%# GetDescripcionEspecialidades(Eval("Especialidades"))%>
                     </ItemTemplate>
                 </asp:TemplateField>
 
                 <asp:BoundField HeaderText="Activo" DataField="Activo" />
                 <asp:CommandField HeaderText="" ShowSelectButton="true" SelectText="📝" />
-                <%--Espacio asignado para el botón de editar y eliminar--%>
+                <asp:CommandField HeaderText="" ShowSelectButton="true" SelectText="🗑️" />
             </Columns>
         </asp:GridView>
     </div>

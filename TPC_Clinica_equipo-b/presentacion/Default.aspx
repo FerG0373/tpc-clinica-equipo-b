@@ -4,16 +4,17 @@
 </asp:Content>--%>
 <asp:Content ID="IndexMainContent" ContentPlaceHolderID="MainContent" runat="server">
     <main>
+        <%--Carrusel--%>
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="<%= ResolveUrl("~/assets/img/Carrousel-1.png") %>" class="d-block w-100" alt="Imagen del carrusel: mano del dr. sobre la del paciente">
+                    <img src="<%= ResolveUrl("~/assets/img/Carrousel-1.png") %>" class="d-block w-100" alt="Imagen del carrusel: mano del dr. sobre mano del paciente">
                 </div>
                 <div class="carousel-item">
-                    <img src="<%= ResolveUrl("~/assets/img/Carrousel-2.png") %>" class="d-block w-100" alt="...">
+                    <img src="<%= ResolveUrl("~/assets/img/Carrousel-2.png") %>" class="d-block w-100" alt="Imagen del carrusel: camilla y dispositivos médicos">
                 </div>
                 <div class="carousel-item">
-                    <img src="<%= ResolveUrl("~/assets/img/Carrousel-3.png") %>" class="d-block w-100" alt="...">
+                    <img src="<%= ResolveUrl("~/assets/img/Carrousel-3.png") %>" class="d-block w-100" alt="Imagen del carrusel: manos del dr. sobre mano del paciente">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -34,31 +35,28 @@
             </a>
 
             <!--Botón Turnos-->
-            <asp:Button ID="btnTurno" runat="server" OnClick="btnTurno_Click" Text="Turnos" Style="display: none;" />
-            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnTurno.ClientID %>').click();">
+            <a href="Turno.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
                 <span class="btn-text">Turnos</span>
-            </button>
+            </a>
 
             <!--Botón Especialidades-->
-            <asp:Button ID="btnEspecialidades" runat="server" OnClick="btnEspecialidades_Click" Text="Especialidades" Style="display: none;"/>
-            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnEspecialidades.ClientID %>').click();">
+            <a href="Especialidad.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
                 <span class="btn-text">Especialidades</span>
-            </button>
+            </a>
 
             <!--Botón Turnos de Trabajo-->
-            <asp:Button ID="btnTurnoTrabajo" runat="server" OnClick="btnTurnoTrabajo_Click"  Text="Turnos de Trabajo" Style="display: none;"/>
-            <button type="button" class="custom-btn" onclick="document.getElementById('<%= btnTurnoTrabajo.ClientID %>').click();">
+            <a href="TurnoTrabajo.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-briefcase-medical"></i></span>
                 <span class="btn-text">Turnos de trabajo</span>
-            </button>
+            </a>
 
-
-            <button class="custom-btn">
+            <%--Botón Mis Turnos--%>
+            <a href="" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-user-md"></i></span>
                 <span class="btn-text">Mis Turnos</span>
-            </button>
+            </a>
         </div>
     </main>
 </asp:Content>

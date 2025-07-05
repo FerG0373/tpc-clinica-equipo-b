@@ -22,5 +22,14 @@ namespace presentacion
             string id = dgvMedicos.SelectedDataKey.Value.ToString();
             Response.Redirect("FormularioMedico.aspx?id" + id);
         }
+
+        public string GetDescripcionEspecialidades(object especialidades)
+        {
+            var listaEspecialidades = especialidades as List<dominio.Especialidad>;
+            if (listaEspecialidades == null || listaEspecialidades.Count == 0)
+                return "Sin especialidades";
+
+            return string.Join("; ", listaEspecialidades.Select(item => item.Descripcion));
+        }
     }
 }

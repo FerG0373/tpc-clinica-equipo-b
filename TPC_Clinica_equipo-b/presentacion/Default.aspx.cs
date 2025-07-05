@@ -13,26 +13,5 @@ namespace presentacion
         {
 
         }
-
-        protected void btnMedico_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ScrMedico.aspx");
-        }
-
-        protected void btnTurno_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Turno.aspx");
-        }
-
-        protected void btnEspecialidades_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Especialidad.aspx");
-        }
-
-
-        protected void btnTurnoTrabajo_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("TurnoTrabajo.aspx");
-        }
     }
 }

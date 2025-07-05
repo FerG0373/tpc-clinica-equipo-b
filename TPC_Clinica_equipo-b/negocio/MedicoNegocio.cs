@@ -15,7 +15,7 @@ namespace negocio
             EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
 
             List<Medico> listaMedicos = new List<Medico>();
-            List<Especialidad> listaEspecialidades = negocioEspecialidad.listarEspecialidades();
+            var relacionEspecialidadMedico = negocioEspecialidad.listarEspecialidadesMedicos();
 
             try
             {
@@ -32,9 +32,16 @@ namespace negocio
                     aux.Email = (string)datos.Lector["Email"];
 
                     aux.Especialidades = new List<Especialidad>();
+                    foreach (var relacion in relacionEspecialidadMedico)
+                    {
+                        if (relacion.MedicoId == aux.Id)
+                        {
+                            aux.Especialidades.Add(relacion.Especialidad);
+                        }
+                    }
 
-                    
                     aux.Activo = (int)datos.Lector["Activo"];
+
                     listaMedicos.Add(aux);
                 }
                 return listaMedicos;
