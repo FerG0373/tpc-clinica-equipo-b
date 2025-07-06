@@ -21,6 +21,8 @@ namespace presentacion
                     ddlEspecialidad.DataValueField = "id";
                     ddlEspecialidad.DataTextField = "descripcion";
                     ddlEspecialidad.DataBind();
+
+                    ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar --", "0"));
                 }
             }
             catch (Exception ex)
