@@ -1,10 +1,11 @@
-﻿using System;
+﻿using negocio;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using negocio;
 
 namespace presentacion
 {
@@ -33,7 +34,11 @@ namespace presentacion
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            if (ddlEspecialidad.SelectedValue == "0")
+            {
+                lblError.Text = "Debe seleccionar una especialidad.";
+                return;
+            }
         }
     }
 }

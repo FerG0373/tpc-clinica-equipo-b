@@ -41,14 +41,14 @@
                 <div class="mb-3">
                     <label for="txtPassword" class="form-label">Contraseña</label>
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" />
-                    <asp:RequiredFieldValidator
+                    <%--<asp:RequiredFieldValidator
                         ID="rfvPassword"
                         runat="server"
                         ControlToValidate="txtPassword"
                         ErrorMessage="La contraseña es obligatoria."
                         Display="Dynamic"
                         CssClass="text-danger">
-                    </asp:RequiredFieldValidator>
+                    </asp:RequiredFieldValidator>--%>
 <%--                    <asp:RegularExpressionValidator
                         ID="revPassword"
                         runat="server"
@@ -61,6 +61,7 @@
                 </div>
 
                 <div class="text-center mt-5 mb-5">
+                    <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold d-block mb-3" Visible="false" />
                     <asp:Button ID="btnGuardar" runat="server" Text="💾 Guardar Médico" CssClass="btn btn-success btn-lg px-4" OnClick="btnGuardar_Click" />
                 </div>
             </div>
