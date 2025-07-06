@@ -27,7 +27,7 @@
             </button>
         </div>
 
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px;">
+        <div class="d-flex flex-wrap justify-content-center gap-4 mt-5">
             <!--Botón Médicos-->
             <a href="ListaMedico.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-users"></i></span>

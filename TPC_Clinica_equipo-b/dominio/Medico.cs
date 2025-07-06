@@ -13,8 +13,9 @@ namespace dominio
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Matricula { get; set; }
-        public string Email { get; set; }
         public List<Especialidad> Especialidades { get; set; }
+        public string Email { get; set; }
+        public string Pass { get; set; }
         public int Activo { get; set; }
     }
 }

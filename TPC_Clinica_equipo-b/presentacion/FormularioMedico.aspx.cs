@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
 
 namespace presentacion
 {
@@ -11,7 +12,21 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
+            try
+            {
+                if(!IsPostBack)
+                {
+                    ddlEspecialidad.DataSource = especialidadNegocio.listarEspecialidades();
+                    ddlEspecialidad.DataValueField = "id";
+                    ddlEspecialidad.DataTextField = "descripcion";
+                    ddlEspecialidad.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                Session.Add("error", ex);
+            }
         }
 
         protected void btnGuardar_Click(object sender, EventArgs e)

@@ -55,5 +55,34 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void agregarMedico(Medico medico)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta(
+                    "INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) " +
+                    "VALUES (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio)"
+                    );
+                datos.setearParametro("@dni", medico.Dni);
+                datos.setearParametro("@nombre", medico.Nombre);
+                datos.setearParametro("@apellido", medico.Apellido);
+                datos.setearParametro("@matricula", medico.Matricula);
+                datos.setearParametro("@email", medico.Email);
+                datos.setearParametro("@especialidad", medico.Especialidades);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
