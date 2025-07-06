@@ -74,6 +74,7 @@
     <Content Include="assets\img\Carrousel-3.png" />
     <Content Include="assets\styles\style.css" />
     <Content Include="Especialidad.aspx" />
+    <Content Include="FormularioMedico.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
@@ -106,6 +107,13 @@
     </Compile>
     <Compile Include="Especialidad.aspx.designer.cs">
       <DependentUpon>Especialidad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioMedico.aspx.cs">
+      <DependentUpon>FormularioMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormularioMedico.aspx.designer.cs">
+      <DependentUpon>FormularioMedico.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

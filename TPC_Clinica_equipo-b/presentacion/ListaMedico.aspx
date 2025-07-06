@@ -28,6 +28,11 @@
                     <asp:CommandField HeaderText="Borrar" ShowSelectButton="true" SelectText="🗑️" />
                 </Columns>
             </asp:GridView>
+            <div class="text-center mt-5">
+                <a href="FormularioMedico.aspx" class="btn btn-success btn-lg px-4">
+                    🞤 Agregar Médico
+                </a>
+            </div>
         </div>
     </div>
 </asp:Content>
