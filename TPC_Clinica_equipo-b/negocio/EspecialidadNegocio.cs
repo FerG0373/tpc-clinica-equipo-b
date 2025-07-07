@@ -49,19 +49,60 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT id, descripcion FROM Especialidad");
+                datos.setearConsulta("SELECT id, descripcion, activo FROM Especialidad");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Especialidad aux = new Especialidad();
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];                   
+                    aux.Id = (int)datos.Lector["id"];
+                    aux.Descripcion = (string)datos.Lector["descripcion"].ToString();
+                    aux.Activo = (bool)datos.Lector["activo"];
 
                     listaEspecialidades.Add(aux);
                 }
 
                 return listaEspecialidades;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregarEspecialidad(Especialidad nuevaEspecialidad)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO Especialidad (Descripcion, Activo) VALUES (@Descripcion, @Activo)");
+                datos.setearParametro("@Descripcion", nuevaEspecialidad.Descripcion);
+                datos.setearParametro("@Activo", nuevaEspecialidad.Activo);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void actualizarEstado(int id, bool activo = false)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("UPDATE Especialidad SET activo = @activo WHERE id = @id");
+                datos.setearParametro("@id", id);
+                datos.setearParametro("@activo", activo);
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
