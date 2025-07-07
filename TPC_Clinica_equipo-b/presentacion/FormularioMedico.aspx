@@ -38,9 +38,11 @@
                             <label for="ddlEspecialidad" class="form-label">Especialidad</label>
                             <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" />
                             <%--Botón Agregar Especialidad--%>
-                            <asp:Button ID="btnAgrearEspecialidad" runat="server" Text="Agregar" CssClass="btn btn-outline-primary ms-0 mt-2" OnClick="btnAgregarEspecialidad_Click" />
-                            <asp:ListBox ID="lstbEspecialidadesSeleccionadas" runat="server" CssClass="form-control mt-4" />
+                            <asp:Button ID="btnAgrearEspecialidad" runat="server" Text="Agregar" CssClass="btn btn-outline-primary mt-2" OnClick="btnAgregarEspecialidad_Click" />
+                            <asp:ListBox ID="lstbEspecialidadesSeleccionadas" runat="server" CssClass="form-control mt-4" AutoPostBack="true" OnSelectedIndexChanged="lstbEspecialidadesSeleccionadas_SelectedIndexChanged" />
                             <asp:Label ID="lblError" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
+                            <%--Botón Eliminar Especialidad--%>
+                            <asp:Button ID="btnQuitarEspecialidad" runat="server" Text="Quitar" CssClass="btn btn-outline-danger mt-2" OnClick="btnQuitarEspecialidad_Click"/>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>

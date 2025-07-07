@@ -25,6 +25,7 @@ namespace presentacion
                     ddlEspecialidad.DataBind();
 
                     ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar --", "0"));
+                    btnQuitarEspecialidad.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -72,6 +73,28 @@ namespace presentacion
             // Si no está duplicada, la agregás y ocultás el mensaje (si había)
             lstbEspecialidadesSeleccionadas.Items.Add(new ListItem(texto, id.ToString()));
             lblError.Visible = false;
+
+            btnQuitarEspecialidad.Visible = true;
+            btnQuitarEspecialidad.Enabled = false;
+        }
+
+        protected void lstbEspecialidadesSeleccionadas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Activar botón "Quitar" solo si hay algo seleccionado
+            btnQuitarEspecialidad.Enabled = lstbEspecialidadesSeleccionadas.SelectedIndex != -1;
+        }
+
+        protected void btnQuitarEspecialidad_Click(object sender, EventArgs e)
+        {
+            if (lstbEspecialidadesSeleccionadas.SelectedIndex != -1)
+            {
+                lstbEspecialidadesSeleccionadas.Items.RemoveAt(lstbEspecialidadesSeleccionadas.SelectedIndex);
+            }
+            // Mostrar u ocultar el botón según si hay elementos.
+            btnQuitarEspecialidad.Visible = lstbEspecialidadesSeleccionadas.Items.Count > 0;
+
+            // Habilitar solo si hay un elemento seleccionado.
+            btnQuitarEspecialidad.Enabled = lstbEspecialidadesSeleccionadas.SelectedIndex != -1;
         }
     }
 }
