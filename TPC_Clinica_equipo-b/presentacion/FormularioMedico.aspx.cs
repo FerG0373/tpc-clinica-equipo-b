@@ -90,7 +90,7 @@ namespace presentacion
             {
                 lstbEspecialidadesSeleccionadas.Items.RemoveAt(lstbEspecialidadesSeleccionadas.SelectedIndex);
             }
-            // Mostrar u ocultar el botón según si hay elementos.
+            // Mostrar u ocultar el botón si hay elementos.
             btnQuitarEspecialidad.Visible = lstbEspecialidadesSeleccionadas.Items.Count > 0;
 
             // Habilitar solo si hay un elemento seleccionado.
