@@ -62,16 +62,18 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta(
-                    "INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) " +
-                    "VALUES (@codigo, @nombre, @descripcion, @idMarca, @idCategoria, @precio)"
-                    );
+                datos.setearProcedimiento("SP_altaMedico");
+
                 datos.setearParametro("@dni", medico.Dni);
                 datos.setearParametro("@nombre", medico.Nombre);
                 datos.setearParametro("@apellido", medico.Apellido);
                 datos.setearParametro("@matricula", medico.Matricula);
+
+                string especialidadesIds = string.Join(",", medico.Especialidades.Select(elemento => elemento.Id));
+                datos.setearParametro("@especialidades", especialidadesIds);
+
                 datos.setearParametro("@email", medico.Email);
-                datos.setearParametro("@especialidad", medico.Especialidades);
+                datos.setearParametro("pass", medico.Pass);
 
                 datos.ejecutarAccion();
             }
