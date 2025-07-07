@@ -20,8 +20,8 @@ namespace presentacion
                 if (!IsPostBack)
                 {
                     ddlEspecialidad.DataSource = especialidadNegocio.listarEspecialidades();
-                    ddlEspecialidad.DataValueField = "id";
                     ddlEspecialidad.DataTextField = "descripcion";
+                    ddlEspecialidad.DataValueField = "id";
                     ddlEspecialidad.DataBind();
 
                     ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar --", "0"));
@@ -60,10 +60,10 @@ namespace presentacion
                 return;
             }
 
-            // Evitar duplicados
-            foreach (ListItem item in lstbEspecialidadesSeleccionadas.Items)
+            // Evitar duplicados.
+            foreach(ListItem item in lstbEspecialidadesSeleccionadas.Items)
             {
-                if (item.Value == id.ToString())  // id.ToString() porque item.Value es viene en string.
+                if(item.Value == id.ToString())  // id.ToString() porque item.Value es viene en string.
                 {
                     lblError.Text = "⚠️ Esa especialidad ya fue agregada.";
                     lblError.Visible = true;
@@ -80,7 +80,7 @@ namespace presentacion
 
         protected void lstbEspecialidadesSeleccionadas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Activar botón "Quitar" solo si hay algo seleccionado
+            // Activar botón "Quitar" solo si hay algo seleccionado.
             btnQuitarEspecialidad.Enabled = lstbEspecialidadesSeleccionadas.SelectedIndex != -1;
         }
 

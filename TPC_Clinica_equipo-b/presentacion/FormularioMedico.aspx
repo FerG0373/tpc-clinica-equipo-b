@@ -63,7 +63,7 @@
                         Display="Dynamic"
                         CssClass="text-danger">
                     </asp:RequiredFieldValidator>--%>
-                    <%--                    <asp:RegularExpressionValidator
+                    <%--<asp:RegularExpressionValidator
                         ID="revPassword"
                         runat="server"
                         ControlToValidate="txtPassword"
