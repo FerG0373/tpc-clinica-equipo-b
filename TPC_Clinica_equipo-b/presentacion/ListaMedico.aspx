@@ -19,7 +19,7 @@
 
                     <asp:TemplateField HeaderText="Especialidad(es)">
                         <ItemTemplate>
-                            <%# GetDescripcionEspecialidades(Eval("Especialidades"))%>
+                            <%# getDescripcionEspecialidades(Eval("Especialidades"))%>
                         </ItemTemplate>
                     </asp:TemplateField>
 

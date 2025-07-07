@@ -14,9 +14,10 @@ namespace presentacion
         protected void Page_Load(object sender, EventArgs e)
         {
             EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
+
             try
             {
-                if(!IsPostBack)
+                if (!IsPostBack)
                 {
                     ddlEspecialidad.DataSource = especialidadNegocio.listarEspecialidades();
                     ddlEspecialidad.DataValueField = "id";
@@ -36,9 +37,41 @@ namespace presentacion
         {
             if (ddlEspecialidad.SelectedValue == "0")
             {
-                lblError.Text = "Debe seleccionar una especialidad.";
+                lblError.Text = "⚠️ Debe seleccionar una especialidad.";
+                lblError.Visible = true;
                 return;
             }
+
+            lblError.Visible = false;
+        }
+
+        protected void btnAgregarEspecialidad_Click(object sender, EventArgs e)
+        {
+            lblError.Visible = false;
+
+            int id = int.Parse(ddlEspecialidad.SelectedValue);  // Ácá necesito parsearlo a entero porque el valor seleccionado viene como string.
+            string texto = ddlEspecialidad.SelectedItem.Text;  // Y acá obtengo el texto visible que se usa para mostrarlo en el ListBox.
+
+            if (id == 0)
+            {
+                lblError.Text = "⚠️ Debe seleccionar una especialidad.";
+                lblError.Visible = true;
+                return;
+            }
+
+            // Evitar duplicados
+            foreach (ListItem item in lstbEspecialidadesSeleccionadas.Items)
+            {
+                if (item.Value == id.ToString())  // id.ToString() porque item.Value es viene en string.
+                {
+                    lblError.Text = "⚠️ Esa especialidad ya fue agregada.";
+                    lblError.Visible = true;
+                    return;
+                }
+            }
+            // Si no está duplicada, la agregás y ocultás el mensaje (si había)
+            lstbEspecialidadesSeleccionadas.Items.Add(new ListItem(texto, id.ToString()));
+            lblError.Visible = false;
         }
     }
 }

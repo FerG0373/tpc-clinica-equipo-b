@@ -23,7 +23,7 @@ namespace presentacion
             Response.Redirect("FormularioMedico.aspx?id" + id);
         }
 
-        public string GetDescripcionEspecialidades(object especialidades)
+        public string getDescripcionEspecialidades(object especialidades)
         {
             var listaEspecialidades = especialidades as List<dominio.Especialidad>;
             if (listaEspecialidades == null || listaEspecialidades.Count == 0)
