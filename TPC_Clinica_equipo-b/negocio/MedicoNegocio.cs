@@ -82,6 +82,7 @@ namespace negocio
                 int medicoId = (int)outputId.Value;  // Recuperación del ID del médico generado después del insert.
 
                 datos.limpiarParametros();
+                datos.cerrarConexion();
 
                 foreach (Especialidad esp in medico.Especialidades)
                 {                    
