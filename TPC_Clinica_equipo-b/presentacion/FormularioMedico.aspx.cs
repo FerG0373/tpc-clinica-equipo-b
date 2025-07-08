@@ -1,11 +1,12 @@
-﻿using negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using negocio;
+using dominio;
 
 namespace presentacion
 {
@@ -36,14 +37,45 @@ namespace presentacion
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (ddlEspecialidad.SelectedValue == "0")
+            try
             {
-                lblError.Text = "⚠️ Debe seleccionar una especialidad.";
-                lblError.Visible = true;
-                return;
-            }
+                if (ddlEspecialidad.SelectedValue == "0")
+                {
+                    lblError.Text = "⚠️ Debe seleccionar una especialidad.";
+                    lblError.Visible = true;
+                    return;
+                }
 
-            lblError.Visible = false;
+                lblError.Visible = false;
+
+                Medico nuevo = new Medico();
+                MedicoNegocio negocio = new MedicoNegocio();
+
+                nuevo.Dni = txtDni.Text;
+                nuevo.Nombre = txtNombre.Text;
+                nuevo.Apellido = txtApellido.Text;
+                nuevo.Matricula = txtMatricula.Text;
+                nuevo.Email = txtEmail.Text;
+                nuevo.Pass = txtPassword.Text;
+
+                nuevo.Especialidades = new List<dominio.Especialidad>();
+                foreach(ListItem item in lstbEspecialidadesSeleccionadas.Items)
+                {
+                    Especialidad esp = new Especialidad();
+                    esp.Id = int.Parse(item.Value);
+                    esp.Descripcion = item.Text;
+                    nuevo.Especialidades.Add(esp);
+                }
+
+                negocio.agregarMedico(nuevo);
+                Response.Redirect("ListaMedio.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = "❌ Error al guardar el médico: " + ex.Message;
+                lblError.Visible = true;
+            }
+            
         }
 
         protected void btnAgregarEspecialidad_Click(object sender, EventArgs e)
