@@ -37,7 +37,12 @@ namespace negocio
 
         public void setearParametro(string nombre, object valor)
         {
-            comando.Parameters.AddWithValue(nombre, valor);
+            comando.Parameters.AddWithValue(nombre, valor);  // Para parámetros comunes de entrada.
+        }
+
+        public void agregarParametro(SqlParameter parametro)
+        {
+            comando.Parameters.Add(parametro);  // Necesario para mayor control, como en el caso de parámetros de salida.
         }
 
         public void ejecutarLectura()
@@ -69,6 +74,12 @@ namespace negocio
                 throw ex;
             }
         }
+
+        public void limpiarParametros()
+        {
+            comando.Parameters.Clear();  // Para limpiar el SqlCommand.
+        }
+
 
         public void cerrarConexion()
         {

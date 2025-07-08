@@ -1,6 +1,7 @@
 ﻿using dominio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,14 +69,27 @@ namespace negocio
                 datos.setearParametro("@nombre", medico.Nombre);
                 datos.setearParametro("@apellido", medico.Apellido);
                 datos.setearParametro("@matricula", medico.Matricula);
-
-                string especialidadesIds = string.Join(",", medico.Especialidades.Select(elemento => elemento.Id));
-                datos.setearParametro("@especialidades", especialidadesIds);
-
                 datos.setearParametro("@email", medico.Email);
-                datos.setearParametro("pass", medico.Pass);
+                datos.setearParametro("@pass", medico.Pass);
+
+                // Parámetro de salida. Necesito el id del médico insertado para tener control desde c# y poder recorrer la lista de especialidades.
+                SqlParameter outputId = new SqlParameter("@medico_id", System.Data.SqlDbType.Int);  // Crea un parámetro "@medico_id" del tipo INT (para capturar el ID generado).
+                outputId.Direction = System.Data.ParameterDirection.Output;  // Indica que este parámetro es de salida y va a recibir luego el id del médico insertado.
+                datos.agregarParametro(outputId);  // Agrega el parámetro al SqlCommand para que el SP lo incluya en la ejecución.
 
                 datos.ejecutarAccion();
+
+                int medicoId = (int)outputId.Value;  // Recuperación del ID del médico generado después del insert.
+
+                datos.limpiarParametros();
+
+                foreach (Especialidad esp in medico.Especialidades)
+                {                    
+                    datos.setearConsulta("INSERT INTO Medico_Especialidad (medico_id, especialidad_id) VALUES (@medicoId, @especialidadId)");
+                    datos.setearParametro("@medicoId", medicoId);
+                    datos.setearParametro("@especialidadId", esp.Id);
+                    datos.ejecutarAccion();
+                }
             }
             catch (Exception ex)
             {
