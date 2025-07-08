@@ -61,7 +61,7 @@ namespace presentacion
                 nuevo.Especialidades = new List<dominio.Especialidad>();
                 foreach(ListItem item in lstbEspecialidadesSeleccionadas.Items)
                 {
-                    Especialidad esp = new Especialidad();
+                    dominio.Especialidad esp = new dominio.Especialidad();
                     esp.Id = int.Parse(item.Value);
                     esp.Descripcion = item.Text;
                     nuevo.Especialidades.Add(esp);
