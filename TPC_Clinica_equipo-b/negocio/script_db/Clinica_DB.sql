@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Clinica_DB]    Script Date: 07/07/2025 8:10:52 ******/
+/****** Object:  Database [Clinica_DB]    Script Date: 07/07/2025 21:38:10 ******/
 CREATE DATABASE [Clinica_DB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [Clinica_DB] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANU
 GO
 USE [Clinica_DB]
 GO
-/****** Object:  Table [dbo].[Especialidad]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Table [dbo].[Especialidad]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -90,13 +90,14 @@ GO
 CREATE TABLE [dbo].[Especialidad](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[descripcion] [varchar](50) NULL,
+	[activo] [bit] NOT NULL,
  CONSTRAINT [PK_especialidad] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Medico]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Table [dbo].[Medico]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -111,7 +112,7 @@ CREATE TABLE [dbo].[Medico](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Medico_Especialidad]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Table [dbo].[Medico_Especialidad]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -126,7 +127,7 @@ CREATE TABLE [dbo].[Medico_Especialidad](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Paciente]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Table [dbo].[Paciente]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -142,7 +143,7 @@ CREATE TABLE [dbo].[Paciente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PerfilAcceso]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Table [dbo].[PerfilAcceso]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -156,7 +157,7 @@ CREATE TABLE [dbo].[PerfilAcceso](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Persona]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Table [dbo].[Persona]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,7 +177,7 @@ CREATE TABLE [dbo].[Persona](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -195,21 +196,25 @@ CREATE TABLE [dbo].[Usuario](
 GO
 SET IDENTITY_INSERT [dbo].[Especialidad] ON 
 GO
-INSERT [dbo].[Especialidad] ([id], [descripcion]) VALUES (1, N'Cardiología')
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (1, N'Cardiología', 1)
 GO
-INSERT [dbo].[Especialidad] ([id], [descripcion]) VALUES (6, N'Clínica Médica')
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (2, N'Oftalmología', 1)
 GO
-INSERT [dbo].[Especialidad] ([id], [descripcion]) VALUES (8, N'Ginecología')
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (3, N'Kinesiología', 1)
 GO
-INSERT [dbo].[Especialidad] ([id], [descripcion]) VALUES (3, N'Kinesiología')
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (4, N'Traumatología', 1)
 GO
-INSERT [dbo].[Especialidad] ([id], [descripcion]) VALUES (9, N'Obstetricia')
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (5, N'Pediatría', 1)
 GO
-INSERT [dbo].[Especialidad] ([id], [descripcion]) VALUES (2, N'Oftalmología')
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (6, N'Clínica Médica', 1)
 GO
-INSERT [dbo].[Especialidad] ([id], [descripcion]) VALUES (5, N'Pediatría')
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (8, N'Ginecología', 1)
 GO
-INSERT [dbo].[Especialidad] ([id], [descripcion]) VALUES (4, N'Traumatología')
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (9, N'Obstetricia', 1)
+GO
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (10, N'Neurología', 1)
+GO
+INSERT [dbo].[Especialidad] ([id], [descripcion], [activo]) VALUES (11, N'Nefrología', 0)
 GO
 SET IDENTITY_INSERT [dbo].[Especialidad] OFF
 GO
@@ -287,7 +292,7 @@ SET IDENTITY_INSERT [dbo].[Usuario] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_especialidad_descripcion]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Index [UQ_especialidad_descripcion]    Script Date: 07/07/2025 21:38:10 ******/
 ALTER TABLE [dbo].[Especialidad] ADD  CONSTRAINT [UQ_especialidad_descripcion] UNIQUE NONCLUSTERED 
 (
 	[descripcion] ASC
@@ -295,19 +300,19 @@ ALTER TABLE [dbo].[Especialidad] ADD  CONSTRAINT [UQ_especialidad_descripcion] U
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_medico_matricula]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Index [UQ_medico_matricula]    Script Date: 07/07/2025 21:38:10 ******/
 ALTER TABLE [dbo].[Medico] ADD  CONSTRAINT [UQ_medico_matricula] UNIQUE NONCLUSTERED 
 (
 	[matricula] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [UQ_medico_usuario_id]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Index [UQ_medico_usuario_id]    Script Date: 07/07/2025 21:38:10 ******/
 ALTER TABLE [dbo].[Medico] ADD  CONSTRAINT [UQ_medico_usuario_id] UNIQUE NONCLUSTERED 
 (
 	[usuario_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [UQ_paciente_persona_id]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Index [UQ_paciente_persona_id]    Script Date: 07/07/2025 21:38:10 ******/
 ALTER TABLE [dbo].[Paciente] ADD  CONSTRAINT [UQ_paciente_persona_id] UNIQUE NONCLUSTERED 
 (
 	[persona_id] ASC
@@ -315,7 +320,7 @@ ALTER TABLE [dbo].[Paciente] ADD  CONSTRAINT [UQ_paciente_persona_id] UNIQUE NON
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_persona_dni]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Index [UQ_persona_dni]    Script Date: 07/07/2025 21:38:10 ******/
 ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_dni] UNIQUE NONCLUSTERED 
 (
 	[dni] ASC
@@ -323,13 +328,13 @@ ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_dni] UNIQUE NONCLUSTERED
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_persona_email]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Index [UQ_persona_email]    Script Date: 07/07/2025 21:38:10 ******/
 ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_email] UNIQUE NONCLUSTERED 
 (
 	[email] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [UQ_usuario_persona_id]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  Index [UQ_usuario_persona_id]    Script Date: 07/07/2025 21:38:10 ******/
 ALTER TABLE [dbo].[Usuario] ADD  CONSTRAINT [UQ_usuario_persona_id] UNIQUE NONCLUSTERED 
 (
 	[persona_id] ASC
@@ -365,7 +370,52 @@ REFERENCES [dbo].[Persona] ([id])
 GO
 ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [FK_Persona_Usuario]
 GO
-/****** Object:  StoredProcedure [dbo].[SP_listarEspecialidadesPorMedico]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  StoredProcedure [dbo].[SP_altaMedico]    Script Date: 07/07/2025 21:38:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_altaMedico]
+    @dni VARCHAR(8),
+    @nombre VARCHAR(50),
+    @apellido VARCHAR(50),
+	@matricula VARCHAR(50),
+	@especialidades VARCHAR(MAX),
+    @email VARCHAR(50),
+    @pass VARCHAR(50),
+	@medico_id INT OUTPUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	BEGIN TRY
+		BEGIN TRANSACTION;
+
+		INSERT INTO Persona	(dni, nombre, apellido, email)
+		VALUES (@dni, @nombre, @apellido, @email);
+
+		DECLARE @persona_id INT = SCOPE_IDENTITY();
+
+		INSERT INTO Usuario (perfilAcceso_id, persona_id, pass, activo)
+		VALUES (3, @persona_id, @pass, 1);
+
+		DECLARE @usuario_id INT = SCOPE_IDENTITY();
+
+		INSERT INTO Medico (matricula, usuario_id)
+		VALUES (@matricula, @usuario_id);
+
+		SET @medico_id = SCOPE_IDENTITY();
+
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK;
+        THROW;
+    END CATCH
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_listarEspecialidadesPorMedico]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -375,7 +425,7 @@ SELECT ME.medico_id, E.Id, E.Descripcion
 FROM Medico_Especialidad ME, Especialidad E
 WHERE E.Id = ME.especialidad_id
 GO
-/****** Object:  StoredProcedure [dbo].[SP_listarMedicos]    Script Date: 07/07/2025 8:10:53 ******/
+/****** Object:  StoredProcedure [dbo].[SP_listarMedicos]    Script Date: 07/07/2025 21:38:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
