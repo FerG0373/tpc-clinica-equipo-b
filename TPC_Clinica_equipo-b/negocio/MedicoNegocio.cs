@@ -42,6 +42,8 @@ namespace negocio
                     }
 
                     listaMedicos.Add(aux);
+
+                    aux.Activo = (bool)datos.Lector["Activo"];
                 }
                 return listaMedicos;
             }
