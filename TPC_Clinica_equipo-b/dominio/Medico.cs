@@ -16,6 +16,6 @@ namespace dominio
         public List<Especialidad> Especialidades { get; set; }
         public string Email { get; set; }
         public string Pass { get; set; }
-        public int Activo { get; set; }
+        public bool Activo { get; set; }
     }
 }
