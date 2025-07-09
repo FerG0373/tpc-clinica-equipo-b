@@ -1,0 +1,40 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="ListaPaciente.aspx.cs" Inherits="presentacion.Pacientes" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Lista Pacientes</h1>
+        <div class="table-responsive">
+            <asp:GridView runat="server" ID="dgvPacientes"
+                AutoGenerateColumns="false"
+                CssClass="table table-bordered table-hover table-striped"
+                DataKeyNmaes="Id"
+                HeaderStyle-CssClass="text-center table-primary"
+                RowStyle-CssClass="text-center">
+                <Columns>
+                    <asp:BoundField HeaderText="DNI" DataField="DNI" />
+                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                    <asp:BoundField HeaderText="Fecha Nacimiento" DataField="FechaNacimiento"
+                        DataFormatString="{0:dd/MM/yyyy}" HtmlEncode="false" />
+                    <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
+                    <asp:BoundField HeaderText="Telefono" DataField="Telefono" />
+                    <asp:BoundField HeaderText="Email" DataField="Email" />
+                    <asp:BoundField HeaderText="Historial Clinico" DataField="HistorialClinico" />
+                    <asp:BoundField HeaderText="Tipo de Cobertura" DataField="TipoCobertura" />
+                    <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="📝" />
+                    <asp:TemplateField HeaderText="Activo">
+                        <ItemTemplate>
+                            <asp:CheckBox ID="chkActivo" runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <div class="text-center mt-5">
+                <a href="FormularioPaciente.aspx" class="btn btn-success btn-lg px-4">+ Agregar Paciente
+                </a>
+            </div>
+        </div>
+    </div>
+</asp:Content>

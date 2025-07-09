@@ -52,10 +52,17 @@
                 <span class="btn-text">Turnos de trabajo</span>
             </a>
 
-            <%--Botón Mis Turnos--%>
-            <a href="" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <!--Botón Mis Turnos-->
+            <a href="" class="btn custom-btn gap-2 ">
                 <span class="icon-circle"><i class="fas fa-user-md"></i></span>
                 <span class="btn-text">Mis Turnos</span>
+            </a>
+
+            <!--Botón Pacientes-->
+            <a href="ListaPaciente.aspx" class="btn custom-btn gap-2 ">
+                <span class="icon-circle">
+                    <i class="fas fa-user"></i></span>
+                <span class="btn-text">Pacientes</span>
             </a>
         </div>
     </main>

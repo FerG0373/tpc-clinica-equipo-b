@@ -75,10 +75,12 @@
     <Content Include="assets\styles\style.css" />
     <Content Include="Especialidad.aspx" />
     <Content Include="FormularioMedico.aspx" />
+    <Content Include="FormularioPaciente.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MisTurnos.aspx" />
+    <Content Include="ListaPaciente.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="ListaMedico.aspx" />
     <Content Include="Turno.aspx" />
@@ -115,6 +117,13 @@
     <Compile Include="FormularioMedico.aspx.designer.cs">
       <DependentUpon>FormularioMedico.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormularioPaciente.aspx.cs">
+      <DependentUpon>FormularioPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormularioPaciente.aspx.designer.cs">
+      <DependentUpon>FormularioPaciente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,6 +147,13 @@
     </Compile>
     <Compile Include="MisTurnos.aspx.designer.cs">
       <DependentUpon>MisTurnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPaciente.aspx.cs">
+      <DependentUpon>ListaPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaPaciente.aspx.designer.cs">
+      <DependentUpon>ListaPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro.aspx.cs">
