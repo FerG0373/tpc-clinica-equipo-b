@@ -31,6 +31,7 @@ namespace negocio
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Matricula = (string)datos.Lector["Matricula"];
                     aux.Email = (string)datos.Lector["Email"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
 
                     aux.Especialidades = new List<Especialidad>();
                     foreach (var relacion in relacionEspecialidadMedico)
@@ -43,7 +44,6 @@ namespace negocio
 
                     listaMedicos.Add(aux);
 
-                    aux.Activo = (bool)datos.Lector["Activo"];
                 }
                 return listaMedicos;
             }
