@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
@@ -94,7 +95,7 @@ namespace negocio
             }
         }
 
-        public void actualizarEstado(int id, bool activo = false)
+        public void actualizarEstadoEspecialidad(int id, bool activo = false)
         {
             AccesoDatos datos = new AccesoDatos();
             try
@@ -103,6 +104,50 @@ namespace negocio
                 datos.setearParametro("@id", id);
                 datos.setearParametro("@activo", activo);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminarEspecialidad(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM Especialidad WHERE id = @id");
+                datos.setearParametro("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+        public bool existeEspecialidad(string descripcion)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT COUNT(*) FROM Especialidad WHERE Descripcion = @Descripcion");
+                datos.setearParametro("@Descripcion", descripcion);
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    return (int)datos.Lector[0] > 0;
+                }
+                return false;
             }
             catch (Exception ex)
             {

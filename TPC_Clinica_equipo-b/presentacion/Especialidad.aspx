@@ -16,16 +16,64 @@
                         RowStyle-CssClass="text-center">
                         <Columns>
                             <asp:BoundField HeaderText="Especialidad" DataField="Descripcion" />
+
                             <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="📝" />
-                            <asp:CommandField HeaderText="Borrar" ShowSelectButton="true" SelectText="🗑️" />
-                            <asp:TemplateField HeaderText="Activo">
+
+                            <asp:TemplateField HeaderText="Borrar">
                                 <ItemTemplate>
-                                    <asp:CheckBox ID="chkActivo" runat="server" Checked='<%# Eval("Activo") %>' AutoPostBack="true"
+                                    <asp:Button
+                                        ID="btnEliminar"
+                                        runat="server"
+                                        CssClass="btn btn-sm"
+                                        Text="🗑️"
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        OnClick="btnEliminar_Click" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+
+                            <asp:TemplateField HeaderText="Estado">
+                                <ItemTemplate>
+                                    <asp:CheckBox
+                                        ID="chkActivo"
+                                        runat="server"
+                                        Checked='<%# Eval("Activo") %>'
+                                        AutoPostBack="true"
                                         OnCheckedChanged="chkActivo_CheckedChanged" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
+                    <asp:Panel ID="pnlConfirmarEliminacion" runat="server" Visible="false" CssClass="alert alert-warning mt-3">
+                        <p>¿Estás seguro de que deseas eliminar esta especialidad?</p>
+                        <asp:Button
+                            ID="btnConfirmarEliminar"
+                            runat="server"
+                            Text="Sí, eliminar"
+                            CssClass="btn btn-danger"
+                            OnClick="btnConfirmarEliminar_Click" />
+                        <asp:Button
+                            ID="btnCancelarEliminar"
+                            runat="server"
+                            Text="Cancelar"
+                            CssClass="btn btn-secondary"
+                            OnClick="btnCancelarEliminar_Click" />
+                    </asp:Panel>
+                    <asp:Panel ID="pnlConfirmarEstado" runat="server" Visible="false" CssClass="alert alert-warning mt-3">
+                        <asp:Label ID="lblConfirmarEstadoMensaje" runat="server" CssClass="mb-2 d-block"></asp:Label>
+                        <asp:Button
+                            ID="btnConfirmarEstado"
+                            runat="server"
+                            Text="Sí, Cambiar estado"
+                            CssClass="btn btn-danger"
+                            OnClick="btnConfirmarEstado_Click" />
+                        <asp:Button
+                            ID="btnCancelarEstado"
+                            runat="server"
+                            Text="Cancelar"
+                            CssClass="btn btn-secondary"
+                            OnClick="btnCancelarEstado_Click" />
+                    </asp:Panel>
                 </div>
 
                 <h3 class="text-center mb-4">Agregar Especialidad</h3>
@@ -34,17 +82,19 @@
                 <div class="mb-3">
                     <label for="txtEspecialidad" class="form-label">Nombre de la especialidad</label>
                     <asp:TextBox ID="txtEspecialidad" runat="server" CssClass="form-control" placeholder="Ej. Cardiología" />
-                    <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger mt-2 d-block"></asp:Label>
+                    <asp:Label ID="lblExito" runat="server" CssClass="text-success fw-bold" Visible="false"></asp:Label>
+                    <asp:Label ID="lblError" runat="server" Text="" CssClass="text-danger mt-2 d-block" Visible="false"></asp:Label>
                 </div>
 
                 <!-- Botón Agregar -->
-                <asp:Button ID="btnAgregarEspecialidad" runat="server" Text="Agregar" OnClick="btnAgregarEspecialidad_Click" Style="display: none;" />
-                <div class="d-grid">
-                    <button type="button" class="btn btn-success" onclick="document.getElementById('<%= btnAgregarEspecialidad.ClientID %>').click();">
-                        <i class="fas fa-calendar-plus me-2"></i>Agregar
-                    </button>
-                </div>
+                <asp:LinkButton
+                    ID="btnAgregarEspecialidad"
+                    runat="server"
+                    OnClick="btnAgregarEspecialidad_Click1"
+                    CssClass="btn btn-success d-grid mb-3"
+                    CausesValidation="false">
+                    <i class="fas fa-calendar-plus me-2"></i>Agregar
+                </asp:LinkButton>
             </div>
         </div>
-    </div>
 </asp:Content>
