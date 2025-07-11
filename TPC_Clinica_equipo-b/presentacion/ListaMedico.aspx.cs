@@ -17,6 +17,15 @@ namespace presentacion
                 MedicoNegocio negocio = new MedicoNegocio();
                 dgvMedicos.DataSource = negocio.listarMedicos();
                 dgvMedicos.DataBind();
+
+                // Mostrar mensaje si existe.
+                if(Session["MensajeExito"] != null)
+                {
+                    lblMensajeExito.Text = Session["MensajeExito"].ToString();
+                    panelExito.Visible = true;
+                    // Borra el mensaje de la sesión para que no vuelva a aparecer al recargar.
+                    Session.Remove("MensajeExito");
+                }
             }
         }            
 

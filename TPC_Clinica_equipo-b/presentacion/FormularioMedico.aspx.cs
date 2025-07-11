@@ -75,6 +75,8 @@ namespace presentacion
                 }
 
                 negocio.agregarMedico(nuevo);
+                // Mensaje de éxito y redirección
+                Session["MensajeExito"] = "Médico agregado con éxito.";
                 Response.Redirect("ListaMedico.aspx", false);
             }
             catch (Exception ex)

@@ -6,6 +6,9 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">Lista de Médicos</h1>
         <div class="table-responsive">
+            <asp:Panel ID="panelExito" runat="server" CssClass="alert alert-success text-center" Visible="false" style="opacity: 1;">
+                <asp:Label ID="lblMensajeExito" runat="server" Text=""></asp:Label>
+            </asp:Panel>
             <asp:GridView runat="server" ID="dgvMedicos" AutoGenerateColumns="false" DataKeyNames="Id" OnSelectedIndexChanged="dgvMedicos_SelectedIndexChanged"
                 CssClass="table table-bordered table-hover table-striped"
                 HeaderStyle-CssClass="text-center table-primary"
@@ -29,8 +32,7 @@
                 </Columns>
             </asp:GridView>
             <div class="text-center mt-5">
-                <a href="FormularioMedico.aspx" class="btn btn-success btn-lg px-4 mb-5">
-                    🞤 Agregar Médico
+                <a href="FormularioMedico.aspx" class="btn btn-success btn-lg px-4 mb-5">🞤 Agregar Médico
                 </a>
             </div>
         </div>
