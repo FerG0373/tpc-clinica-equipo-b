@@ -12,10 +12,13 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            MedicoNegocio negocio = new MedicoNegocio();
-            dgvMedicos.DataSource = negocio.listarMedicos();
-            dgvMedicos.DataBind();
-        }
+            if(!IsPostBack)
+            {
+                MedicoNegocio negocio = new MedicoNegocio();
+                dgvMedicos.DataSource = negocio.listarMedicos();
+                dgvMedicos.DataBind();
+            }
+        }            
 
         protected void dgvMedicos_SelectedIndexChanged(object sender, EventArgs e)
         {

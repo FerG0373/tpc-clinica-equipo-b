@@ -58,6 +58,13 @@ namespace presentacion
                 nuevo.Email = txtEmail.Text;
                 nuevo.Pass = txtPassword.Text;
 
+                if (string.IsNullOrWhiteSpace(nuevo.Pass))
+                {
+                    lblErrorPass.Text = "⚠️ La contraseña no puede estar vacía.";
+                    lblErrorPass.Visible = true;
+                    return;
+                }
+
                 nuevo.Especialidades = new List<dominio.Especialidad>();
                 foreach(ListItem item in lstbEspecialidadesSeleccionadas.Items)
                 {
@@ -68,7 +75,7 @@ namespace presentacion
                 }
 
                 negocio.agregarMedico(nuevo);
-                Response.Redirect("ListaMedio.aspx", false);
+                Response.Redirect("ListaMedico.aspx", false);
             }
             catch (Exception ex)
             {

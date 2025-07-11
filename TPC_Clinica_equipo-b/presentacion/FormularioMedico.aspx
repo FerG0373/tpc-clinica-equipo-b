@@ -55,6 +55,7 @@
                 <div class="mb-3">
                     <label for="txtPassword" class="form-label">Contraseña</label>
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" />
+                    <asp:Label ID="lblErrorPass" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                     <%--<asp:RequiredFieldValidator
                         ID="rfvPassword"
                         runat="server"

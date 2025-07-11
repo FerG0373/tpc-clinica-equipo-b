@@ -31,6 +31,7 @@ namespace negocio
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Matricula = (string)datos.Lector["Matricula"];
                     aux.Email = (string)datos.Lector["Email"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
 
                     aux.Especialidades = new List<Especialidad>();
                     foreach (var relacion in relacionEspecialidadMedico)
@@ -43,7 +44,6 @@ namespace negocio
 
                     listaMedicos.Add(aux);
 
-                    aux.Activo = (bool)datos.Lector["Activo"];
                 }
                 return listaMedicos;
             }
@@ -63,8 +63,9 @@ namespace negocio
 
             try
             {
-                datos.setearProcedimiento("SP_altaMedico");
+                datos.iniciarTransaccion();
 
+                datos.setearProcedimiento("SP_altaMedico");
                 datos.setearParametro("@dni", medico.Dni);
                 datos.setearParametro("@nombre", medico.Nombre);
                 datos.setearParametro("@apellido", medico.Apellido);
@@ -82,18 +83,22 @@ namespace negocio
                 int medicoId = (int)outputId.Value;  // Recuperación del ID del médico generado después del insert.
 
                 datos.limpiarParametros();
-                datos.cerrarConexion();
 
                 foreach (Especialidad esp in medico.Especialidades)
-                {                    
+                {
                     datos.setearConsulta("INSERT INTO Medico_Especialidad (medico_id, especialidad_id) VALUES (@medicoId, @especialidadId)");
                     datos.setearParametro("@medicoId", medicoId);
                     datos.setearParametro("@especialidadId", esp.Id);
+
                     datos.ejecutarAccion();
+                    datos.limpiarParametros();
                 }
+
+                datos.confirmarTransaccion();
             }
             catch (Exception ex)
             {
+                datos.cancelarTransaccion();
                 throw ex;
             }
             finally

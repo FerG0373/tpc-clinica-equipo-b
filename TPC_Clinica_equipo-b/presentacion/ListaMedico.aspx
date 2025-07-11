@@ -29,7 +29,7 @@
                 </Columns>
             </asp:GridView>
             <div class="text-center mt-5">
-                <a href="FormularioMedico.aspx" class="btn btn-success btn-lg px-4">
+                <a href="FormularioMedico.aspx" class="btn btn-success btn-lg px-4 mb-5">
                     🞤 Agregar Médico
                 </a>
             </div>
