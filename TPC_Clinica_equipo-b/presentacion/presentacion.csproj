@@ -73,6 +73,7 @@
     <Content Include="assets\img\Carrousel-2.png" />
     <Content Include="assets\img\Carrousel-3.png" />
     <Content Include="assets\styles\style.css" />
+    <Content Include="EditarPaciente.aspx" />
     <Content Include="Especialidad.aspx" />
     <Content Include="FormularioMedico.aspx" />
     <Content Include="FormularioPaciente.aspx" />
@@ -102,6 +103,13 @@
     </Compile>
     <Compile Include="AltaUsuario.aspx.designer.cs">
       <DependentUpon>AltaUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarPaciente.aspx.cs">
+      <DependentUpon>EditarPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarPaciente.aspx.designer.cs">
+      <DependentUpon>EditarPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Especialidad.aspx.cs">
       <DependentUpon>Especialidad.aspx</DependentUpon>
