@@ -18,6 +18,7 @@ namespace presentacion
 
             try
             {
+                // Configuración inicial del formulario (lista de médicos).
                 if (!IsPostBack)
                 {
                     ddlEspecialidad.DataSource = especialidadNegocio.listarEspecialidades();
@@ -27,6 +28,12 @@ namespace presentacion
 
                     ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar --", "0"));
                     btnQuitarEspecialidad.Visible = false;
+                }
+
+                // Configuración si estamos modificando el formulario de un médico.
+                if (Request.QueryString["id"] != null)
+                {
+
                 }
             }
             catch (Exception ex)
@@ -75,6 +82,8 @@ namespace presentacion
                 }
 
                 negocio.agregarMedico(nuevo);
+                // Mensaje de éxito y redirección
+                Session["MensajeExito"] = "Médico agregado con éxito.";
                 Response.Redirect("ListaMedico.aspx", false);
             }
             catch (Exception ex)
@@ -83,6 +92,11 @@ namespace presentacion
                 lblError.Visible = true;
             }
             
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaMedico.aspx");
         }
 
         protected void btnAgregarEspecialidad_Click(object sender, EventArgs e)

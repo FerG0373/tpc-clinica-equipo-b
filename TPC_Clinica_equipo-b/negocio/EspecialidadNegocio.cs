@@ -50,7 +50,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT id, descripcion, activo FROM Especialidad");
+                datos.setearConsulta("SELECT id, descripcion, activo FROM Especialidad ORDER BY descripcion");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
