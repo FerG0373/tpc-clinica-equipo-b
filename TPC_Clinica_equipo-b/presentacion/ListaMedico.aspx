@@ -6,7 +6,7 @@
     <div class="container mt-5">
         <h1 class="text-center mb-4">Lista de Médicos</h1>
         <div class="table-responsive">
-            <asp:Panel ID="panelExito" runat="server" CssClass="alert alert-success text-center" Visible="false" style="opacity: 1;">
+            <asp:Panel ID="panelExito" runat="server" CssClass="alert alert-success text-center" Visible="false" Style="opacity: 1;">
                 <asp:Label ID="lblMensajeExito" runat="server" Text=""></asp:Label>
             </asp:Panel>
             <asp:GridView runat="server" ID="dgvMedicos" AutoGenerateColumns="false" DataKeyNames="Id" OnSelectedIndexChanged="dgvMedicos_SelectedIndexChanged"
@@ -15,8 +15,8 @@
                 RowStyle-CssClass="text-center">
                 <Columns>
                     <asp:BoundField HeaderText="DNI" DataField="DNI" />
-                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Matrícula" DataField="Matricula" />
                     <asp:BoundField HeaderText="Email" DataField="Email" />
 
@@ -26,7 +26,12 @@
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <asp:BoundField HeaderText="Activo" DataField="Activo" />
+                    <asp:TemplateField HeaderText="Activo">
+                        <ItemTemplate>
+                            <%# ((bool)Eval("Activo")) ? "<span class='text-success fw-bold'>SÍ</span>" : "<span class='text-danger fw-bold'>NO</span>" %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    
                     <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="📝" />
                     <asp:CommandField HeaderText="Borrar" ShowSelectButton="true" SelectText="🗑️" />
                 </Columns>
