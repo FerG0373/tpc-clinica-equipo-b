@@ -11,7 +11,7 @@ namespace presentacion
 {
 
 
-    public partial class ScrMedico
+    public partial class ListaMedico
     {
 
         /// <summary>

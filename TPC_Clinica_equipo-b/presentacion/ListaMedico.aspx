@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="ListaMedico.aspx.cs" Inherits="presentacion.ScrMedico" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="ListaMedico.aspx.cs" Inherits="presentacion.ListaMedico" %>
 
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
@@ -28,7 +28,7 @@
 
                     <asp:TemplateField HeaderText="Activo">
                         <ItemTemplate>
-                            <%# ((bool)Eval("Activo")) ? "<span class='text-success fw-bold'>SÍ</span>" : "<span class='text-danger fw-bold'>NO</span>" %>
+                            <%# ((bool)Eval("Activo")) ? "<span class='text-success fw-bold'>🟢 SÍ</span>" : "<span class='text-danger fw-bold'>🔴 NO</span>" %>
                         </ItemTemplate>
                     </asp:TemplateField>
                     

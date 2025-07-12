@@ -8,7 +8,7 @@ using negocio;
 
 namespace presentacion
 {
-    public partial class ScrMedico : System.Web.UI.Page
+    public partial class ListaMedico : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
