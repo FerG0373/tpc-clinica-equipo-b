@@ -11,6 +11,7 @@ namespace presentacion
 {
     public partial class FormularioPaciente : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -18,6 +19,7 @@ namespace presentacion
 
         protected void btnGuardarPaciente_Click(object sender, EventArgs e)
         {
+            // Resetear mensajes de error y éxito
             lblErrorPaciente.Visible = false;
             lblExitoPaciente.Visible = false;
 
@@ -49,8 +51,10 @@ namespace presentacion
                     }
                 }
 
+                // Crear una nueva instancia de Paciente
                 dominio.Paciente nuevoPaciente = new dominio.Paciente
                 {
+                    // Asignar los valores del formulario al nuevo paciente
                     Dni = txtDni.Text.Trim(),
                     Nombre = txtNombre.Text.Trim(),
                     Apellido = txtApellido.Text.Trim(),
@@ -62,30 +66,35 @@ namespace presentacion
                     Activo = true
                 };
 
+                // Crear una instancia de PacienteNegocio para manejar la lógica de negocio
                 PacienteNegocio negocio = new PacienteNegocio();
 
                 // Verificar si el paciente ya existe por DNI
                 if (negocio.existePacientePorDni(nuevoPaciente.Dni))
                 {
+                    // Si ya existe, mostrar un mensaje de error
                     lblErrorPaciente.Text = "⚠️ Ya existe un paciente con ese DNI.";
                     lblErrorPaciente.Visible = true;
                     return;
                 }
 
+                // Si no existe, agregar el nuevo paciente
                 negocio.agregarPaciente(nuevoPaciente);
                 lblExitoPaciente.Text = "✔ Paciente agregado correctamente.";
                 lblExitoPaciente.Visible = true;
 
+                // Limpiar el formulario después de agregar el paciente
                 LimpiarFormularioPaciente();
             }
             catch (Exception ex)
             {
-
+                // Manejar cualquier error que ocurra durante el proceso
                 lblErrorPaciente.Text = "⚠️ Error al agregar paciente: " + ex.Message;
                 lblErrorPaciente.Visible = true;
             }
         }
 
+        //Función para limpiar el formulario de paciente
         private void LimpiarFormularioPaciente()
         {
             txtDni.Text = "";

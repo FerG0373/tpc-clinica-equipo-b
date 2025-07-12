@@ -97,8 +97,8 @@
                         TextMode="MultiLine" 
                         CssClass="form-control" />
                 </div>
-                <div class="form-group form-check mb-4">
-                    <asp:CheckBox ID="chkActivo" runat="server" CssClass="" />
+                <div class="form-group form-check mb-3">
+                    <asp:CheckBox ID="chkActivo" runat="server" />
                     <label class="form-check-label" for="chkActivo">Activo</label>
                 </div>
 
@@ -113,7 +113,7 @@
                         ID="btnGuardar"
                         runat="server"
                         Text="💾 Guardar Cambios"
-                        CssClass="btn btn-success btn-block"
+                        CssClass="btn btn-success btn-block mb-4"
                         OnClick="btnGuardar_Click" />
 
                     <!-- Boton Cancelar -->
@@ -121,18 +121,8 @@
                         ID="Button2"
                         runat="server"
                         Text="Cancelar"
-                        CssClass="btn btn-secondary"
+                        CssClass="btn btn-secondary mb-4"
                         PostBackUrl="~/ListaPaciente.aspx" />
-                </div>
-
-                <!-- Volver -->
-                <div class="text-center mt-4 mb-3">
-                    <asp:HyperLink 
-                        ID="hlVolver"
-                        runat="server" 
-                        NavigateUrl="~/ListaPaciente.aspx"
-                        CssClass="btn btn-outline-primary"> ⬅ Volver a la lista
-                    </asp:HyperLink>
                 </div>
             </div>
         </div>

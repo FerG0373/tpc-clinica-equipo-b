@@ -10,17 +10,22 @@ namespace negocio
 {
     public class PacienteNegocio
     {
+        //Lista todos los pacientes desde la base de datos
         public List<Paciente> listarPacientes()
         {
+            // Crea una lista para almacenar los pacientes
             List<Paciente> listaPacientes = new List<Paciente>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                // Ejecuta el procedimiento almacenado para listar pacientes
                 datos.setearProcedimiento("SP_listarPaciente");
                 datos.ejecutarLectura();
 
+                // Recorre los resultados de la consulta
                 while (datos.Lector.Read())
                 {
+                    // Crea una nueva instancia de Paciente y asigna los valores leídos
                     Paciente aux = new Paciente();
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Dni = (string)datos.Lector["Dni"];
@@ -44,6 +49,7 @@ namespace negocio
                     aux.Email = (string)datos.Lector["Email"];
                     aux.HistorialClinico = datos.Lector["HistorialClinico"] as string ?? "Sin historial"; // Envia "Sin historial" si es NULL por defecto
                     aux.TipoCobertura = datos.Lector["TipoCobertura"] as string ?? "Sin cobertura"; // Envia "Sin cobertura" si es NULL por defecto
+                    aux.Activo = (bool)datos.Lector["Activo"];
 
                     listaPacientes.Add(aux);
                 }
@@ -59,11 +65,14 @@ namespace negocio
             }
         }
 
+        // Agrega un nuevo paciente a la base de datos
         public void agregarPaciente(Paciente nuevoPaciente)
         {
+            // Instancia de AccesoDatos para interactuar con la base de datos
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                // Ejecuta el procedimiento almacenado para insertar un nuevo paciente
                 datos.setearProcedimiento("SP_insertarPacientes");
                 datos.setearParametro("@Dni", nuevoPaciente.Dni);
                 datos.setearParametro("@Nombre", nuevoPaciente.Nombre);
@@ -86,17 +95,22 @@ namespace negocio
             }
         }
 
+        // Verifica si un paciente con el DNI especificado ya existe en la base de datos
         public bool existePacientePorDni(string dni)
         {
+            // Instancia de AccesoDatos para interactuar con la base de datos
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                // Ejecuta el procedimiento almacenado para verificar la existencia del DNI
                 datos.setearProcedimiento("SP_verificarDniExistente");
                 datos.setearParametro("@Dni", dni);
                 datos.ejecutarLectura();
 
+                // Lee el resultado del procedimiento almacenado
                 if (datos.Lector.Read())
                 {
+                    // Obtiene el conteo de registros con el DNI especificado
                     int count = datos.Lector.GetInt32(0);
                     return count > 0; // Retorna true si el conteo es mayor que 0 (DNI existe)
                 }
@@ -113,13 +127,14 @@ namespace negocio
             }
         }
 
-
-
+        // Modifica los datos de un paciente existente en la base de datos
         public void modificarPaciente(Paciente paciente)
         {
+            // Instancia de AccesoDatos para interactuar con la base de datos
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                // Ejecuta el procedimiento almacenado para modificar un paciente
                 datos.setearProcedimiento("SP_modificarPaciente");
                 datos.setearParametro("@Dni", paciente.Dni);
                 datos.setearParametro("@Nombre", paciente.Nombre);
@@ -143,21 +158,25 @@ namespace negocio
             }
         }
 
+        // Busca un paciente por su DNI en la base de datos
         public Paciente buscarPorDni(string dni)
         {
+            // Instancia de AccesoDatos para interactuar con la base de datos
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                // Ejecuta el procedimiento almacenado para buscar un paciente por DNI
                 datos.setearProcedimiento("SP_buscarPacientePorDni");
                 datos.setearParametro("@Dni", dni);
                 datos.ejecutarLectura();
 
+                // Verifica si se encontró un paciente con el DNI especificado
                 if (datos.Lector.Read())
                 {
-                    // Crear una nueva instancia de Paciente
+                    // Crea una nueva instancia de Paciente
                     Paciente paciente = new Paciente();
 
-                    // Mapear los datos de la Persona
+                    // Mapea los datos de la Persona
                     paciente.Dni = (string)datos.Lector["dni"];
                     paciente.Nombre = (string)datos.Lector["nombre"];
                     paciente.Apellido = (string)datos.Lector["apellido"];
@@ -208,11 +227,14 @@ namespace negocio
 
         }
 
+        // Actualiza el estado de un paciente (activo o inactivo) en la base de datos
         public void actualizarEstadoPaciente(int id, bool activo)
         {
+            // Instancia de AccesoDatos para interactuar con la base de datos
             AccesoDatos datos = new AccesoDatos();
             try
             {
+                // Ejecuta la consulta para actualizar el estado del paciente
                 datos.setearConsulta("UPDATE Paciente SET Activo = @Activo WHERE Id = @Id");
                 datos.setearParametro("@Activo", activo);
                 datos.setearParametro("@Id", id);
@@ -220,6 +242,7 @@ namespace negocio
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Error al actualizar el estado del paciente: " + ex.Message);
                 throw ex;
             }
             finally

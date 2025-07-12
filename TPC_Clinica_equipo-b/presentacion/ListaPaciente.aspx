@@ -9,7 +9,7 @@
             <asp:GridView runat="server" ID="dgvPacientes"
                 AutoGenerateColumns="false"
                 CssClass="table table-bordered table-hover table-striped"
-                DataKeyNmaes="Id"
+                DataKeyNames="Id"
                 HeaderStyle-CssClass="text-center table-primary"
                 RowStyle-CssClass="text-center">
                 <Columns>
@@ -56,19 +56,21 @@
             <asp:Panel ID="pnlConfirmarEstado" runat="server" CssClass="alert alert-warning mt-3" Visible="false">
                 <asp:Label ID="lblConfirmacionEstado" runat="server" />
                 <div class="mt-2">
-                    <asp:Button 
-                        ID="btnConfirmarEstado" 
-                        runat="server" 
-                        Text="Sí, confirmar" 
+                    <asp:Button
+                        ID="btnConfirmarEstado"
+                        runat="server"
+                        Text="Sí, confirmar"
                         CssClass="btn btn-success btn-sm"
                         OnClick="btnConfirmarEstado_Click" />
-                    <asp:Button 
-                        ID="btnCancelarEstado" 
-                        runat="server" 
-                        Text="Cancelar" 
+                    <asp:Button
+                        ID="btnCancelarEstado"
+                        runat="server"
+                        Text="Cancelar"
                         CssClass="btn btn-secondary btn-sm"
                         OnClick="btnCancelarEstado_Click" />
                 </div>
+                <asp:Label ID="lblErrorEstadoPaciente" runat="server" CssClass="text-danger" Visible="false" />
+                <asp:Label ID="lblExitoEstadoPaciente" runat="server" CssClass="text-success" Visible="false" />
             </asp:Panel>
             <div class="text-center mt-5">
                 <a href="FormularioPaciente.aspx" class="btn btn-success btn-lg px-4 mb-4">+ Agregar Paciente
