@@ -9,10 +9,13 @@
             <asp:Panel ID="panelExito" runat="server" CssClass="alert alert-success text-center" Visible="false" Style="opacity: 1;">
                 <asp:Label ID="lblMensajeExito" runat="server" Text=""></asp:Label>
             </asp:Panel>
-            <asp:GridView runat="server" ID="dgvMedicos" AutoGenerateColumns="false" DataKeyNames="Id" OnSelectedIndexChanged="dgvMedicos_SelectedIndexChanged"
+            <asp:GridView runat="server" ID="dgvMedicos" AutoGenerateColumns="false" DataKeyNames="Id"
+                OnSelectedIndexChanged="dgvMedicos_SelectedIndexChanged"
+                OnPageIndexChanging="dgvMedicos_PageIndexChanging"
                 CssClass="table table-bordered table-hover table-striped"
                 HeaderStyle-CssClass="text-center table-primary"
-                RowStyle-CssClass="text-center">
+                RowStyle-CssClass="text-center"
+                AllowPaging="True" PageSize="10">
                 <Columns>
                     <asp:BoundField HeaderText="DNI" DataField="DNI" />
                     <asp:BoundField HeaderText="Apellido" DataField="Apellido" />

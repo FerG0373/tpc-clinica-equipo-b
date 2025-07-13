@@ -33,7 +33,12 @@ namespace presentacion
                 // Configuración si estamos modificando el formulario de un médico.
                 if (Request.QueryString["id"] != null)
                 {
+                    string idMedicoEnQueryString = Request.QueryString["id"].ToString();
+                    MedicoNegocio negocio = new MedicoNegocio();
+                    List<Medico> lista = negocio.listarMedicos(Request.QueryString["id"].ToString());
+                    Medico seleccionado = lista[0];
 
+                    // Precargar todos los campos.
                 }
             }
             catch (Exception ex)

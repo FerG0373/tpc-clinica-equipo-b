@@ -10,7 +10,7 @@ namespace negocio
 {
     public class MedicoNegocio
     {
-        public List<Medico> listarMedicos()
+        public List<Medico> listarMedicos(string id = "")
         {
             AccesoDatos datos = new AccesoDatos();
             EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
@@ -20,7 +20,19 @@ namespace negocio
 
             try
             {
-                datos.setearProcedimiento("SP_listarMedicos");
+                datos.setearProcedimiento("SP_obtenerMedicos");
+
+                // INICIO: Lógica para pasar el parámetro ID al SP.
+                if (!string.IsNullOrEmpty(id)) // Si el ID no está vacío.
+                {
+                    // Intenta convertir el string ID a un entero.
+                    if (int.TryParse(id, out int idNumerico))  // Evita que la aplicación se bloquee si el usuario ingresa texto no numérico.
+                    {
+                        // Si la conversión es exitosa, setea el parámetro "@id" para el SP.
+                        datos.setearParametro("@id", idNumerico);
+                    }
+                }
+
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
