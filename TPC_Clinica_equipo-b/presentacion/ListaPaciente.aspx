@@ -40,7 +40,9 @@
                         </ItemTemplate>
                     </asp:TemplateField>
 
-                    <%-- Checkbox Estado --%>
+                    <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
+
+                    <%--<%-- Checkbox Estado -->
                     <asp:TemplateField HeaderText="Activo">
                         <ItemTemplate>
                             <asp:CheckBox
@@ -50,10 +52,11 @@
                                 AutoPostBack="true"
                                 OnCheckedChanged="chkActivo_CheckedChanged" />
                         </ItemTemplate>
-                    </asp:TemplateField>
+                    </asp:TemplateField>--%>
+
                 </Columns>
             </asp:GridView>
-            <asp:Panel ID="pnlConfirmarEstado" runat="server" CssClass="alert alert-warning mt-3" Visible="false">
+            <%--<asp:Panel ID="pnlConfirmarEstado" runat="server" CssClass="alert alert-warning mt-3" Visible="false">
                 <asp:Label ID="lblConfirmacionEstado" runat="server" />
                 <div class="mt-2">
                     <asp:Button
@@ -71,7 +74,7 @@
                 </div>
                 <asp:Label ID="lblErrorEstadoPaciente" runat="server" CssClass="text-danger" Visible="false" />
                 <asp:Label ID="lblExitoEstadoPaciente" runat="server" CssClass="text-success" Visible="false" />
-            </asp:Panel>
+            </asp:Panel>--%>
             <div class="text-center mt-5">
                 <a href="FormularioPaciente.aspx" class="btn btn-success btn-lg px-4 mb-4">+ Agregar Paciente
                 </a>

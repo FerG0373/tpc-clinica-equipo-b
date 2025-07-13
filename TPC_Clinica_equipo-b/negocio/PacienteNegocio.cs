@@ -218,7 +218,7 @@ namespace negocio
             catch (Exception ex)
             {
                 Console.WriteLine("Error en buscarPorDni: " + ex.Message);
-                throw; 
+                throw;
             }
             finally
             {
@@ -228,27 +228,27 @@ namespace negocio
         }
 
         // Actualiza el estado de un paciente (activo o inactivo) en la base de datos
-        public void actualizarEstadoPaciente(int id, bool activo)
-        {
-            // Instancia de AccesoDatos para interactuar con la base de datos
-            AccesoDatos datos = new AccesoDatos();
-            try
-            {
-                // Ejecuta la consulta para actualizar el estado del paciente
-                datos.setearConsulta("UPDATE Paciente SET Activo = @Activo WHERE Id = @Id");
-                datos.setearParametro("@Activo", activo);
-                datos.setearParametro("@Id", id);
-                datos.ejecutarAccion();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al actualizar el estado del paciente: " + ex.Message);
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
+        //public void actualizarEstadoPaciente(int id, bool activo)
+        //{
+        //    // Instancia de AccesoDatos para interactuar con la base de datos
+        //    AccesoDatos datos = new AccesoDatos();
+        //    try
+        //    {
+        //        // Ejecuta la consulta para actualizar el estado del paciente
+        //        datos.setearConsulta("SP_actualizarEstadoPaciente");
+        //        datos.setearParametro("@Activo", activo);
+        //        datos.setearParametro("@Id", id);
+        //        datos.ejecutarAccion();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Error al actualizar el estado del paciente: " + ex.Message);
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();
+        //    }
+        //}
     }
 }
