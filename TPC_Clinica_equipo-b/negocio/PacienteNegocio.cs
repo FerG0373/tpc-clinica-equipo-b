@@ -19,7 +19,7 @@ namespace negocio
             try
             {
                 // Ejecuta el procedimiento almacenado para listar pacientes
-                datos.setearProcedimiento("SP_listarPaciente");
+                datos.setearProcedimiento("SELECT P.id, P.dni DNI, P.nombre Nombre, P.apellido Apellido , \r\nP.fechaNacimiento FechaNacimiento, P.sexo Sexo, P.telefono Telefono, \r\nP.email Email,PA.historialClinico HistorialClinico,PA.tipoCobertura TipoCobertura \r\nFROM Persona P INNER JOIN Paciente PA ON P.id= PA.persona_id");
                 datos.ejecutarLectura();
 
                 // Recorre los resultados de la consulta
