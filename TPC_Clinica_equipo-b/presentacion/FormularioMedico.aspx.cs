@@ -77,7 +77,7 @@ namespace presentacion
             lblErrorEspecialidad.Visible = false;
             lblErrorEmail.Visible = false;
             lblErrorPass.Visible = false;
-            lblError.Visible = false;
+            //lblError.Visible = false;
 
             bool validacionExitosa = true;
 
