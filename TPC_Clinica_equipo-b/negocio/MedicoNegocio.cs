@@ -10,17 +10,29 @@ namespace negocio
 {
     public class MedicoNegocio
     {
-        public List<Medico> listarMedicos()
+        public List<Medico> listarMedicos(string id = "")
         {
             AccesoDatos datos = new AccesoDatos();
-            EspecialidadNegocio negocioEspecialidad = new EspecialidadNegocio();
+            EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
 
             List<Medico> listaMedicos = new List<Medico>();
-            var relacionEspecialidadMedico = negocioEspecialidad.listarEspecialidadesMedicos();
+            var relacionEspecialidadMedico = especialidadNegocio.listarEspecialidadesMedicos();
 
             try
             {
                 datos.setearProcedimiento("SP_listarMedicos");
+
+                // INICIO: Lógica para pasar el parámetro ID al SP.
+                if (!string.IsNullOrEmpty(id)) // Si el ID no está vacío.
+                {
+                    // Intenta convertir el string ID a un entero.
+                    if (int.TryParse(id, out int idNumerico))  // Evita que la aplicación se bloquee si el usuario ingresa texto no numérico.
+                    {
+                        // Si la conversión es exitosa, setea el parámetro "@id" para el SP.
+                        datos.setearParametro("@id", idNumerico);
+                    }
+                }
+
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
@@ -31,6 +43,7 @@ namespace negocio
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Matricula = (string)datos.Lector["Matricula"];
                     aux.Email = (string)datos.Lector["Email"];
+                    aux.Pass = (string)datos.Lector ["Pass"];
                     aux.Activo = (bool)datos.Lector["Activo"];
 
                     aux.Especialidades = new List<Especialidad>();
@@ -74,24 +87,21 @@ namespace negocio
                 datos.setearParametro("@pass", medico.Pass);
 
                 // Parámetro de salida. Necesito el id del médico insertado para tener control desde c# y poder recorrer la lista de especialidades.
-                SqlParameter outputId = new SqlParameter("@medico_id", System.Data.SqlDbType.Int);  // Crea un parámetro "@medico_id" del tipo INT (para capturar el ID generado).
+                SqlParameter outputId = new SqlParameter("@persona_idSalida", System.Data.SqlDbType.Int);  // Crea un parámetro "@medico_id" del tipo INT (para capturar el ID generado).
                 outputId.Direction = System.Data.ParameterDirection.Output;  // Indica que este parámetro es de salida y va a recibir luego el id del médico insertado.
                 datos.agregarParametro(outputId);  // Agrega el parámetro al SqlCommand para que el SP lo incluya en la ejecución.
 
                 datos.ejecutarAccion();
 
-                int medicoId = (int)outputId.Value;  // Recuperación del ID del médico generado después del insert.
-
-                datos.limpiarParametros();
+                int personaId = (int)outputId.Value;  // Recuperación del ID del médico generado después del insert.
 
                 foreach (Especialidad esp in medico.Especialidades)
                 {
                     datos.setearConsulta("INSERT INTO Medico_Especialidad (medico_id, especialidad_id) VALUES (@medicoId, @especialidadId)");
-                    datos.setearParametro("@medicoId", medicoId);
+                    datos.setearParametro("@medicoId", personaId);
                     datos.setearParametro("@especialidadId", esp.Id);
 
                     datos.ejecutarAccion();
-                    datos.limpiarParametros();
                 }
 
                 datos.confirmarTransaccion();

@@ -4,15 +4,20 @@
 </asp:Content>--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Lista de Médicos</h1>
+        <%--Título--%>
+        <asp:Label ID="lblTituloListaMedicos" runat="server" Text="Lista de Médicos" CssClass="text-center mb-4 d-block fs-1 fw-semibold"></asp:Label>
         <div class="table-responsive">
             <asp:Panel ID="panelExito" runat="server" CssClass="alert alert-success text-center" Visible="false" Style="opacity: 1;">
                 <asp:Label ID="lblMensajeExito" runat="server" Text=""></asp:Label>
             </asp:Panel>
-            <asp:GridView runat="server" ID="dgvMedicos" AutoGenerateColumns="false" DataKeyNames="Id" OnSelectedIndexChanged="dgvMedicos_SelectedIndexChanged"
+            <%--GridView--%>
+            <asp:GridView runat="server" ID="dgvMedicos" AutoGenerateColumns="false" DataKeyNames="Id"
+                OnSelectedIndexChanged="dgvMedicos_SelectedIndexChanged"
+                OnPageIndexChanging="dgvMedicos_PageIndexChanging"
                 CssClass="table table-bordered table-hover table-striped"
                 HeaderStyle-CssClass="text-center table-primary"
-                RowStyle-CssClass="text-center">
+                RowStyle-CssClass="text-center"
+                AllowPaging="True" PageSize="10">
                 <Columns>
                     <asp:BoundField HeaderText="DNI" DataField="DNI" />
                     <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
@@ -36,9 +41,9 @@
                     <asp:CommandField HeaderText="Borrar" ShowSelectButton="true" SelectText="🗑️" />
                 </Columns>
             </asp:GridView>
+            <%--Botón--%>
             <div class="text-center mt-5">
-                <a href="FormularioMedico.aspx" class="btn btn-success btn-lg px-4 mb-5">🞤 Agregar Médico
-                </a>
+                <a href="FormularioMedico.aspx" class="btn btn-success btn-lg px-4 mb-5">🞤 Agregar Médico</a>
             </div>
         </div>
     </div>

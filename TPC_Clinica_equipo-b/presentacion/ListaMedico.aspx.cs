@@ -32,7 +32,13 @@ namespace presentacion
         protected void dgvMedicos_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = dgvMedicos.SelectedDataKey.Value.ToString();
-            Response.Redirect("FormularioMedico.aspx?id" + id);
+            Response.Redirect("FormularioMedico.aspx?id=" + id);
+        }
+
+        protected void dgvMedicos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvMedicos.PageIndex = e.NewPageIndex;
+            dgvMedicos.DataBind();
         }
 
         public string getDescripcionEspecialidades(object especialidades)
@@ -43,5 +49,6 @@ namespace presentacion
 
             return string.Join("; ", listaEspecialidades.Select(item => item.Descripcion));
         }
+        
     }
 }

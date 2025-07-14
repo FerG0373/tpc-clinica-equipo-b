@@ -9,15 +9,9 @@ namespace dominio
     public class Usuario
     {
         public int Id { get; set; }
-        public string Password { get; set; }
-        public int Activo { get; set; }
-
-        // Relación con Persona
-        public Persona Persona { get; set; }
         public int PersonaId { get; set; }
-
-        // Relación con Perfil de Acceso
+        public string Password { get; set; }
+        public bool Activo { get; set; }
         public int PerfilAccesoId { get; set; }
-        public PerfilAcceso PerfilAcceso { get; set; }
     }
 }

@@ -33,12 +33,14 @@ namespace negocio
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
+            comando.Parameters.Clear();
         }
 
         public void setearProcedimiento(string procedimiento)
         {
             comando.CommandType = System.Data.CommandType.StoredProcedure;
             comando.CommandText = procedimiento;
+            comando.Parameters.Clear();
         }
 
         public void setearParametro(string nombre, object valor)
@@ -89,11 +91,6 @@ namespace negocio
             }
         }
 
-        public void limpiarParametros()
-        {
-            comando.Parameters.Clear();  // Para limpiar el SqlCommand.
-        }
-
         public void iniciarTransaccion()
         {
             if(conexion.State != System.Data.ConnectionState.Open)
@@ -114,7 +111,6 @@ namespace negocio
             if(transaccion != null)
                 transaccion.Rollback();
         }
-
 
         public void cerrarConexion()
         {
