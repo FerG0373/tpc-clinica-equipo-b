@@ -47,8 +47,8 @@ namespace negocio
                     aux.Sexo = datos.Lector["Sexo"] as string ?? "No especificado"; // Envia "No especificado" si es NULL por defecto
                     aux.Telefono = datos.Lector["Telefono"] as string ?? "Sin telefono"; // Envia "Sin telefono" si es NULL por defecto
                     aux.Email = (string)datos.Lector["Email"];
-                    aux.HistorialClinico = datos.Lector["HistorialClinico"] as string ?? "Sin historial"; // Envia "Sin historial" si es NULL por defecto
-                    aux.TipoCobertura = datos.Lector["TipoCobertura"] as string ?? "Sin cobertura"; // Envia "Sin cobertura" si es NULL por defecto
+                    aux.HistorialClinico = datos.Lector["Historial Clinico"] as string ?? "Sin historial"; // Envia "Sin historial" si es NULL por defecto
+                    aux.TipoCobertura = datos.Lector["Tipo Cobertura"] as string ?? "Sin cobertura"; // Envia "Sin cobertura" si es NULL por defecto
                     aux.Activo = (bool)datos.Lector["Activo"];
 
                     listaPacientes.Add(aux);
