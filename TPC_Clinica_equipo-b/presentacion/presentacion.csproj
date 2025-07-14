@@ -88,6 +88,7 @@
     <Content Include="Turno.aspx" />
     <Content Include="TurnoTrabajo.aspx" />
     <Content Include="Usuario.aspx" />
+    <Content Include="VerDetallePaciente.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +207,13 @@
     </Compile>
     <Compile Include="Usuario.aspx.designer.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerDetallePaciente.aspx.cs">
+      <DependentUpon>VerDetallePaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerDetallePaciente.aspx.designer.cs">
+      <DependentUpon>VerDetallePaciente.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

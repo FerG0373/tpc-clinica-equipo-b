@@ -1,10 +1,12 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using negocio;
 
 namespace presentacion
 {
@@ -19,14 +21,81 @@ namespace presentacion
             }
         }
 
+
+
         //Evento para cargar los pacientes al iniciar la pagina
         private void CargarPaciente()
         {
             // Instancia de PacienteNegocio para obtener la lista de pacientes
             PacienteNegocio negocio = new PacienteNegocio();
-            dgvPacientes.DataSource = negocio.listarPacientes();
+            List<Paciente> listaPacientes = negocio.listarPacientes();
+
+            // Filtros
+            string filtroTexto = txtFiltroRapido.Text.Trim().ToLower();
+            string sexo = ddlSexo.SelectedValue;
+            string cobertura = ddlCobertura.SelectedValue;
+            string activo = ddlActivo.SelectedValue;
+
+            if (!string.IsNullOrEmpty(filtroTexto))
+            {
+                listaPacientes = listaPacientes.Where(p =>
+                    (!string.IsNullOrEmpty(p.Dni) && p.Dni.ToLower().Contains(filtroTexto)) ||
+                    (!string.IsNullOrEmpty(p.Nombre) && p.Nombre.ToLower().Contains(filtroTexto)) ||
+                    (!string.IsNullOrEmpty(p.Apellido) && p.Apellido.ToLower().Contains(filtroTexto))
+                ).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(sexo))
+                listaPacientes = listaPacientes.Where(p => p.Sexo == sexo).ToList();
+
+            if (!string.IsNullOrEmpty(cobertura))
+                listaPacientes = listaPacientes.Where(p => p.TipoCobertura == cobertura).ToList();
+
+            if (!string.IsNullOrEmpty(activo))
+            {
+                bool activoBool = bool.Parse(activo);
+                listaPacientes = listaPacientes.Where(p => p.Activo == activoBool).ToList();
+            }
+
+            dgvPacientes.DataSource = listaPacientes;
             dgvPacientes.DataBind();
 
+        }
+
+        protected void dgvPacientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvPacientes.PageIndex = e.NewPageIndex; // Cambia el índice de la página actual
+            CargarPaciente(); // Vuelve a cargar los pacientes para reflejar el cambio de página
+        }
+
+        protected void txtFiltroRapido_TextChanged(object sender, EventArgs e)
+        {
+            CargarPaciente();
+        }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            CargarPaciente();
+        }
+
+        protected void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtFiltroRapido.Text = string.Empty;
+            ddlSexo.SelectedIndex = 0;
+            ddlCobertura.SelectedIndex = 0;
+            ddlActivo.SelectedIndex = 0;
+
+            CargarPaciente();
+        }
+
+        protected void btnVer_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            string dni = btn.CommandArgument;
+
+            // Redirigimos con el parámetro DNI
+            Response.Redirect("VerDetallePaciente.aspx?dni=" + dni, false);
+            HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
 
         //protected void chkActivo_CheckedChanged(object sender, EventArgs e)
