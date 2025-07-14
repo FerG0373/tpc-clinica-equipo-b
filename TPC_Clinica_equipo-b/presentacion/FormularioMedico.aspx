@@ -7,7 +7,8 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Agregar Médico</h2>
+        <%--Título--%>       
+        <asp:Label ID="lblTituloFormularioMedico" runat="server" Text="Agregar Médico" CssClass="text-center mb-4 d-block fs-2 fw-semibold"></asp:Label>
 
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -76,7 +77,7 @@
                 </div>
                 <%--Botón guardar--%>
                 <div class="text-center mt-5 mb-5">
-                    <asp:Button ID="btnGuardar" runat="server" Text="💾 Guardar Médico" CssClass="btn btn-success btn-lg px-4 me-5" OnClick="btnGuardar_Click" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="💾 Guardar" CssClass="btn btn-success btn-lg px-4 me-5" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-danger btn-lg px-4" OnClick="btnCancelar_Click" />
                 </div>
             </div>

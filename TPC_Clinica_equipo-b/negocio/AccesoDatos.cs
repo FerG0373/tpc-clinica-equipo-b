@@ -91,11 +91,6 @@ namespace negocio
             }
         }
 
-        public void limpiarParametros()
-        {
-            comando.Parameters.Clear();  // Para limpiar el SqlCommand.
-        }
-
         public void iniciarTransaccion()
         {
             if(conexion.State != System.Data.ConnectionState.Open)
@@ -116,7 +111,6 @@ namespace negocio
             if(transaccion != null)
                 transaccion.Rollback();
         }
-
 
         public void cerrarConexion()
         {

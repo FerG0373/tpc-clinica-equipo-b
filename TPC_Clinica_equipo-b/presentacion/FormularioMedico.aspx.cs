@@ -31,14 +31,35 @@ namespace presentacion
                 }
 
                 // Configuración si estamos modificando el formulario de un médico.
-                if (Request.QueryString["id"] != null)
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if (id != "")
                 {
-                    string idMedicoEnQueryString = Request.QueryString["id"].ToString();
+                    lblTituloFormularioMedico.Text = "Editar Médico";
+
                     MedicoNegocio negocio = new MedicoNegocio();
-                    List<Medico> lista = negocio.listarMedicos(Request.QueryString["id"].ToString());
-                    Medico seleccionado = lista[0];
+                    Medico seleccionado = (negocio.listarMedicos(id))[0];  // Es una lista, el método listarMedicos retorna una lista de médicos.
 
                     // Precargar todos los campos.
+                    txtDni.Text = seleccionado.Dni;
+                    txtNombre.Text = seleccionado.Nombre;
+                    txtApellido.Text = seleccionado.Apellido;
+                    txtMatricula.Text = seleccionado.Matricula;
+                    txtEmail.Text = seleccionado.Email;
+                    txtPassword.Text = seleccionado.Pass;
+
+                    lstbEspecialidadesSeleccionadas.Items.Clear();
+
+                    if (seleccionado.Especialidades != null && seleccionado.Especialidades.Any())
+                    {
+                        foreach (dominio.Especialidad esp in seleccionado.Especialidades)
+                        {
+                            // Agrega cada especialidad del médico como un nuevo item en el ListBox
+                            // El Text sería la descripción de la especialidad (ej. "Ginecología")
+                            // El Value sería el ID de la especialidad (ej. "1")
+                            lstbEspecialidadesSeleccionadas.Items.Add(new ListItem(esp.Descripcion, esp.Id.ToString()));
+                        }
+                    }
+
                 }
             }
             catch (Exception ex)
