@@ -19,7 +19,7 @@ namespace negocio
             try
             {
                 // Ejecuta el procedimiento almacenado para listar pacientes
-                datos.setearProcedimiento("SELECT P.id, P.dni DNI, P.nombre Nombre, P.apellido Apellido , \r\nP.fechaNacimiento FechaNacimiento, P.sexo Sexo, P.telefono Telefono, \r\nP.email Email,PA.historialClinico HistorialClinico,PA.tipoCobertura TipoCobertura \r\nFROM Persona P INNER JOIN Paciente PA ON P.id= PA.persona_id");
+                datos.setearProcedimiento("SP_listarPaciente");
                 datos.ejecutarLectura();
 
                 // Recorre los resultados de la consulta
@@ -78,13 +78,15 @@ namespace negocio
                 datos.setearParametro("@Nombre", nuevoPaciente.Nombre);
                 datos.setearParametro("@Apellido", nuevoPaciente.Apellido);
                 datos.setearParametro("@FechaNacimiento", nuevoPaciente.FechaNacimiento.HasValue ? (object)nuevoPaciente.FechaNacimiento.Value : DBNull.Value);
-                datos.setearParametro("@Sexo", string.IsNullOrWhiteSpace(nuevoPaciente.Sexo) ? (object)DBNull.Value : nuevoPaciente.Sexo);
+                //datos.setearParametro("@Sexo", string.IsNullOrWhiteSpace(nuevoPaciente.Sexo) ? (object)DBNull.Value : nuevoPaciente.Sexo);
+                datos.setearParametro("@Sexo", (object)nuevoPaciente.Sexo ?? DBNull.Value);
                 datos.setearParametro("@Telefono", string.IsNullOrWhiteSpace(nuevoPaciente.Telefono) ? (object)DBNull.Value : nuevoPaciente.Telefono);
                 datos.setearParametro("@Email", string.IsNullOrWhiteSpace(nuevoPaciente.Email) ? (object)DBNull.Value : nuevoPaciente.Email);
                 datos.setearParametro("@TipoCobertura", string.IsNullOrWhiteSpace(nuevoPaciente.TipoCobertura) ? (object)DBNull.Value : nuevoPaciente.TipoCobertura);
                 datos.setearParametro("@Activo", nuevoPaciente.Activo);
                 datos.ejecutarAccion();
             }
+
             catch (Exception ex)
             {
                 throw ex;

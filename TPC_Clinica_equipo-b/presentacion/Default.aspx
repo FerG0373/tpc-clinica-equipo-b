@@ -35,13 +35,13 @@
             </a>
 
             <!--Botón Turnos-->
-            <a href="Turno.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="ListaTurno.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
                 <span class="btn-text">Turnos</span>
             </a>
 
             <!--Botón Especialidades-->
-            <a href="Especialidad.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="ListaEspecialidad.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
                 <span class="btn-text">Especialidades</span>
             </a>

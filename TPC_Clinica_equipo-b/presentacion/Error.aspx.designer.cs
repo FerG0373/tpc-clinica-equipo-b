@@ -11,7 +11,7 @@ namespace presentacion
 {
 
 
-    public partial class Turnos
+    public partial class Error
     {
     }
 }

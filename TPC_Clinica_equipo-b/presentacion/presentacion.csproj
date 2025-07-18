@@ -75,20 +75,24 @@
     <Content Include="assets\js\script.js" />
     <Content Include="assets\styles\style.css" />
     <Content Include="EditarPaciente.aspx" />
-    <Content Include="Especialidad.aspx" />
+    <Content Include="EditarTurno.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="ListaEspecialidad.aspx" />
     <Content Include="FormularioMedico.aspx" />
     <Content Include="FormularioPaciente.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
+    <Content Include="ListaTurno.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="MisTurnos.aspx" />
     <Content Include="ListaPaciente.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="ListaMedico.aspx" />
-    <Content Include="Turno.aspx" />
+    <Content Include="FormularioTurno.aspx" />
     <Content Include="TurnoTrabajo.aspx" />
     <Content Include="Usuario.aspx" />
     <Content Include="VerDetallePaciente.aspx" />
+    <Content Include="VerDetalleTurno.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -113,12 +117,26 @@
     <Compile Include="EditarPaciente.aspx.designer.cs">
       <DependentUpon>EditarPaciente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Especialidad.aspx.cs">
-      <DependentUpon>Especialidad.aspx</DependentUpon>
+    <Compile Include="EditarTurno.aspx.cs">
+      <DependentUpon>EditarTurno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Especialidad.aspx.designer.cs">
-      <DependentUpon>Especialidad.aspx</DependentUpon>
+    <Compile Include="EditarTurno.aspx.designer.cs">
+      <DependentUpon>EditarTurno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaEspecialidad.aspx.cs">
+      <DependentUpon>ListaEspecialidad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaEspecialidad.aspx.designer.cs">
+      <DependentUpon>ListaEspecialidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioMedico.aspx.cs">
       <DependentUpon>FormularioMedico.aspx</DependentUpon>
@@ -143,6 +161,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaTurno.aspx.cs">
+      <DependentUpon>ListaTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaTurno.aspx.designer.cs">
+      <DependentUpon>ListaTurno.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -187,12 +212,12 @@
     <Compile Include="SiteMaster.Master.designer.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
     </Compile>
-    <Compile Include="Turno.aspx.cs">
-      <DependentUpon>Turno.aspx</DependentUpon>
+    <Compile Include="FormularioTurno.aspx.cs">
+      <DependentUpon>FormularioTurno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Turno.aspx.designer.cs">
-      <DependentUpon>Turno.aspx</DependentUpon>
+    <Compile Include="FormularioTurno.aspx.designer.cs">
+      <DependentUpon>FormularioTurno.aspx</DependentUpon>
     </Compile>
     <Compile Include="TurnoTrabajo.aspx.cs">
       <DependentUpon>TurnoTrabajo.aspx</DependentUpon>
@@ -214,6 +239,13 @@
     </Compile>
     <Compile Include="VerDetallePaciente.aspx.designer.cs">
       <DependentUpon>VerDetallePaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VerDetalleTurno.aspx.cs">
+      <DependentUpon>VerDetalleTurno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VerDetalleTurno.aspx.designer.cs">
+      <DependentUpon>VerDetalleTurno.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

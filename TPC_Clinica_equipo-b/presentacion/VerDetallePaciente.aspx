@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Detalle de pacientes</h2>
+        <h2 class="text-center mb-4">Detalle de Paciente</h2>
 
         <div class="row">
             <div class="col-md-6 offset-md-3">
