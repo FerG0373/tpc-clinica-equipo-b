@@ -87,7 +87,7 @@
     <Content Include="MisTurnos.aspx" />
     <Content Include="ListaPaciente.aspx" />
     <Content Include="Registro.aspx" />
-    <Content Include="ListaMedico.aspx" />
+    <Content Include="MedicoLista.aspx" />
     <Content Include="FormularioTurno.aspx" />
     <Content Include="TurnoTrabajo.aspx" />
     <Content Include="Usuario.aspx" />
@@ -198,12 +198,12 @@
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ListaMedico.aspx.cs">
-      <DependentUpon>ListaMedico.aspx</DependentUpon>
+    <Compile Include="MedicoLista.aspx.cs">
+      <DependentUpon>MedicoLista.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ListaMedico.aspx.designer.cs">
-      <DependentUpon>ListaMedico.aspx</DependentUpon>
+    <Compile Include="MedicoLista.aspx.designer.cs">
+      <DependentUpon>MedicoLista.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteMaster.Master.cs">
       <DependentUpon>SiteMaster.Master</DependentUpon>
