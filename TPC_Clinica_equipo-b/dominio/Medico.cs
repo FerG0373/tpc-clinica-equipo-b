@@ -9,6 +9,7 @@ namespace dominio
     public class Medico
     {
         public int Id { get; set; }
+        public int PersonaId { get; set; }
         public string Dni { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }

@@ -20,7 +20,7 @@ namespace negocio
 
             try
             {
-                datos.setearProcedimiento("SP_listarMedicos");
+                datos.setearProcedimiento("SP_medicoListar");
 
                 // INICIO: Lógica para pasar el parámetro ID al SP.
                 if (!string.IsNullOrEmpty(id)) // Si el ID no está vacío.
@@ -37,13 +37,14 @@ namespace negocio
                 while (datos.Lector.Read())
                 {
                     Medico aux = new Medico();
-                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Id = (int)datos.Lector["MedicoId"];
+                    aux.PersonaId = (int)datos.Lector["PersonaId"];
                     aux.Dni = (string)datos.Lector["Dni"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Apellido = (string)datos.Lector["Apellido"];
                     aux.Matricula = (string)datos.Lector["Matricula"];
                     aux.Email = (string)datos.Lector["Email"];
-                    aux.Pass = (string)datos.Lector ["Pass"];
+                    aux.Pass = (string)datos.Lector["Pass"];
                     aux.Activo = (bool)datos.Lector["Activo"];
 
                     aux.Especialidades = new List<Especialidad>();
@@ -70,7 +71,7 @@ namespace negocio
             }
         }
 
-        public void agregarMedico(Medico medico)
+        public void insertarMedico(Medico medico)
         {
             AccesoDatos datos = new AccesoDatos();
 
@@ -78,7 +79,7 @@ namespace negocio
             {
                 datos.iniciarTransaccion();
 
-                datos.setearProcedimiento("SP_altaMedico");
+                datos.setearProcedimiento("SP_medicoInsertar");
                 datos.setearParametro("@dni", medico.Dni);
                 datos.setearParametro("@nombre", medico.Nombre);
                 datos.setearParametro("@apellido", medico.Apellido);
@@ -87,20 +88,83 @@ namespace negocio
                 datos.setearParametro("@pass", medico.Pass);
 
                 // Parámetro de salida. Necesito el id del médico insertado para tener control desde c# y poder recorrer la lista de especialidades.
-                SqlParameter outputId = new SqlParameter("@persona_idSalida", System.Data.SqlDbType.Int);  // Crea un parámetro "@medico_id" del tipo INT (para capturar el ID generado).
-                outputId.Direction = System.Data.ParameterDirection.Output;  // Indica que este parámetro es de salida y va a recibir luego el id del médico insertado.
-                datos.agregarParametro(outputId);  // Agrega el parámetro al SqlCommand para que el SP lo incluya en la ejecución.
+                SqlParameter medicoIdParametroSalida = new SqlParameter("@medico_idSalida", System.Data.SqlDbType.Int);  // Crea un parámetro "@medico_id" del tipo INT (para capturar el ID generado).
+                medicoIdParametroSalida.Direction = System.Data.ParameterDirection.Output;  // Indica que este parámetro es de salida y va a recibir luego el id del médico insertado.
+                datos.setearParametroSalida(medicoIdParametroSalida);  // Agrega el parámetro al SqlCommand para que el SP lo incluya en la ejecución.
 
                 datos.ejecutarAccion();
 
-                int personaId = (int)outputId.Value;  // Recuperación del ID del médico generado después del insert.
+                int idMedicoInsertado = (int)medicoIdParametroSalida.Value;  // Obtiene el ID del médico insertado.
 
-                foreach (Especialidad esp in medico.Especialidades)
+                foreach (Especialidad especialidad in medico.Especialidades)
+                {
+                    insertarEspecialidadMedico(datos, idMedicoInsertado, especialidad.Id);
+                }
+
+                datos.confirmarTransaccion();
+            }
+            catch (Exception ex)
+            {
+                datos.cancelarTransaccion();
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void insertarEspecialidadMedico(AccesoDatos datos, int medicoId, int especialidadId)
+        {
+            try
+            {
+                datos.setearConsulta("INSERT INTO Medico_Especialidad (medico_id, especialidad_id) VALUES (@medicoId, @especialidadId)");
+                datos.setearParametro("@medicoId", medicoId);
+                datos.setearParametro("@especialidadId", especialidadId);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void modificarMedico(Medico medico)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                if (string.IsNullOrWhiteSpace(medico.Pass))
+                {
+                    throw new ArgumentException("La contraseña no puede estar vacía.");
+                }
+
+                datos.iniciarTransaccion();
+
+                // Modifica los datos de Persona, Usuario y Medico.
+                datos.setearProcedimiento("SP_medicoModificar");
+                datos.setearParametro("@idPersona", medico.PersonaId);
+                datos.setearParametro("@dni", medico.Dni);
+                datos.setearParametro("@nombre", medico.Nombre);
+                datos.setearParametro("@apellido", medico.Apellido);
+                datos.setearParametro("@matricula", medico.Matricula);
+                datos.setearParametro("@email", medico.Email);
+                datos.setearParametro("@pass", medico.Pass);
+
+                datos.ejecutarAccion();
+
+                // Borra todas las especialidades actuales del médico de la tabla Medico_Especialidad.
+                datos.setearConsulta("DELETE FROM Medico_Especialidad WHERE medico_id = @idMedico");
+                datos.setearParametro("@idMedico", medico.Id); // Usa el ID del médico.
+                datos.ejecutarAccion();
+
+                // Insertar las nuevas especialidades que vienen en el objeto medico.
+                foreach (Especialidad especialidad in medico.Especialidades)
                 {
                     datos.setearConsulta("INSERT INTO Medico_Especialidad (medico_id, especialidad_id) VALUES (@medicoId, @especialidadId)");
-                    datos.setearParametro("@medicoId", personaId);
-                    datos.setearParametro("@especialidadId", esp.Id);
-
+                    datos.setearParametro("@medicoId", medico.Id);
+                    datos.setearParametro("@especialidadId", especialidad.Id);
                     datos.ejecutarAccion();
                 }
 
@@ -109,6 +173,26 @@ namespace negocio
             catch (Exception ex)
             {
                 datos.cancelarTransaccion();
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void desactivarMedico(Medico medico)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE Usuario SET activo = 0 WHERE persona_id = @idPersona");
+                datos.setearParametro("@idPersona", medico.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally

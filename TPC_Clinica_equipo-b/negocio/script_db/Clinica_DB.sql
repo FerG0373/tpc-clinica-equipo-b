@@ -1,10 +1,6 @@
 USE [master]
 GO
-<<<<<<< HEAD
-/****** Object:  Database [Clinica_DB]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Database [Clinica_DB]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Database [Clinica_DB]    Script Date: 17/07/2025 9:02:49 ******/
 CREATE DATABASE [Clinica_DB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -86,11 +82,7 @@ ALTER DATABASE [Clinica_DB] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANU
 GO
 USE [Clinica_DB]
 GO
-<<<<<<< HEAD
-/****** Object:  Table [dbo].[Especialidad]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Table [dbo].[Especialidad]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Table [dbo].[Especialidad]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,11 +97,7 @@ CREATE TABLE [dbo].[Especialidad](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Table [dbo].[Medico]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Table [dbo].[Medico]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Table [dbo].[Medico]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,11 +112,7 @@ CREATE TABLE [dbo].[Medico](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Table [dbo].[Medico_Especialidad]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Table [dbo].[Medico_Especialidad]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Table [dbo].[Medico_Especialidad]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,11 +127,7 @@ CREATE TABLE [dbo].[Medico_Especialidad](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Table [dbo].[Paciente]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Table [dbo].[Paciente]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Table [dbo].[Paciente]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -164,11 +144,7 @@ CREATE TABLE [dbo].[Paciente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Table [dbo].[PerfilAcceso]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Table [dbo].[PerfilAcceso]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Table [dbo].[PerfilAcceso]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -182,11 +158,7 @@ CREATE TABLE [dbo].[PerfilAcceso](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Table [dbo].[Persona]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Table [dbo].[Persona]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Table [dbo].[Persona]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,11 +178,7 @@ CREATE TABLE [dbo].[Persona](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Table [dbo].[Usuario]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Table [dbo].[Usuario]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Table [dbo].[Usuario]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -251,39 +219,21 @@ SET IDENTITY_INSERT [dbo].[Especialidad] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Medico] ON 
 GO
-INSERT [dbo].[Medico] ([id], [matricula], [persona_id]) VALUES (1, N'prueba1', 1)
+INSERT [dbo].[Medico] ([id], [matricula], [persona_id]) VALUES (1, N'medico1', 3)
 GO
-INSERT [dbo].[Medico] ([id], [matricula], [persona_id]) VALUES (2, N'prueba2', 3)
-GO
-INSERT [dbo].[Medico] ([id], [matricula], [persona_id]) VALUES (3, N'prueba3', 4)
-GO
-INSERT [dbo].[Medico] ([id], [matricula], [persona_id]) VALUES (4, N'medico4', 5)
+INSERT [dbo].[Medico] ([id], [matricula], [persona_id]) VALUES (2, N'medico2', 4)
 GO
 SET IDENTITY_INSERT [dbo].[Medico] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Medico_Especialidad] ON 
 GO
-INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (1, 1, 3)
+INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (1, 1, 5)
 GO
-INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (2, 1, 4)
+INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (3, 2, 3)
 GO
-INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (3, 3, 1)
-GO
-INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (4, 4, 3)
-GO
-INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (5, 4, 4)
-GO
-INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (6, 5, 6)
+INSERT [dbo].[Medico_Especialidad] ([id], [medico_id], [especialidad_id]) VALUES (4, 2, 4)
 GO
 SET IDENTITY_INSERT [dbo].[Medico_Especialidad] OFF
-GO
-SET IDENTITY_INSERT [dbo].[Paciente] ON 
-GO
-INSERT [dbo].[Paciente] ([id], [persona_id], [historialClinico], [tipoCobertura], [activo]) VALUES (1, 6, N'Problemas mentales..', N'Obra Social', 1)
-GO
-INSERT [dbo].[Paciente] ([id], [persona_id], [historialClinico], [tipoCobertura], [activo]) VALUES (2, 7, NULL, N'Paciente2', 1)
-GO
-SET IDENTITY_INSERT [dbo].[Paciente] OFF
 GO
 SET IDENTITY_INSERT [dbo].[PerfilAcceso] ON 
 GO
@@ -297,43 +247,31 @@ SET IDENTITY_INSERT [dbo].[PerfilAcceso] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Persona] ON 
 GO
-INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (1, N'prueba1', N'prueba1', N'prueba1', NULL, NULL, NULL, N'prueba1@gmail.com')
+INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (1, N'admin1', N'admin1', N'admin1', CAST(N'1988-05-15' AS Date), N'Masculino', N'admin1', N'admin1@gmail.com')
 GO
-INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (2, N'admin', N'admin', N'admin', CAST(N'1988-05-15' AS Date), N'Masculino', N'1122226784', N'admin@gmail.com')
+INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (2, N'recep1', N'recep1', N'recep1', CAST(N'1988-05-15' AS Date), N'Femenino', N'recep1', N'recep1@gmail.com')
 GO
-INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (3, N'prueba2', N'prueba2', N'prueba2', NULL, NULL, NULL, N'prueba2@gmail.com')
+INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (3, N'medico1', N'medico1', N'medico1', NULL, NULL, NULL, N'medico1@gmail.com')
 GO
-INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (4, N'prueba3', N'prueba3', N'prueba3', NULL, NULL, NULL, N'prueba3@gmail.com')
-GO
-INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (5, N'medico4', N'medico4', N'medico4', NULL, NULL, NULL, N'')
-GO
-INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (6, N'35995247', N'Felipe', N'Díaz', CAST(N'1988-05-15' AS Date), N'Masculino', N'1122226784', N'felipediaz@gmail.com')
-GO
-INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (7, N'Paciente', N'Paciente2', N'Paciente2', CAST(N'1998-02-14' AS Date), N'No especif', N'Paciente2', N'Paciente2@gmail.com')
+INSERT [dbo].[Persona] ([id], [dni], [nombre], [apellido], [fechaNacimiento], [sexo], [telefono], [email]) VALUES (4, N'medico2', N'medico2', N'medico2', NULL, NULL, NULL, N'medico2@gmail.com')
 GO
 SET IDENTITY_INSERT [dbo].[Persona] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Usuario] ON 
 GO
-INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (1, 3, 1, N'prueba1', 1)
+INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (1, 1, 1, N'admin1', 1)
 GO
-INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (2, 1, 2, N'123abc', 1)
+INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (2, 2, 2, N'recep1', 1)
 GO
-INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (3, 3, 3, N'prueba2', 1)
+INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (3, 3, 3, N'medico1', 1)
 GO
-INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (4, 3, 4, N'prueba3', 1)
-GO
-INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (5, 3, 5, N'medico4', 1)
+INSERT [dbo].[Usuario] ([id], [perfilAcceso_id], [persona_id], [pass], [activo]) VALUES (4, 3, 4, N'medico2', 1)
 GO
 SET IDENTITY_INSERT [dbo].[Usuario] OFF
 GO
 SET ANSI_PADDING ON
 GO
-<<<<<<< HEAD
-/****** Object:  Index [UQ_especialidad]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Index [UQ_especialidad]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Index [UQ_especialidad]    Script Date: 17/07/2025 9:02:49 ******/
 ALTER TABLE [dbo].[Especialidad] ADD  CONSTRAINT [UQ_especialidad] UNIQUE NONCLUSTERED 
 (
 	[descripcion] ASC
@@ -341,31 +279,19 @@ ALTER TABLE [dbo].[Especialidad] ADD  CONSTRAINT [UQ_especialidad] UNIQUE NONCLU
 GO
 SET ANSI_PADDING ON
 GO
-<<<<<<< HEAD
-/****** Object:  Index [UQ_medico_matricula]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Index [UQ_medico_matricula]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Index [UQ_medico_matricula]    Script Date: 17/07/2025 9:02:49 ******/
 ALTER TABLE [dbo].[Medico] ADD  CONSTRAINT [UQ_medico_matricula] UNIQUE NONCLUSTERED 
 (
 	[matricula] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Index [UQ_medico_persona_id]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Index [UQ_medico_persona_id]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Index [UQ_medico_persona_id]    Script Date: 17/07/2025 9:02:49 ******/
 ALTER TABLE [dbo].[Medico] ADD  CONSTRAINT [UQ_medico_persona_id] UNIQUE NONCLUSTERED 
 (
 	[persona_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Index [UQ_paciente_id]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Index [UQ_paciente_id]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Index [UQ_paciente_id]    Script Date: 17/07/2025 9:02:49 ******/
 ALTER TABLE [dbo].[Paciente] ADD  CONSTRAINT [UQ_paciente_id] UNIQUE NONCLUSTERED 
 (
 	[persona_id] ASC
@@ -373,11 +299,7 @@ ALTER TABLE [dbo].[Paciente] ADD  CONSTRAINT [UQ_paciente_id] UNIQUE NONCLUSTERE
 GO
 SET ANSI_PADDING ON
 GO
-<<<<<<< HEAD
-/****** Object:  Index [UQ_persona_dni]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Index [UQ_persona_dni]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Index [UQ_persona_dni]    Script Date: 17/07/2025 9:02:49 ******/
 ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_dni] UNIQUE NONCLUSTERED 
 (
 	[dni] ASC
@@ -385,21 +307,13 @@ ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_dni] UNIQUE NONCLUSTERED
 GO
 SET ANSI_PADDING ON
 GO
-<<<<<<< HEAD
-/****** Object:  Index [UQ_persona_email]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Index [UQ_persona_email]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Index [UQ_persona_email]    Script Date: 17/07/2025 9:02:49 ******/
 ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_email] UNIQUE NONCLUSTERED 
 (
 	[email] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-<<<<<<< HEAD
-/****** Object:  Index [UQ_usuario_persona_id]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  Index [UQ_usuario_persona_id]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  Index [UQ_usuario_persona_id]    Script Date: 17/07/2025 9:02:49 ******/
 ALTER TABLE [dbo].[Usuario] ADD  CONSTRAINT [UQ_usuario_persona_id] UNIQUE NONCLUSTERED 
 (
 	[persona_id] ASC
@@ -421,10 +335,10 @@ REFERENCES [dbo].[Especialidad] ([id])
 GO
 ALTER TABLE [dbo].[Medico_Especialidad] CHECK CONSTRAINT [FK_Medico_Especialidad_Especialidad]
 GO
-ALTER TABLE [dbo].[Medico_Especialidad]  WITH CHECK ADD  CONSTRAINT [FK_Medico_Especialidad_Persona] FOREIGN KEY([medico_id])
-REFERENCES [dbo].[Persona] ([id])
+ALTER TABLE [dbo].[Medico_Especialidad]  WITH CHECK ADD  CONSTRAINT [FK_Medico_Especialidad_Medico] FOREIGN KEY([medico_id])
+REFERENCES [dbo].[Medico] ([id])
 GO
-ALTER TABLE [dbo].[Medico_Especialidad] CHECK CONSTRAINT [FK_Medico_Especialidad_Persona]
+ALTER TABLE [dbo].[Medico_Especialidad] CHECK CONSTRAINT [FK_Medico_Especialidad_Medico]
 GO
 ALTER TABLE [dbo].[Paciente]  WITH CHECK ADD  CONSTRAINT [FK_Paciente_Persona] FOREIGN KEY([persona_id])
 REFERENCES [dbo].[Persona] ([id])
@@ -441,55 +355,7 @@ REFERENCES [dbo].[Persona] ([id])
 GO
 ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [FK_Usuario_Persona]
 GO
-<<<<<<< HEAD
-/****** Object:  StoredProcedure [dbo].[SP_altaMedico]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  StoredProcedure [dbo].[SP_altaMedico]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[SP_altaMedico]
-    @dni VARCHAR(8),
-    @nombre VARCHAR(50),
-    @apellido VARCHAR(50),
-	@matricula VARCHAR(50),
-    @email VARCHAR(50),
-    @pass VARCHAR(50),
-	@persona_idSalida INT OUTPUT
-AS
-BEGIN
-	SET NOCOUNT ON;
-
-	BEGIN TRY
-		BEGIN TRANSACTION;
-
-		INSERT INTO Persona	(dni, nombre, apellido, email)
-		VALUES (@dni, @nombre, @apellido, @email);
-
-		SET @persona_idSalida = SCOPE_IDENTITY();
-
-		INSERT INTO Usuario (perfilAcceso_id, persona_id, pass)
-		VALUES (3, @persona_idSalida, @pass);
-
-		INSERT INTO Medico (matricula, persona_id)
-		VALUES (@matricula, @persona_idSalida);
-
-        COMMIT;
-    END TRY
-    BEGIN CATCH
-        IF @@TRANCOUNT > 0
-            ROLLBACK;
-        THROW;
-    END CATCH
-END;
-GO
-<<<<<<< HEAD
-/****** Object:  StoredProcedure [dbo].[SP_buscarPacientePorDni]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  StoredProcedure [dbo].[SP_buscarPacientePorDni]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  StoredProcedure [dbo].[SP_buscarPacientePorDni]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -521,11 +387,7 @@ BEGIN
         P.dni = @Dni;
 END;
 GO
-<<<<<<< HEAD
-/****** Object:  StoredProcedure [dbo].[SP_insertarPacientes]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  StoredProcedure [dbo].[SP_insertarPacientes]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  StoredProcedure [dbo].[SP_insertarPacientes]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -577,41 +439,7 @@ BEGIN
     END CATCH
 END;
 GO
-<<<<<<< HEAD
-/****** Object:  StoredProcedure [dbo].[SP_listarEspecialidadesPorMedico]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  StoredProcedure [dbo].[SP_listarEspecialidadesPorMedico]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[SP_listarEspecialidadesPorMedico] AS
-SELECT ME.medico_id, E.Id, E.Descripcion
-FROM Medico_Especialidad ME, Especialidad E
-WHERE E.Id = ME.especialidad_id
-GO
-<<<<<<< HEAD
-/****** Object:  StoredProcedure [dbo].[SP_listarMedicos]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  StoredProcedure [dbo].[SP_listarMedicos]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[SP_listarMedicos]
-	@id INT = NULL AS
-	SELECT P.id, P.dni, P.nombre, P.apellido, M.matricula, P.email, U.activo, U.pass
-	FROM Persona P, Usuario U, Medico M
-	WHERE P.id = U.persona_id AND P.id = M.persona_id AND (@id IS NULL OR P.id = @id)
-	ORDER BY apellido
-GO
-<<<<<<< HEAD
-/****** Object:  StoredProcedure [dbo].[SP_listarPaciente]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  StoredProcedure [dbo].[SP_listarPaciente]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  StoredProcedure [dbo].[SP_listarPaciente]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -623,11 +451,118 @@ CREATE PROCEDURE [dbo].[SP_listarPaciente] AS
 	FROM Persona P, Paciente Pa
 	WHERE P.id = Pa.persona_id
 GO
-<<<<<<< HEAD
-/****** Object:  StoredProcedure [dbo].[SP_modificarPaciente]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  StoredProcedure [dbo].[SP_modificarPaciente]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  StoredProcedure [dbo].[SP_medicoInsertar]    Script Date: 17/07/2025 9:02:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_medicoInsertar]
+    @dni VARCHAR(8),
+    @nombre VARCHAR(50),
+    @apellido VARCHAR(50),
+    @matricula VARCHAR(50),
+    @email VARCHAR(50),
+    @pass VARCHAR(50),
+    @medico_idSalida INT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        DECLARE @persona_id INT;
+        
+        -- Insertar en Persona
+        INSERT INTO Persona (dni, nombre, apellido, email)
+        VALUES (@dni, @nombre, @apellido, @email);
+        SET @persona_id = SCOPE_IDENTITY();
+        
+        -- Insertar en Usuario
+        INSERT INTO Usuario (perfilAcceso_id, persona_id, pass)
+        VALUES (3, @persona_id, @pass);
+        
+        -- Insertar en Medico y capturar Medico.id
+        INSERT INTO Medico (matricula, persona_id)
+        VALUES (@matricula, @persona_id);
+        SET @medico_idSalida = SCOPE_IDENTITY();
+        
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0
+            ROLLBACK;
+        THROW;
+    END CATCH
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_medicoListar]    Script Date: 17/07/2025 9:02:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_medicoListar]
+	@id INT = NULL AS
+	SELECT M.id 'MedicoId', P.id 'PersonaId', P.dni, P.nombre, P.apellido, M.matricula, P.email, U.activo, U.pass
+	FROM Persona P, Usuario U, Medico M
+	WHERE P.id = U.persona_id AND P.id = M.persona_id AND (@id IS NULL OR M.id = @id)
+	ORDER BY P.apellido
+GO
+/****** Object:  StoredProcedure [dbo].[SP_medicoListarPorEspecialidades]    Script Date: 17/07/2025 9:02:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_medicoListarPorEspecialidades] AS
+SELECT ME.medico_id, E.Id, E.Descripcion
+FROM Medico_Especialidad ME, Especialidad E
+WHERE E.Id = ME.especialidad_id
+GO
+/****** Object:  StoredProcedure [dbo].[SP_medicoModificar]    Script Date: 17/07/2025 9:02:49 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[SP_medicoModificar]
+    @idPersona INT,
+    @dni VARCHAR(8),
+    @nombre NVARCHAR(50),
+    @apellido NVARCHAR(50),
+    @matricula NVARCHAR(50),
+    @email NVARCHAR(50),
+    @pass NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+		UPDATE Persona
+		SET
+			dni = @dni,
+			nombre = @nombre,
+			apellido = @apellido,
+			email = @email
+		WHERE id = @idPersona
+
+		UPDATE Usuario
+		SET
+			pass = @pass
+		WHERE persona_id = @idPersona
+
+		UPDATE Medico
+		SET
+			matricula = @matricula
+		WHERE persona_id = @idPersona
+
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[SP_modificarPaciente]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -694,11 +629,7 @@ BEGIN
     END CATCH
 END;
 GO
-<<<<<<< HEAD
-/****** Object:  StoredProcedure [dbo].[SP_verificarDniExistente]    Script Date: 14/07/2025 19:19:59 ******/
-=======
-/****** Object:  StoredProcedure [dbo].[SP_verificarDniExistente]    Script Date: 14/07/2025 19:41:00 ******/
->>>>>>> main
+/****** Object:  StoredProcedure [dbo].[SP_verificarDniExistente]    Script Date: 17/07/2025 9:02:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

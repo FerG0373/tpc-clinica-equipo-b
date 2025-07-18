@@ -10,7 +10,7 @@ using dominio;
 
 namespace presentacion
 {
-    public partial class FormularioMedico : System.Web.UI.Page
+    public partial class MedicoFormulario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,14 +32,17 @@ namespace presentacion
 
                 // Configuración si estamos modificando el formulario de un médico.
                 string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
-                if (id != "")
+                if (id != "" && !IsPostBack)
                 {
                     lblTituloFormularioMedico.Text = "Editar Médico";
 
                     MedicoNegocio negocio = new MedicoNegocio();
                     Medico seleccionado = (negocio.listarMedicos(id))[0];  // Es una lista, el método listarMedicos retorna una lista de médicos.
 
-                    // Precargar todos los campos.
+                    ViewState["PersonaId"] = seleccionado.PersonaId;
+                    ViewState["MedicoId"] = seleccionado.Id;
+
+                    // Precarga todos los campos.
                     txtDni.Text = seleccionado.Dni;
                     txtNombre.Text = seleccionado.Nombre;
                     txtApellido.Text = seleccionado.Apellido;
@@ -53,11 +56,11 @@ namespace presentacion
                     {
                         foreach (dominio.Especialidad esp in seleccionado.Especialidades)
                         {
-                            // Agrega cada especialidad del médico como un nuevo item en el ListBox
-                            // El Text sería la descripción de la especialidad (ej. "Ginecología")
-                            // El Value sería el ID de la especialidad (ej. "1")
                             lstbEspecialidadesSeleccionadas.Items.Add(new ListItem(esp.Descripcion, esp.Id.ToString()));
                         }
+                        // Si hay especialidades precargadas, muestra el botón Quitar.
+                        btnQuitarEspecialidad.Visible = true;
+                        btnQuitarEspecialidad.Enabled = false;
                     }
 
                 }
@@ -77,7 +80,6 @@ namespace presentacion
             lblErrorEspecialidad.Visible = false;
             lblErrorEmail.Visible = false;
             lblErrorPass.Visible = false;
-            //lblError.Visible = false;
 
             bool validacionExitosa = true;
 
@@ -156,7 +158,7 @@ namespace presentacion
                 nuevo.Pass = txtPassword.Text;
                 nuevo.Especialidades = new List<dominio.Especialidad>();
 
-                foreach(ListItem item in lstbEspecialidadesSeleccionadas.Items)
+                foreach (ListItem item in lstbEspecialidadesSeleccionadas.Items)
                 {
                     dominio.Especialidad esp = new dominio.Especialidad();
                     esp.Id = int.Parse(item.Value);
@@ -168,31 +170,42 @@ namespace presentacion
                 if (Request.QueryString["id"] != null)
                 {
                     // Es edición.
-                    nuevo.Id = int.Parse(Request.QueryString["id"].ToString());
-                    // negocio.modificarMedico(nuevo);
+                    nuevo.Id = int.Parse(Request.QueryString["id"].ToString());  // Este es Medico.Id
+
+                    // RECUPERAR Y ASIGNAR EL PersonaId DESDE VIEWSTATE
+                    if (ViewState["PersonaId"] != null)
+                    {
+                        nuevo.PersonaId = (int)ViewState["PersonaId"];
+                    }
+                    else
+                    {
+                        throw new Exception("No se pudo recuperar el PersonaId para la modificación del médico.");
+                    }
+
+                    negocio.modificarMedico(nuevo);
                     Session["MensajeExito"] = "Médico modificado con éxito.";
                 }
                 else
                 {
                     // Es agregar.
-                    negocio.agregarMedico(nuevo);
+                    negocio.insertarMedico(nuevo);
                     Session["MensajeExito"] = "Médico agregado con éxito.";
                 }
-                
-                Response.Redirect("ListaMedico.aspx", false);
+
+                Response.Redirect("MedicoLista.aspx", false);
             }
             catch (Exception ex)
             {
-                //lblError.Text = "❌ Error al guardar el médico: " + ex.Message;
-                //lblError.Visible = true;
+                lblError.Text = "❌ Error al guardar el médico: " + ex.Message;
+                lblError.Visible = true;
                 throw ex;
             }
-            
+
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ListaMedico.aspx");
+            Response.Redirect("MedicoLista.aspx", false);
         }
 
         protected void btnAgregarEspecialidad_Click(object sender, EventArgs e)
@@ -210,9 +223,9 @@ namespace presentacion
             }
 
             // Evitar duplicados.
-            foreach(ListItem item in lstbEspecialidadesSeleccionadas.Items)
+            foreach (ListItem item in lstbEspecialidadesSeleccionadas.Items)
             {
-                if(item.Value == id.ToString())  // id.ToString() porque item.Value es viene en string.
+                if (item.Value == id.ToString())  // id.ToString() porque item.Value es viene en string.
                 {
                     lblErrorEspecialidad.Text = "⚠️ Esa especialidad ya fue agregada.";
                     lblErrorEspecialidad.Visible = true;

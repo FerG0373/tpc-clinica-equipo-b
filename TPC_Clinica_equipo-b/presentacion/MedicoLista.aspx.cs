@@ -8,18 +8,18 @@ using negocio;
 
 namespace presentacion
 {
-    public partial class ListaMedico : System.Web.UI.Page
+    public partial class MedicoLista : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 MedicoNegocio negocio = new MedicoNegocio();
                 dgvMedicos.DataSource = negocio.listarMedicos();
                 dgvMedicos.DataBind();
 
                 // Mostrar mensaje si existe.
-                if(Session["MensajeExito"] != null)
+                if (Session["MensajeExito"] != null)
                 {
                     lblMensajeExito.Text = Session["MensajeExito"].ToString();
                     panelExito.Visible = true;
@@ -27,12 +27,12 @@ namespace presentacion
                     Session.Remove("MensajeExito");
                 }
             }
-        }            
+        }
 
         protected void dgvMedicos_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = dgvMedicos.SelectedDataKey.Value.ToString();
-            Response.Redirect("FormularioMedico.aspx?id=" + id);
+            Response.Redirect("MedicoFormulario.aspx?id=" + id);
         }
 
         protected void dgvMedicos_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -47,8 +47,9 @@ namespace presentacion
             if (listaEspecialidades == null || listaEspecialidades.Count == 0)
                 return "Sin especialidades";
 
+            // Usamos String.Join para concatenar las descripciones.
             return string.Join("; ", listaEspecialidades.Select(item => item.Descripcion));
         }
-        
+
     }
 }

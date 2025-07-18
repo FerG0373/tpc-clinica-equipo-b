@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="ListaMedico.aspx.cs" Inherits="presentacion.ListaMedico" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="MedicoLista.aspx.cs" Inherits="presentacion.MedicoLista" %>
 
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
@@ -43,7 +43,7 @@
             </asp:GridView>
             <%--Botón--%>
             <div class="text-center mt-5">
-                <a href="FormularioMedico.aspx" class="btn btn-success btn-lg px-4 mb-5">🞤 Agregar Médico</a>
+                <a href="MedicoFormulario.aspx" class="btn btn-success btn-lg px-4 mb-5">🞤 Agregar Médico</a>
             </div>
         </div>
     </div>

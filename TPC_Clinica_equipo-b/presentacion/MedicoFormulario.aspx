@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="FormularioMedico.aspx.cs" Inherits="presentacion.FormularioMedico" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="MedicoFormulario.aspx.cs" Inherits="presentacion.MedicoFormulario" %>
 
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
@@ -62,22 +62,13 @@
                     <label for="txtPassword" class="form-label">Contraseña</label>
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" />
                     <asp:Label ID="lblErrorPass" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
-                    <%--<asp:RegularExpressionValidator
-                        ID="revPassword"
-                        runat="server"
-                        ControlToValidate="txtPassword"
-                        ValidationExpression="^(?=.*[A-Za-z])(?=.*\d).{8,}$"
-                        ErrorMessage="Debe tener al menos 8 caracteres (letras y números)."
-                        Display="Dynamic"
-                        CssClass="text-danger">
-                    </asp:RegularExpressionValidator>--%>
                 </div>
                 <%--Botón guardar--%>
                 <div class="text-center mt-5 mb-5">
                     <asp:Button ID="btnGuardar" runat="server" Text="💾 Guardar" CssClass="btn btn-success btn-lg px-4 me-5" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-danger btn-lg px-4" OnClick="btnCancelar_Click" />
-                    <%--<asp:Label ID="lblError" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />--%>
                 </div>
+                 <asp:Label ID="lblError" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
             </div>
         </div>
     </div>

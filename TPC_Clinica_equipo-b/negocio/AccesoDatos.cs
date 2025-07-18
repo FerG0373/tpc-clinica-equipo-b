@@ -48,7 +48,7 @@ namespace negocio
             comando.Parameters.AddWithValue(nombre, valor);  // Para parámetros comunes de entrada.
         }
 
-        public void agregarParametro(SqlParameter parametro)
+        public void setearParametroSalida(SqlParameter parametro)
         {
             comando.Parameters.Add(parametro);  // Necesario para mayor control, como en el caso de parámetros de salida.
         }
@@ -73,12 +73,12 @@ namespace negocio
 
             try
             {
-                if(transaccion != null)
+                if (transaccion != null)
                 {
                     // Ya fue abierta por iniciarTransaccion()
                     comando.Transaction = transaccion;
                 }
-                else if(conexion.State != System.Data.ConnectionState.Open)
+                else if (conexion.State != System.Data.ConnectionState.Open)
                 {
                     conexion.Open(); // Solo abrí si no está abierta
                 }
@@ -93,7 +93,7 @@ namespace negocio
 
         public void iniciarTransaccion()
         {
-            if(conexion.State != System.Data.ConnectionState.Open)
+            if (conexion.State != System.Data.ConnectionState.Open)
                 conexion.Open();
 
             transaccion = conexion.BeginTransaction();
@@ -102,22 +102,22 @@ namespace negocio
 
         public void confirmarTransaccion()
         {
-            if(transaccion != null)
+            if (transaccion != null)
                 transaccion.Commit();
         }
 
         public void cancelarTransaccion()
         {
-            if(transaccion != null)
+            if (transaccion != null)
                 transaccion.Rollback();
         }
 
         public void cerrarConexion()
         {
-            if(lector != null)
+            if (lector != null)
                 lector.Close();
 
-            if(transaccion != null)
+            if (transaccion != null)
                 transaccion.Dispose();
 
             conexion.Close();

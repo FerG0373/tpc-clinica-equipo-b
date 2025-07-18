@@ -18,7 +18,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SP_listarEspecialidadesPorMedico");
+                datos.setearConsulta("SP_medicoListarPorEspecialidades");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -197,7 +197,7 @@ namespace negocio
             {
                 // Consulta para contar cuántas especialidades tienen la misma descripción, excluyendo la que se pasa por parámetro
                 datos.setearConsulta("SELECT COUNT(*) FROM Especialidad WHERE LOWER(Descripcion) = @Descripcion AND Id <> @Id");
-                datos.setearParametro("@Descripcion", descripcion.ToLower()); 
+                datos.setearParametro("@Descripcion", descripcion.ToLower());
                 datos.setearParametro("@Id", idExcluir);
                 datos.ejecutarLectura();
 

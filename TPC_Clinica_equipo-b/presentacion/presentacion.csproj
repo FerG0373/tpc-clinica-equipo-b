@@ -78,7 +78,7 @@
     <Content Include="EditarTurno.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="ListaEspecialidad.aspx" />
-    <Content Include="FormularioMedico.aspx" />
+    <Content Include="MedicoFormulario.aspx" />
     <Content Include="FormularioPaciente.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
@@ -138,12 +138,12 @@
     <Compile Include="ListaEspecialidad.aspx.designer.cs">
       <DependentUpon>ListaEspecialidad.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormularioMedico.aspx.cs">
-      <DependentUpon>FormularioMedico.aspx</DependentUpon>
+    <Compile Include="MedicoFormulario.aspx.cs">
+      <DependentUpon>MedicoFormulario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormularioMedico.aspx.designer.cs">
-      <DependentUpon>FormularioMedico.aspx</DependentUpon>
+    <Compile Include="MedicoFormulario.aspx.designer.cs">
+      <DependentUpon>MedicoFormulario.aspx</DependentUpon>
     </Compile>
     <Compile Include="FormularioPaciente.aspx.cs">
       <DependentUpon>FormularioPaciente.aspx</DependentUpon>
