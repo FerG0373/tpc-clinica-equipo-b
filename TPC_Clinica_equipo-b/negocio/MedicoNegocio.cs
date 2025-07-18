@@ -181,14 +181,14 @@ namespace negocio
             }
         }
 
-        public void desactivarMedico(Medico medico)
+        public void desactivarMedico(int medicoId)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
                 datos.setearConsulta("UPDATE Usuario SET activo = 0 WHERE persona_id = @idPersona");
-                datos.setearParametro("@idPersona", medico.Id);
+                datos.setearParametro("@idPersona", medicoId);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

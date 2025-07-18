@@ -14,6 +14,7 @@
 </head>
 <body>
     <form id="form1" runat="server" class="d-flex flex-column min-vh-100">
+        <asp:ScriptManager runat="server" />
         <!-- Header -->
         <header>
             <!-- Navbar -->
@@ -46,7 +47,7 @@
             </nav>
         </header>
 
-        <!-- Body -->
+        <!-- Main -->
         <div class="flex-grow-1">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -56,8 +57,9 @@
         <footer class="bg-success text-white text-center py-3 mt-auto">
             <small>&copy; 2025 - Experiencia Universidad.</small>
         </footer>
-    </form>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
     <script src="/assets/js/script.js"></script>
+    </form>
 </body>
 </html>
