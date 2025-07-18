@@ -4,8 +4,6 @@
 </asp:Content>--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:ScriptManager ID="ScriptManager1" runat="server" />
-
     <div class="container mt-5">
         <%--Título--%>       
         <asp:Label ID="lblTituloFormularioMedico" runat="server" Text="Agregar Médico" CssClass="text-center mb-4 d-block fs-2 fw-semibold"></asp:Label>
