@@ -7,7 +7,6 @@
         <h1 class="text-center mb-4">Lista Pacientes</h1>
         <div class="table-responsive">
 
-            <asp:ScriptManager ID="ScriptManager1" runat="server" />
             <asp:UpdatePanel ID="updPacientes" runat="server">
                 <ContentTemplate>
 
