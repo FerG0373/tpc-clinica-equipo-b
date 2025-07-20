@@ -94,7 +94,7 @@ namespace presentacion
             string dni = btn.CommandArgument;
 
             // Redirigimos con el parámetro DNI
-            Response.Redirect("VerDetallePaciente.aspx?dni=" + dni, false);
+            Response.Redirect("PacienteVerDetalle.aspx?dni=" + dni, false);
             HttpContext.Current.ApplicationInstance.CompleteRequest();
         }
 

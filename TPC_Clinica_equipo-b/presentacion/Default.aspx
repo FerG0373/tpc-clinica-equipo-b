@@ -35,13 +35,13 @@
             </a>
 
             <!--Botón Turnos-->
-            <a href="ListaTurno.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="TurnoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
                 <span class="btn-text">Turnos</span>
             </a>
 
             <!--Botón Especialidades-->
-            <a href="ListaEspecialidad.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="EspecialidadLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
                 <span class="btn-text">Especialidades</span>
             </a>
@@ -59,7 +59,7 @@
             </a>
 
             <!--Botón Pacientes-->
-            <a href="ListaPaciente.aspx" class="btn custom-btn gap-2 ">
+            <a href="PacienteLista.aspx" class="btn custom-btn gap-2 ">
                 <span class="icon-circle">
                     <i class="fas fa-user"></i></span>
                 <span class="btn-text">Pacientes</span>

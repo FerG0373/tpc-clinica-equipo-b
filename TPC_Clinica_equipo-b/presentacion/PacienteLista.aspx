@@ -97,7 +97,7 @@
                                         runat="server"
                                         Text="📝"
                                         CssClass="btn btn-sm"
-                                        PostBackUrl='<%# Eval("Dni", "~/EditarPaciente.aspx?dni={0}") %>' />
+                                        PostBackUrl='<%# Eval("Dni", "~/PacienteEditar.aspx?dni={0}") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -150,7 +150,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="text-center mt-5">
-                <a href="FormularioPaciente.aspx" class="btn btn-success btn-lg px-4 mb-4">+ Agregar Paciente
+                <a href="PacienteFormulario.aspx" class="btn btn-success btn-lg px-4 mb-4">+ Agregar Paciente
                 </a>
             </div>
         </div>
