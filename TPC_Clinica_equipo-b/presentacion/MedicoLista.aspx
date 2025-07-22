@@ -55,40 +55,39 @@
     </div>
 
     <%-- MODAL DE CONFIRMACIÓN (sin cambios, ya lo tienes bien) --%>
-    <div class="modal fade" id="modalConfirmacionDesactivar" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalConfirmacionLabel">Confirmar Desactivación de Médico</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+   <div class="modal fade" id="modalConfirmacionDesactivar" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalConfirmacionLabel">Confirmar Desactivación</h5> <%-- Título más específico --%>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    ¿Está seguro de que quiere **desactivar** este médico?
+                </p>
+                <p>Esta acción hará que el médico no pueda acceder al sistema.</p>
+                <div class="form-check">
+                    <asp:CheckBox ID="chkConfirmarDesactivacion" runat="server" CssClass="form-check-input" />
+                    <label class="form-check-label" for="chkConfirmarDesactivacion">
+                        Confirmo que deseo desactivar este médico.
+                    </label>
                 </div>
-                <div class="modal-body">
-                    <p>
-                        ¿Estás seguro de que quieres **desactivar** al médico
-                        <asp:Label ID="lblNombreMedicoDesactivar" runat="server" Text=""></asp:Label>?
-                    </p>
-                    <p>Una vez desactivado, no podrá acceder al sistema.</p>
-                    <div class="form-check">
-                        <asp:CheckBox ID="chkConfirmarDesactivacion" runat="server" Text="Entiendo que esta acción desactivará al médico." CssClass="form-check-input" />
-                        <label class="form-check-label" for="chkConfirmarDesactivacion">
-                            Confirmo la desactivación
-                        </label>
-                    </div>
-                    <asp:Label ID="lblErrorModal" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnConfirmarDesactivar" runat="server" Text="Desactivar" CssClass="btn btn-danger" OnClick="btnConfirmarDesactivar_Click" />
-                    <%-- HIDDEN FIELD PARA GUARDAR EL ID DEL MEDICO A DESACTIVAR --%>
-                    <asp:HiddenField ID="hfMedicoIdDesactivar" runat="server" />
-                </div>
+                <asp:Label ID="lblErrorModal" runat="server" Text="" CssClass="text-danger mt-2" Visible="false"></asp:Label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <%-- Asegúrate que el ID sea btnConfirmarDesactivar si ese es el nombre de tu método click --%>
+                <asp:Button ID="btnConfirmarDesactivar" runat="server" Text="Desactivar" CssClass="btn btn-outline-danger" OnClick="btnConfirmarDesactivar_Click" />
+                <asp:HiddenField ID="hfMedicoIdDesactivar" runat="server" />
             </div>
         </div>
     </div>
+</div>
 
     <%-- SCRIPT PARA MOSTRAR EL MODAL (sin cambios) --%>
     <script>
-        function showDesactivarModal() {
+        function mostrarMensajeDesactivar() {
             var myModal = new bootstrap.Modal(document.getElementById('modalConfirmacionDesactivar'));
             myModal.show();
         }
