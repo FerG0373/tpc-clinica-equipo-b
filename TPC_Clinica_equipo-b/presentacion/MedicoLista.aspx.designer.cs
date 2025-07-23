@@ -42,6 +42,15 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.Label lblMensajeExito;
 
         /// <summary>
+        /// Control updListaMedicos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updListaMedicos;
+
+        /// <summary>
         /// Control dgvMedicos.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace presentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView dgvMedicos;
+
+        /// <summary>
+        /// Control updModal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updModal;
 
         /// <summary>
         /// Control chkConfirmarDesactivacion.

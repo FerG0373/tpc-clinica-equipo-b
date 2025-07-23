@@ -66,14 +66,14 @@ namespace presentacion
                 // Ocultar cualquier mensaje de error previo del modal.
                 lblErrorModal.Visible = false;
 
-                // Mostrar el modal. Necesitas la función JavaScript para esto.
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showModalScript", "mostrarMensajeDesactivar();", true);
+                // Mostrar el modal. Se necesitas la función JavaScript para esto.
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "mostrarModalDesactivacionMedico", "mostrarMensajeDesactivar();", true);                
             }
         }
 
         protected void btnConfirmarDesactivar_Click(object sender, EventArgs e)
         {
-            // Aquí va la lógica para confirmar la desactivación
+            // Lógica para confirmar la desactivación.
             if (!chkConfirmarDesactivacion.Checked)
             {
                 lblErrorModal.Text = "Debes confirmar la desactivación.";
@@ -83,13 +83,13 @@ namespace presentacion
 
             try
             {
-                int medicoId = int.Parse(hfMedicoIdDesactivar.Value);
+                int personaId = int.Parse(hfMedicoIdDesactivar.Value);
                 MedicoNegocio negocio = new MedicoNegocio();
-                negocio.desactivarMedico(medicoId);
+                negocio.desactivarMedico(personaId);
 
                 Session["MensajeExito"] = "✔️ Médico desactivado con éxito.";
-                // Ocultar el modal con JavaScript o en el code-behind
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "hideModal", "var myModal = new bootstrap.Modal(document.getElementById('modalConfirmacionDesactivar')); myModal.hide();", true);
+                // Cierra el modal de confirmación.
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "hideModal", "var modalDesactivar = new bootstrap.Modal(document.getElementById('modalConfirmacionDesactivar')); modalDesactivar.hide();", true);
 
                 Response.Redirect(Request.RawUrl); 
             }
@@ -98,6 +98,14 @@ namespace presentacion
                 lblErrorModal.Text = "❌ Error al desactivar el médico: " + ex.Message;
                 lblErrorModal.Visible = true;
             }
+        }
+
+        protected void chkConfirmarDesactivacion_CheckedChanged(object sender, EventArgs e)
+        {
+            btnConfirmarDesactivar.Enabled = chkConfirmarDesactivacion.Checked;
+
+            // Reabrir el modal después del postback.
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "abrirModal", "mostrarMensajeDesactivar();", true);
         }
     }    
 }

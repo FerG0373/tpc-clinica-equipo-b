@@ -181,14 +181,34 @@ namespace negocio
             }
         }
 
-        public void desactivarMedico(int medicoId)
+        public void desactivarMedico(int personaId)
         {
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
                 datos.setearConsulta("UPDATE Usuario SET activo = 0 WHERE persona_id = @idPersona");
-                datos.setearParametro("@idPersona", medicoId);
+                datos.setearParametro("@idPersona", personaId);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void activarMedico(int personaId)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("UPDATE Usuario SET activo = 1 WHERE persona_id = @idPersona");
+                datos.setearParametro("@idPersona", personaId);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
