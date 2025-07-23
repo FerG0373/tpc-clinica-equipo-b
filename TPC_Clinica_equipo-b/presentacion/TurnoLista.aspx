@@ -4,9 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
-        <h1 class="text-center mt-5">Lista de Turnos</h1>
+        <h1 class="text-center mt-5 mb-4">Lista de Turnos</h1>
         <div class="table-responsive">
-            <asp:ScriptManager ID="ScriptManager1" runat="server" />
             <asp:UpdatePanel ID="updTurnos" runat="server">
                 <ContentTemplate>
                     <asp:GridView
@@ -18,27 +17,44 @@
                         PageSize="8"
                         OnPageIndexChanging="dgvTurnos_PageIndexChanging">
                         <Columns>
-                            <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="Hora" HeaderText="Hora" DataFormatString="{0:HH:mm}" />
-                            <asp:BoundField DataField="MedicoNombre" HeaderText="Médico" />
-                            <asp:BoundField DataField="PacienteNombre" HeaderText="Paciente" />
-                            <asp:BoundField DataField="DNI" HeaderText="DNI" />
+                            <asp:BoundField DataField="NumeroTurno" HeaderText="N° Turno" />
+                            <asp:BoundField DataField="FechaHora" HeaderText="Fecha y Hora" DataFormatString="{0:g}" />
+                            <asp:BoundField DataField="NombrePaciente" HeaderText="Paciente" />
+                            <asp:BoundField DataField="NombreMedico" HeaderText="Médico" />
+                            <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" />
+                            <asp:BoundField DataField="EstadoTurno" HeaderText="Estado" />
 
-                            <%-- Estado con Badge --%>
-                            <asp:TemplateField HeaderText="Estado">
+                            <%-- Acciones --%>
+                            <asp:TemplateField HeaderText="Ver">
                                 <ItemTemplate>
-                                    <%--<span class='<%# GetBadgeClass(Eval("Estado").ToString()) %>'>
-                                        <%# Eval("Estado") %>
-                                    </span>--%>
+                                    <asp:Button 
+                                        ID="btnVer"
+                                        runat="server"
+                                        Text="👁" 
+                                        CommandName="Ver" 
+                                        CssClass="btn btn-sm" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <%-- Acciones --%>
-                            <asp:TemplateField HeaderText="Acciones">
+                            <asp:TemplateField HeaderText="Editar">
                                 <ItemTemplate>
-                                    <asp:Button ID="btnVer" runat="server" Text="👁" CommandName="Ver" CssClass="btn btn-info btn-sm" />
-                                    <asp:Button ID="btnEditar" runat="server" Text="✏️" CommandName="Editar" CssClass="btn btn-warning btn-sm" />
-                                    <asp:Button ID="btnCancelar" runat="server" Text="❌" CommandName="Cancelar" CssClass="btn btn-danger btn-sm" />
+                                    <asp:Button 
+                                        ID="btnEditar"
+                                        runat="server"
+                                        Text="✏️" 
+                                        CommandName="Editar" 
+                                        CssClass="btn btn-sm" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Cancelar">
+                                <ItemTemplate>
+                                    <asp:Button 
+                                        ID="btnCancelar" 
+                                        runat="server"
+                                        Text="❌" 
+                                        CommandName="Cancelar" 
+                                        CssClass="btn btn-sm" />
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -47,7 +63,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="text-center mt-5">
-                <a href="FormularioTurno.aspx" class="btn btn-success btn-lg px-4 mb-4">➕🗓️ Nuevo Turno</a>
+                <a href="FormularioTurno.aspx" class="btn btn-success btn-lg px-4 mb-4">🗓️ Nuevo Turno</a>
             </div>
         </div>
     </div>

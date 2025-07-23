@@ -122,7 +122,7 @@
                         runat="server"
                         Text="Cancelar"
                         CssClass="btn btn-secondary mb-4"
-                        PostBackUrl="~/ListaPaciente.aspx" />
+                        PostBackUrl="~/PacienteLista.aspx" />
                 </div>
             </div>
         </div>

@@ -1,0 +1,47 @@
+﻿
+// Script para insertar datos de estado en la tabla EstadoTurno
+INSERT INTO EstadoTurno (descripcion)
+VALUES ('Pendiente'),
+		('Confirmado'),
+		('Cancelado'),
+		('Atendido'),
+		('No asistido'),
+		('Reprogramado');
+
+
+// Script para insertar datos a la tabla Turno
+INSERT INTO Turno (nroTurno, fechaHora, paciente_id, estadoTurno_id, medico_id, especialidad_id)
+VALUES ('1','2025-07-22 14:30:00','1','1','1','1');
+
+
+
+
+// Script de (SP_turnoVistaListar)
+CREATE PROCEDURE SP_turnoVistaListar
+AS
+BEGIN
+    SELECT 
+        t.id AS Id,
+        t.nroTurno AS NumeroTurno,
+        t.fechaHora AS FechaHora,
+        t.motivoConsulta AS MotivoConsulta,
+        t.observacionesMedico AS ObservacionesMedico,
+        pPers.nombre + ' ' + pPers.apellido AS NombrePaciente,
+        mPers.nombre + ' ' + mPers.apellido AS NombreMedico,
+		e.descripcion AS Especialidad,
+        et.descripcion AS EstadoTurno
+
+    FROM Turno t
+    INNER JOIN Paciente p ON t.paciente_id = p.id
+    INNER JOIN Persona pPers ON p.persona_id = pPers.id
+    INNER JOIN Medico m ON t.medico_id = m.id
+    INNER JOIN Persona mPers ON m.persona_id = mPers.id
+	INNER JOIN Especialidad e ON t.especialidad_id = e.id
+    INNER JOIN EstadoTurno et ON t.estadoTurno_id = et.id
+    ORDER BY t.fechaHora DESC
+END
+
+
+
+
+
