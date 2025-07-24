@@ -19,8 +19,7 @@
                         CssClass="table table-bordered table-hover table-striped"
                         HeaderStyle-CssClass="text-center table-primary"
                         RowStyle-CssClass="text-center"
-                        AllowPaging="True" PageSize="10"
-                        OnRowCommand="dgvMedicos_RowCommand">
+                        AllowPaging="True" PageSize="10">
                         <Columns>
                             <asp:BoundField HeaderText="DNI" DataField="DNI" />
                             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
@@ -42,9 +41,15 @@
                             <%--Botón para editar--%>
                             <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="📝" />
                             <%--Botón para desactivar--%>
-                            <asp:TemplateField HeaderText="Desactivar">
+                            <asp:TemplateField HeaderText="Activar/Desactivar">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="btnDesactivar" runat="server" CommandName="DesactivarMedico" CommandArgument='<%# Eval("PersonaId") %>' Style="text-decoration: none;">🗑️</asp:LinkButton>
+                                    <asp:LinkButton ID="btnAccion" runat="server"
+                                        CommandName='<%# ((bool)Eval("Activo")) ? "DesactivarMedico" : "ActivarMedico" %>'
+                                        CommandArgument='<%# Eval("PersonaId") %>'
+                                        OnClientClick='<%# ((bool)Eval("Activo")) ? "return confirm(\"¿Estás seguro de que quieres DESACTIVAR este médico?\");" : "return confirm(\"¿Estás seguro de que quieres ACTIVAR este médico?\");" %>'
+                                        Style="text-decoration: none;">
+                                        <%# ((bool)Eval("Activo")) ? "🗑️" : "🔄" %>
+                                    </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -57,48 +62,4 @@
             </div>
         </div>
     </div>
-
-    <%-- Modal de confirmación. --%>
-    <asp:UpdatePanel ID="updModal" runat="server">
-        <ContentTemplate>
-            <div class="modal fade" id="modalConfirmacionDesactivar" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Confirmar Desactivación</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                ¿Está seguro que quiere realizar esta acción?<br>
-                                Esta acción hará que el médico no pueda acceder al sistema.
-                            </p>
-                            <div class="form-check">
-                                <asp:CheckBox ID="chkConfirmarDesactivacion" runat="server"
-                                    CssClass="form-check-input"
-                                    OnCheckedChanged="chkConfirmarDesactivacion_CheckedChanged" />
-                                <label class="form-check-label">Confirmo que deseo desactivar este médico.</label>
-                            </div>
-                            <asp:Label ID="lblErrorModal" runat="server" CssClass="text-danger mt-2" Visible="false" />
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <asp:Button ID="btnConfirmarDesactivar" runat="server" Text="Desactivar"
-                                CssClass="btn btn-outline-danger"
-                                OnClick="btnConfirmarDesactivar_Click" />
-                            <asp:HiddenField ID="hfMedicoIdDesactivar" runat="server" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ContentTemplate>
-    </asp:UpdatePanel>
-
-    <%-- SCRIPT PARA MOSTRAR EL MODAL --%>
-    <script>
-        function mostrarMensajeDesactivar() {
-            var modalDesactivar = new bootstrap.Modal(document.getElementById('modalConfirmacionDesactivar'));
-            modalDesactivar.show();
-        }
-    </script>
 </asp:Content>
