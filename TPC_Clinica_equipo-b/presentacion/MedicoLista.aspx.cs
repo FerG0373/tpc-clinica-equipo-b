@@ -60,5 +60,30 @@ namespace presentacion
             // Usamos String.Join para concatenar las descripciones.
             return string.Join("; ", listaEspecialidades.Select(item => item.Descripcion));
         }
+
+        protected void dgvMedicos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            MedicoNegocio negocio = new MedicoNegocio();
+            if (e.CommandName == "ActivarMedico" || e.CommandName == "DesactivarMedico")
+            {
+                int medicoId = Convert.ToInt32(e.CommandArgument);
+                try
+                {
+                    if (e.CommandName == "ActivarMedico")
+                    {
+                        negocio.activarMedico(medicoId);
+                    }
+                    else
+                    {
+                        negocio.desactivarMedico(medicoId);
+                    }
+                    cargarGridView();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
     }    
 }

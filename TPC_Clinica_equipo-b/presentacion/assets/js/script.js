@@ -14,9 +14,3 @@ window.onload = function () {
         }, 4000); // esperar 4 segundos antes de empezar a desvanecer.
     }
 };
-
-// Script para mostrar el modal de desactivación de un médico.
-window.mostrarMensajeDesactivar = function () {
-    var modalDesactivar = new bootstrap.Modal(document.getElementById('modalConfirmacionDesactivar'));
-    modalDesactivar.show();
-}

@@ -19,7 +19,8 @@
                         CssClass="table table-bordered table-hover table-striped"
                         HeaderStyle-CssClass="text-center table-primary"
                         RowStyle-CssClass="text-center"
-                        AllowPaging="True" PageSize="10">
+                        AllowPaging="True" PageSize="10"
+                        OnRowCommand="dgvMedicos_RowCommand">
                         <Columns>
                             <asp:BoundField HeaderText="DNI" DataField="DNI" />
                             <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
@@ -46,7 +47,7 @@
                                     <asp:LinkButton ID="btnAccion" runat="server"
                                         CommandName='<%# ((bool)Eval("Activo")) ? "DesactivarMedico" : "ActivarMedico" %>'
                                         CommandArgument='<%# Eval("PersonaId") %>'
-                                        OnClientClick='<%# ((bool)Eval("Activo")) ? "return confirm(\"¿Estás seguro de que quieres DESACTIVAR este médico?\");" : "return confirm(\"¿Estás seguro de que quieres ACTIVAR este médico?\");" %>'
+                                        OnClientClick='<%# ((bool)Eval("Activo")) ? "return confirm(\"¿Está seguro que quiere DESACTIVAR este médico?\");" : "return confirm(\"¿Está seguro de que quiere ACTIVAR este médico?\");" %>'
                                         Style="text-decoration: none;">
                                         <%# ((bool)Eval("Activo")) ? "🗑️" : "🔄" %>
                                     </asp:LinkButton>
