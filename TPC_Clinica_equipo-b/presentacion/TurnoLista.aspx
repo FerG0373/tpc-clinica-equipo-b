@@ -63,7 +63,7 @@
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="text-center mt-5">
-                <a href="FormularioTurno.aspx" class="btn btn-success btn-lg px-4 mb-4">🗓️ Nuevo Turno</a>
+                <a href="TurnoFormulario.aspx" class="btn btn-success btn-lg px-4 mb-4">🗓️ Nuevo Turno</a>
             </div>
         </div>
     </div>

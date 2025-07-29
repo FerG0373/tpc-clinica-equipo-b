@@ -26,7 +26,7 @@ namespace negocio
                     TurnoVista vista = new TurnoVista
                     {
                         Id = Convert.ToInt32(datos.Lector["Id"]),
-                        NumeroTurno = Convert.ToInt32(datos.Lector["NumeroTurno"]),
+                        NumeroTurno = datos.Lector["NumeroTurno"].ToString(),
                         FechaHora = Convert.ToDateTime(datos.Lector["FechaHora"]),
                         MotivoConsulta = datos.Lector["MotivoConsulta"].ToString(),
                         ObservacionesMedico = datos.Lector["ObservacionesMedico"].ToString(),
@@ -45,6 +45,33 @@ namespace negocio
             }
 
             return lista;
+        }
+
+        public void Agregar(Turno nuevoTurno)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("SP_agregarTurno");
+                datos.setearParametro("@FechaHora", nuevoTurno.FechaHora);
+                datos.setearParametro("@MotivoConsulta", nuevoTurno.MotivoConsulta);
+                datos.setearParametro("@ObservacionesMedico", nuevoTurno.ObservacionesMedico);
+                datos.setearParametro("@PacienteId", nuevoTurno.PacienteId);
+                datos.setearParametro("@MedicoId", nuevoTurno.MedicoId);
+                datos.setearParametro("@EspecialidadId", nuevoTurno.EspecialidadId);
+                datos.setearParametro("@EstadoTurnoId", nuevoTurno.EstadoTurnoId);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

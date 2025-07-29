@@ -42,6 +42,38 @@ BEGIN
 END
 
 
+// Script de (SP_turnoagregar)
+CREATE PROCEDURE SP_turnoAgregar
+    @FechaHora DATETIME,
+    @MotivoConsulta NVARCHAR(500),
+    @ObservacionesMedico NVARCHAR(500),
+    @PacienteId INT,
+    @MedicoId INT,
+    @EspecialidadId INT,
+    @EstadoTurnoId INT
+AS
+BEGIN
+    INSERT INTO Turno (
+        fechaHora,
+        motivoConsulta,
+        observacionesMedico,
+        paciente_id,
+        medico_id,
+        especialidad_id,
+        estadoTurno_id
+    )
+    VALUES (
+        @FechaHora,
+        @MotivoConsulta,
+        @ObservacionesMedico,
+        @PacienteId,
+        @MedicoId,
+        @EspecialidadId,
+        @EstadoTurnoId
+    );
+END
+
+
 
 
 
