@@ -10,10 +10,11 @@
                 <div class="row">
 
                     <!-- Datos del Paciente -->
+                    <h5>Datos del paciente</h5>
+
 
                     <!-- DNI -->
-                    <div>
-                        class=" form-group mb-3"
+                    <div class=" form-group mb-3">
                         <label for="txtDni" class="form-label">DNI</label>
                         <asp:TextBox
                             ID="txtDni"
@@ -22,6 +23,14 @@
                             OnTextChanged="txtDni_TextChanged"
                             CssClass="form-control" />
                     </div>
+
+                    <asp:Button
+                        ID="btnRegistrarPaciente"
+                        runat="server"
+                        Text="Registrar nuevo paciente"
+                        CssClass="btn btn-warning mt-3"
+                        OnClick="btnRegistrarPaciente_Click"
+                        Visible="false" />
 
                     <!-- Nombre -->
                     <div class=" form-group mb-3">
@@ -40,6 +49,7 @@
                             runat="server"
                             CssClass="form-control" />
                     </div>
+
 
                     <!-- Sexo -->
                     <div class=" form-group mb-3">
@@ -69,6 +79,15 @@
                             CssClass="form-control" />
                     </div>
 
+                    <!-- Email -->
+                    <div class=" form-group mb-3">
+                        <label for="txtEmail" class="form-label">Email</label>
+                        <asp:TextBox
+                            ID="txtEmail"
+                            runat="server"
+                            CssClass="form-control" />
+                    </div>
+
                     <!-- Tipo de Cobertura -->
                     <div class=" form-group mb-3">
                         <label for="ddlCobertura" class="form-label">Cobertura</label>
@@ -80,6 +99,18 @@
 
 
                     <!-- Datos del Turno -->
+                    <h5>Datos del turno</h5>
+
+                    <!-- Médico -->
+                    <div class=" form-group mb-3">
+                        <label for="ddlMedico" class="form-label">Médico</label>
+                        <asp:DropDownList
+                            ID="ddlMedico"
+                            runat="server"
+                            AutoPostBack="true"
+                            OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"
+                            CssClass="form-control" />
+                    </div>
 
                     <!-- Especialidad -->
                     <div class=" form-group mb-3">
@@ -92,16 +123,6 @@
                             CssClass="form-control" />
                     </div>
 
-                    <!-- Médico -->
-                    <div class=" form-group mb-3">
-                        <label for="ddlMedico" class="form-label">Médico</label>
-                        <asp:DropDownList
-                            ID="ddlMedico"
-                            runat="server"
-                            AutoPostBack="true"
-                            OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"
-                            CssClass="form-control" />
-                    </div>
 
                     <!-- Fecha -->
                     <div class=" form-group mb-3">
@@ -115,11 +136,21 @@
 
                     <!-- Horario Disponible -->
                     <div class=" form-group mb-3">
-                        <label for="ddlHorario" class="form-label">Médico</label>
+                        <label for="ddlHorario" class="form-label">Horario disponible</label>
                         <asp:DropDownList
                             ID="ddlHorario"
                             runat="server"
                             CssClass="form-control" />
+                    </div>
+
+                    <!-- Motivo Consulta -->
+                    <div class=" form-group mb-3">
+                        <label for="txtMotivoConsulta" class="form-label">MotivoConsulta</label>
+                        <asp:TextBox
+                            ID="txtMotivoConsulta"
+                            runat="server"
+                            CssClass="form-control"
+                            TextMode="MultiLine" />
                     </div>
 
                     <!-- Observaciones -->
@@ -128,26 +159,29 @@
                         <asp:TextBox
                             ID="txtObsercvaciones"
                             runat="server"
-                            CssClass="form-control" />
+                            CssClass="form-control"
+                            TextMode="MultiLine" />
                     </div>
 
+                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+
                     <!-- Boton Guardar -->
-                    <div class="text-center mt-5 mb-5">
+                    <div class=" mt-5 mb-5">
                         <asp:Button
-                            ID="btnGuardarPaciente"
+                            ID="btnGuardarTurno"
                             runat="server"
-                            Text="💾 Guardar Paciente"
-                            CssClass="btn btn-success px-4"
-                            OnClick="btnGuardarPaciente_Click" />
+                            Text="💾 Guardar Turno"
+                            OnClick="btnGuardarTurno_Click"
+                            CssClass="btn btn-success px-4" />
                     </div>
                     <!-- Boton Cancelar -->
-                    <div class="text-center mt-5 mb-5">
+                    <div class=" mt-5 mb-5">
                         <asp:Button
                             ID="Button2"
                             runat="server"
                             Text="Cancelar"
                             CssClass="btn btn-secondary mb-4"
-                            PostBackUrl="~/ListaPaciente.aspx" />
+                            PostBackUrl="~/TurnoLista.aspx" />
                     </div>
                 </div>
             </div>

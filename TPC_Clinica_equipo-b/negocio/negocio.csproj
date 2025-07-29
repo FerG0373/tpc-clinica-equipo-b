@@ -55,9 +55,9 @@
       <Name>dominio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="script_db\Clinica_DB.sql" />
+    <Content Include="script_db\ScriptsTablasDB.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
