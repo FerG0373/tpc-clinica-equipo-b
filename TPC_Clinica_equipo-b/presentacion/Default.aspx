@@ -47,7 +47,7 @@
             </a>
 
             <!--Botón Turnos de Trabajo-->
-            <a href="TurnoTrabajo.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="TurnoTrabajoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-briefcase-medical"></i></span>
                 <span class="btn-text">Turnos de trabajo</span>
             </a>
