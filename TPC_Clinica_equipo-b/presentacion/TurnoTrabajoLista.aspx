@@ -22,8 +22,8 @@
                     OnRowCommand="dgvTurnoTrabajo_RowCommand">
                     <Columns>
                         <asp:BoundField HeaderText="Dia de la Semana" DataField="DiaSemana" />
-                        <asp:BoundField HeaderText="Hora Inicio" DataField="HoraInicio" />
-                        <asp:BoundField HeaderText="Hora Fin" DataField="HoraFin" />
+                        <asp:BoundField HeaderText="Hora Inicio" DataField="HoraInicio" DataFormatString="{0:hh\:mm}"/>
+                        <asp:BoundField HeaderText="Hora Fin" DataField="HoraFin" DataFormatString="{0:hh\:mm}"/>
                     </Columns>
                 </asp:GridView>
             </ContentTemplate>
