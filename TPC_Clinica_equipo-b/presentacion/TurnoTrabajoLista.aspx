@@ -21,37 +21,9 @@
                     AllowPaging="True" PageSize="10"
                     OnRowCommand="dgvTurnoTrabajo_RowCommand">
                     <Columns>
-                        <asp:BoundField HeaderText="DNI" DataField="DNI" />
-                        <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-                        <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                        <asp:BoundField HeaderText="Matrícula" DataField="Matricula" />
-                        <asp:BoundField HeaderText="Email" DataField="Email" />
-
-                        <asp:TemplateField HeaderText="Especialidad(es)">
-                            <ItemTemplate>
-                                <%# getDescripcionEspecialidades(Eval("Especialidades"))%>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Activo">
-                            <ItemTemplate>
-                                <%# ((bool)Eval("Activo")) ? "<span class='text-success fw-bold'>🟢 SÍ</span>" : "<span class='text-danger fw-bold'>🔴 NO</span>" %>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <%--Botón para editar--%>
-                        <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="📝" />
-                        <%--Botón para desactivar--%>
-                        <asp:TemplateField HeaderText="Activar/Desactivar">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnAccion" runat="server"
-                                    CommandName='<%# ((bool)Eval("Activo")) ? "DesactivarMedico" : "ActivarMedico" %>'
-                                    CommandArgument='<%# Eval("PersonaId") %>'
-                                    OnClientClick='<%# ((bool)Eval("Activo")) ? "return confirm(\"¿Está seguro que quiere DESACTIVAR este médico?\");" : "return confirm(\"¿Está seguro de que quiere ACTIVAR este médico?\");" %>'
-                                    Style="text-decoration: none;">
-                                    <%# ((bool)Eval("Activo")) ? "🗑️" : "🔄" %>
-                                </asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                        <asp:BoundField HeaderText="Dia de la Semana" DataField="DiaSemana" />
+                        <asp:BoundField HeaderText="Hora Inicio" DataField="HoraInicio" />
+                        <asp:BoundField HeaderText="Hora Fin" DataField="HoraFin" />
                     </Columns>
                 </asp:GridView>
             </ContentTemplate>
