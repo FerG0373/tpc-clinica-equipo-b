@@ -16,7 +16,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("SELECT id, diaSemana, horaInicio, horaFin FROM TurnoTrabajo");
+                datos.setearConsulta("SELECT id, diaSemana, horaInicio, horaFin, activo FROM TurnoTrabajo");
                 datos.ejecutarLectura();
 
                 while(datos.Lector.Read())
@@ -26,6 +26,7 @@ namespace negocio
                     aux.DiaSemana = (string)datos.Lector["DiaSemana"];
                     aux.HoraInicio = (TimeSpan)datos.Lector["HoraInicio"];
                     aux.HoraFin = (TimeSpan)datos.Lector["HoraFin"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
 
                     listaTurnosDeTrabajo.Add(aux);
                 }
@@ -41,18 +42,31 @@ namespace negocio
             }
         }
 
-        public List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listarTurnosDeTrabajoMedicos()
+        public List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listarTurnosDeTrabajoPorMedicos()
         {
             AccesoDatos datos = new AccesoDatos();
             List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listaTurnosDeTrabajoPorMedicos = new List<(int, TurnoTrabajo)>();
 
             try
             {
+                datos.setearConsulta("SP_turnoTrabajoListarPorMedicos");
+                datos.ejecutarLectura();
 
+                while(datos.Lector.Read())
+                {
+                    TurnoTrabajo aux = new TurnoTrabajo();
+                    int MedicoId = (int)datos.Lector["Medico_Id"];
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.DiaSemana = (string)datos.Lector["DiaSemana"];
+                    aux.HoraInicio = (TimeSpan)datos.Lector["HoraInicio"];
+                    aux.HoraFin = (TimeSpan)datos.Lector["HoraFin"];
+
+                    listaTurnosDeTrabajoPorMedicos.Add((MedicoId,aux));
+                }
+                return listaTurnosDeTrabajoPorMedicos;
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally

@@ -34,6 +34,18 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
+                            <%--<asp:CommandField HeaderText="Turnos de Trabajo" ShowSelectButton="true" SelectText="📅" />--%>
+                            <asp:TemplateField HeaderText="Turnos de Trabajo">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnVerTurnos" runat="server"
+                                        CommandName="VerTurnos"
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        Text="📅"
+                                        ToolTip="Ver Turnos de Trabajo">
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
                             <asp:TemplateField HeaderText="Activo">
                                 <ItemTemplate>
                                     <%# ((bool)Eval("Activo")) ? "<span class='text-success fw-bold'>🟢 SÍ</span>" : "<span class='text-danger fw-bold'>🔴 NO</span>" %>
