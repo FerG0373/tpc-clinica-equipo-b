@@ -42,14 +42,15 @@ namespace negocio
             }
         }
 
-        public List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listarTurnosDeTrabajoPorMedicos()
+        // POSIBLEMENTE BORRAR listarMedicoTurnoTrabajo()
+        public List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listarMedicoTurnoTrabajo()
         {
             AccesoDatos datos = new AccesoDatos();
             List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listaTurnosDeTrabajoPorMedicos = new List<(int, TurnoTrabajo)>();
 
             try
             {
-                datos.setearConsulta("SP_turnoTrabajoListarPorMedicos");
+                datos.setearProcedimiento("SP_turnoTrabajoListarPorMedico");
                 datos.ejecutarLectura();
 
                 while(datos.Lector.Read())
@@ -74,5 +75,40 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public List<TurnoTrabajo> listarTurnosDeTrabajoPorMedico(int medicoId)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<TurnoTrabajo> lista = new List<TurnoTrabajo>();
+
+            try
+            {
+                datos.setearProcedimiento("SP_turnoTrabajoListarPorMedico");
+                datos.setearParametro("@medicoId", medicoId);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    TurnoTrabajo aux = new TurnoTrabajo();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.DiaSemana = (string)datos.Lector["DiaSemana"];
+                    aux.HoraInicio = (TimeSpan)datos.Lector["HoraInicio"];
+                    aux.HoraFin = (TimeSpan)datos.Lector["HoraFin"];
+                    aux.Activo = (bool)datos.Lector["Activo"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

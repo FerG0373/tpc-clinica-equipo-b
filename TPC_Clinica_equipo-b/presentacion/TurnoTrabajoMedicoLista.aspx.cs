@@ -21,9 +21,13 @@ namespace presentacion
 
         private void cargarDgvTurnoTrabajoMedico()
         {
-            TurnoTrabajoNegocio negocio = new TurnoTrabajoNegocio();
-            dgvTurnoTrabajoMedico.DataSource = negocio.listarTurnosDeTrabajoPorMedicos();
-            dgvTurnoTrabajoMedico.DataBind();
+            if (Request.QueryString["medicoId"] != null)
+            {
+                int medicoId = int.Parse(Request.QueryString["medicoId"]);
+                TurnoTrabajoNegocio negocio = new TurnoTrabajoNegocio();
+                dgvTurnoTrabajoMedico.DataSource = negocio.listarTurnosDeTrabajoPorMedico(medicoId);
+                dgvTurnoTrabajoMedico.DataBind();
+            }
         }
 
         protected void dgvTurnoTrabajoMedico_SelectedIndexChanged(object sender, EventArgs e)
