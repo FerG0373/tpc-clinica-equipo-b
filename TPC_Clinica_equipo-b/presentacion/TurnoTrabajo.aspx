@@ -6,7 +6,8 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h3 class="text-center mb-4">Agregar Turno de Trabajo</h3>
+                <%--Título--%>
+                <asp:Label ID="lblTituloTurnoTrabajoFormulario" runat="server" Text="Agregar Turno de Trabajo" CssClass="text-center mb-4 d-block fs-2 fw-semibold"></asp:Label>
 
                 <!-- Día de la semana -->
                 <div class="mb-3">

@@ -94,13 +94,15 @@ namespace presentacion
 
                 if (Request.QueryString["id"] != null)
                 {
-                    nuevo.Id = int.Parse(Request.QueryString["id"].ToString());
-                    negocio.Modificar(nuevo);
+                    //nuevo.Id = int.Parse(Request.QueryString["id"].ToString());
+                    //negocio.Modificar(nuevo);
                 }
                 else
                 {
-                    negocio.Agregar(nuevo);
+                    negocio.insertarTurnoTrabajo(nuevo);
+                    Session["MensajeExito"] = "Turno de Trabajo agregado con éxito.";
                 }
+                Response.Redirect("TurnoTrabajoLista.aspx", false);
             }
             catch (Exception ex)
             {

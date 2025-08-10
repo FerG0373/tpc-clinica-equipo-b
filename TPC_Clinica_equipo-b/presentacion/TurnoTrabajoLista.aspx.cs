@@ -13,9 +13,17 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            panelExito.Visible = false;
+
+            if (!IsPostBack)
             {
                 cargarDgvTurnoTrabajo();
+                if (Session["MensajeExito"] != null)
+                {
+                    lblMensajeExito.Text = Session["MensajeExito"].ToString();
+                    panelExito.Visible = true;
+                    Session.Remove("MensajeExito");
+                }
             }
         }
 
