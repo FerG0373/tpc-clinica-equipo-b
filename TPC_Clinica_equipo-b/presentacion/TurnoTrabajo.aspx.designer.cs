@@ -15,15 +15,6 @@ namespace presentacion
     {
 
         /// <summary>
-        /// Control ddlMedico.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMedico;
-
-        /// <summary>
         /// Control ddlDiaSemana.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace presentacion
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlDiaSemana;
+
+        /// <summary>
+        /// Control lblErrorDiaSemana.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorDiaSemana;
 
         /// <summary>
         /// Control txtHoraInicio.
@@ -42,6 +42,15 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.TextBox txtHoraInicio;
 
         /// <summary>
+        /// Control lblErrorHoraInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorHoraInicio;
+
+        /// <summary>
         /// Control txtHoraFin.
         /// </summary>
         /// <remarks>
@@ -51,21 +60,30 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.TextBox txtHoraFin;
 
         /// <summary>
-        /// Control txtObservacion.
+        /// Control lblErrorHoraFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObservacion;
+        protected global::System.Web.UI.WebControls.Label lblErrorHoraFin;
 
         /// <summary>
-        /// Control btnGuardarTurnoTrabajo.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardarTurnoTrabajo;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
+
+        /// <summary>
+        /// Control btnCancelar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }

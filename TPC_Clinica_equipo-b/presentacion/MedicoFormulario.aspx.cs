@@ -71,8 +71,9 @@ namespace presentacion
             }
         }
 
-        protected void btnGuardar_Click(object sender, EventArgs e)
+        private bool validarFormulario()
         {
+            // Ocultar todos los mensajes de error al inicio.
             lblErrorDni.Visible = false;
             lblErrorNombre.Visible = false;
             lblErrorApellido.Visible = false;
@@ -139,17 +140,23 @@ namespace presentacion
                 validacionExitosa = false;
             }
 
-            if (!validacionExitosa)
+            return validacionExitosa;
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (!validarFormulario())
             {
                 return;  // Detiene la ejecución del método y deja los mensajes de error visibles.
             }
 
             try
             {
+                // 1. Instanciar los objetos
                 Medico nuevo = new Medico();
                 MedicoNegocio negocio = new MedicoNegocio();
 
-                // Asigna los valores a las propiedades del objeto Medico.
+                // 2. Asignar los valores a las propiedades del objeto Medico.
                 nuevo.Dni = txtDni.Text;
                 nuevo.Nombre = txtNombre.Text;
                 nuevo.Apellido = txtApellido.Text;
@@ -166,6 +173,7 @@ namespace presentacion
                     nuevo.Especialidades.Add(esp);
                 }
 
+                // 3.Llamar al método de la capa de negocio.
                 // Determina si es agregar o modificar médico (basado en la existencia de un ID).
                 if (Request.QueryString["id"] != null)
                 {
@@ -192,6 +200,7 @@ namespace presentacion
                     Session["MensajeExito"] = "Médico agregado con éxito.";
                 }
 
+                // 4. Redirigir al usuario.
                 Response.Redirect("MedicoLista.aspx", false);
             }
             catch (Exception ex)
