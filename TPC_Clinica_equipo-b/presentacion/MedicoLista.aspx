@@ -34,7 +34,6 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <%--<asp:CommandField HeaderText="Turnos de Trabajo" ShowSelectButton="true" SelectText="📅" />--%>
                             <asp:TemplateField HeaderText="Turnos de Trabajo">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnVerTurnos" runat="server"

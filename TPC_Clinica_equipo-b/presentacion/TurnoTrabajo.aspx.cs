@@ -13,7 +13,29 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
+                string id = Request.QueryString["id"] != null ? Request.QueryString["id"].ToString() : "";
+                if (id != "" && !IsPostBack)
+                {
+                    lblTituloTurnoTrabajoFormulario.Text = "Editar Turno de Trabajo";
 
+                    TurnoTrabajoNegocio negocio = new TurnoTrabajoNegocio();
+                    TurnoTrabajo seleccionado = (negocio.listarTurnosDeTrabajo(id))[0];
+
+                    // Guarda el ID en ViewState.
+                    ViewState["TurnoTrabajoId"] = seleccionado.Id;
+
+                    // Precarga todos los campos.
+                    ddlDiaSemana.SelectedValue = seleccionado.DiaSemana;
+                    txtHoraInicio.Text = seleccionado.HoraInicio.ToString(@"hh\:mm"); ;
+                    txtHoraFin.Text = seleccionado.HoraFin.ToString(@"hh\:mm");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private bool validarFormulario()
@@ -92,23 +114,26 @@ namespace presentacion
                 nuevo.HoraInicio = TimeSpan.Parse(txtHoraInicio.Text);
                 nuevo.HoraFin = TimeSpan.Parse(txtHoraFin.Text);
 
-                if (Request.QueryString["id"] != null)
+                if (ViewState["TurnoTrabajoId"] != null)
                 {
-                    //nuevo.Id = int.Parse(Request.QueryString["id"].ToString());
-                    //negocio.Modificar(nuevo);
+                    // Lógica para ACTUALIZAR.
+                    nuevo.Id = (int)ViewState["TurnoTrabajoId"];
+                    negocio.actualizarTurnoTrabajo(nuevo);
+                    Session["MensajeExito"] = "Turno de Trabajo actualizado con éxito.";
                 }
                 else
                 {
+                    // Lógica para AGREGAR.
                     negocio.insertarTurnoTrabajo(nuevo);
                     Session["MensajeExito"] = "Turno de Trabajo agregado con éxito.";
                 }
+
                 Response.Redirect("TurnoTrabajoLista.aspx", false);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

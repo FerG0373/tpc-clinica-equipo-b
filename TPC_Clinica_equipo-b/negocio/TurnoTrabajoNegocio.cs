@@ -9,14 +9,22 @@ namespace negocio
 {
     public class TurnoTrabajoNegocio
     {
-        public List<TurnoTrabajo> listarTurnosDeTrabajo()
+        public List<TurnoTrabajo> listarTurnosDeTrabajo(string id = "")
         {
             AccesoDatos datos = new AccesoDatos();
             List<TurnoTrabajo> listaTurnosDeTrabajo = new List<TurnoTrabajo>();
 
             try
             {
-                datos.setearConsulta("SELECT id, diaSemana, horaInicio, horaFin, activo FROM TurnoTrabajo ORDER BY diaSemana");
+                datos.setearProcedimiento("SP_turnoTrabajoListar");
+                if(!string.IsNullOrEmpty(id))
+                {
+                    if (int.TryParse(id, out int idNumerico))
+                    {
+                        datos.setearParametro("@id", idNumerico);
+                    }
+                }
+
                 datos.ejecutarLectura();
 
                 while(datos.Lector.Read())
@@ -85,6 +93,30 @@ namespace negocio
                 datos.setearParametro("@diaSemana", nuevoTurnoTrabajo.DiaSemana);
                 datos.setearParametro("@horaInicio", nuevoTurnoTrabajo.HoraInicio);
                 datos.setearParametro("@HoraFin", nuevoTurnoTrabajo.HoraFin);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void actualizarTurnoTrabajo(TurnoTrabajo turnoTrabajo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("SP_turnoTrabajoActualizar");
+                datos.setearParametro("@id", turnoTrabajo.Id);
+                datos.setearParametro("@diaSemana", turnoTrabajo.DiaSemana);
+                datos.setearParametro("@horaInicio", turnoTrabajo.HoraInicio);
+                datos.setearParametro("@horaFin", turnoTrabajo.HoraFin);
+
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

@@ -25,9 +25,25 @@
                             <asp:BoundField HeaderText="Dia de la Semana" DataField="DiaSemana" />
                             <asp:BoundField HeaderText="Hora Inicio" DataField="HoraInicio" DataFormatString="{0:hh\:mm}" />
                             <asp:BoundField HeaderText="Hora Fin" DataField="HoraFin" DataFormatString="{0:hh\:mm}" />
+
                             <asp:TemplateField HeaderText="Activo">
                                 <ItemTemplate>
                                     <%# ((bool)Eval("Activo")) ? "<span class='text-success fw-bold'>🟢 SÍ</span>" : "<span class='text-danger fw-bold'>🔴 NO</span>" %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <%--Botón para editar--%>
+                            <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="📝" />
+                            <%--Botón para desactivar--%>
+                            <asp:TemplateField HeaderText="Activar/Desactivar">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnAccion" runat="server"
+                                        CommandName='<%# ((bool)Eval("Activo")) ? "DesactivarTurnoTrabajo" : "ActivarTurnoTrabajo" %>'
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        OnClientClick='<%# ((bool)Eval("Activo")) ? "return confirm(\"¿Está seguro que quiere DESACTIVAR este turno de trabajo?\");" : "return confirm(\"¿Está seguro de que quiere ACTIVAR este turno de trabajo?\");" %>'
+                                        Style="text-decoration: none;">
+                                         <%# ((bool)Eval("Activo")) ? "🗑️" : "🔄" %>
+                                    </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

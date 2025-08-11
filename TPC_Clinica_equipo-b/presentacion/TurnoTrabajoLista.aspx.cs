@@ -36,7 +36,8 @@ namespace presentacion
 
         protected void dgvTurnoTrabajo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string id = dgvTurnoTrabajo.SelectedDataKey.Value.ToString();
+            Response.Redirect("TurnoTrabajo.aspx?id=" + id);
         }
 
         protected void dgvTurnoTrabajo_PageIndexChanging(object sender, GridViewPageEventArgs e)
