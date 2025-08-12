@@ -11,7 +11,8 @@ namespace dominio
     {
         public int Id { get; set; }
         public string NumeroTurno { get; set; }
-        public DateTime FechaHora { get; set; }
+        public DateTime Fecha { get; set; }
+        public TimeSpan Hora { get; set; }
         public string MotivoConsulta { get; set; }
         public string ObservacionesMedico { get; set; }
         public int PacienteId { get; set; }

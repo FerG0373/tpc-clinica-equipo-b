@@ -4,186 +4,85 @@
 </asp:Content>--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Agendar Turno</h2>
-        <div class="row justify-content-center">
-            <div class="col-md-8 offset-md-3">
-                <div class="row">
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">Registrar Turno</h2>
 
-                    <!-- Datos del Paciente -->
-                    <h5>Datos del paciente</h5>
+            <!-- Datos del paciente -->
+            <div class="form-group mb-3">
+                <label for="txtDni" class="form-label">DNI</label>
+                <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtDni_TextChanged"></asp:TextBox>
+            </div>
 
+            <div class="form-group mb-3">
+                <label for="txtNombre" class="form-label">Nombre</label>
+                <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+            </div>
 
-                    <!-- DNI -->
-                    <div class=" form-group mb-3">
-                        <label for="txtDni" class="form-label">DNI</label>
-                        <asp:TextBox
-                            ID="txtDni"
-                            runat="server"
-                            AutoPostBack="true"
-                            OnTextChanged="txtDni_TextChanged"
-                            CssClass="form-control" />
-                    </div>
+            <div class="form-group mb-3">
+                <label for="txtApellido" class="form-label">Apellido</label>
+                <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+            </div>
 
-                    <asp:Button
-                        ID="btnRegistrarPaciente"
-                        runat="server"
-                        Text="Registrar nuevo paciente"
-                        CssClass="btn btn-warning mt-3"
-                        OnClick="btnRegistrarPaciente_Click"
-                        Visible="false" />
+            <div class="form-group mb-3">
+                <label for="txtSexo" class="form-label">Sexo</label>
+                <asp:TextBox ID="txtSexo" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+            </div>
 
-                    <!-- Nombre -->
-                    <div class=" form-group mb-3">
-                        <label for="txtNombre" class="form-label">Nombre</label>
-                        <asp:TextBox
-                            ID="txtNombre"
-                            runat="server"
-                            CssClass="form-control" />
-                    </div>
+            <div class="form-group mb-3">
+                <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+                <asp:TextBox ID="txtFechaNacimiento" runat="server" TextMode="Date" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+            </div>
 
-                    <!-- Apellido -->
-                    <div class=" form-group mb-3">
-                        <label for="txtApellido" class="form-label">Apellido</label>
-                        <asp:TextBox
-                            ID="txtApellido"
-                            runat="server"
-                            CssClass="form-control" />
-                    </div>
+            <div class="form-group mb-3">
+                <label for="txtTelefono" class="form-label">Teléfono</label>
+                <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+            </div>
 
+            <div class="form-group mb-3">
+                <label for="txtEmail" class="form-label">Email</label>
+                <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+            </div>
 
-                    <!-- Sexo -->
-                    <div class=" form-group mb-3">
-                        <label for="ddlSexo" class="form-label">Sexo</label>
-                        <asp:DropDownList
-                            ID="ddlSexo"
-                            runat="server"
-                            CssClass="form-control" />
-                    </div>
+            <div class="form-group mb-4">
+                <label for="txtCobertura" class="form-label">Cobertura</label>
+                 <asp:TextBox ID="txtCobertura" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
+            </div>
 
-                    <!-- Fecha de Nacimiento -->
-                    <div class=" form-group mb-3">
-                        <label for="txtFechaNacimiento" class="form-label">Fecha Nacimiento</label>
-                        <asp:TextBox
-                            ID="txtFechaNacimiento"
-                            runat="server"
-                            TextMode="Date"
-                            CssClass="form-control" />
-                    </div>
+            <asp:Button ID="btnRegistrarPaciente" runat="server" Text="Registrar Paciente" CssClass="btn btn-warning mb-4" OnClick="btnRegistrarPaciente_Click" Visible="false" />
 
-                    <!-- Teléfono -->
-                    <div class=" form-group mb-3">
-                        <label for="txtTelefono" class="form-label">Teléfono</label>
-                        <asp:TextBox
-                            ID="txtTelefono"
-                            runat="server"
-                            CssClass="form-control" />
-                    </div>
+            <hr class="my-4" />
 
-                    <!-- Email -->
-                    <div class=" form-group mb-3">
-                        <label for="txtEmail" class="form-label">Email</label>
-                        <asp:TextBox
-                            ID="txtEmail"
-                            runat="server"
-                            CssClass="form-control" />
-                    </div>
+            <!-- Datos del turno -->
+            <div class="form-group mb-3">
+                <label for="ddlEspecialidad" class="form-label">Especialidad</label>
+                <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlEspecialidad_SelectedIndexChanged"></asp:DropDownList>
+            </div>
 
-                    <!-- Tipo de Cobertura -->
-                    <div class=" form-group mb-3">
-                        <label for="ddlCobertura" class="form-label">Cobertura</label>
-                        <asp:DropDownList
-                            ID="ddlCobertura"
-                            runat="server"
-                            CssClass="form-control" />
-                    </div>
+            <div class="form-group mb-3">
+                <label for="ddlMedico" class="form-label">Medico</label>
+                <asp:DropDownList ID="ddlMedico" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"></asp:DropDownList>
+            </div>
 
+            <div class="form-group mb-3">
+                <label for="ddlTurnoDisponible" class="form-label">Turnos Disponibles (Fecha - Hora - Médico)</label>
+                <asp:DropDownList ID="ddlTurnoDisponible" runat="server" CssClass="form-select"></asp:DropDownList>
+            </div>
 
-                    <!-- Datos del Turno -->
-                    <h5>Datos del turno</h5>
+            <div class="form-group mb-3">
+                <label for="txtMotivoConsulta" class="form-label">Motivo de consulta</label>
+                <asp:TextBox ID="txtMotivoConsulta" runat="server" CssClass="form-control"></asp:TextBox>
+            </div>
 
-                    <!-- Médico -->
-                    <div class=" form-group mb-3">
-                        <label for="ddlMedico" class="form-label">Médico</label>
-                        <asp:DropDownList
-                            ID="ddlMedico"
-                            runat="server"
-                            AutoPostBack="true"
-                            OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"
-                            CssClass="form-control" />
-                    </div>
+            <div class="form-group mb-3">
+                <label for="txtObservaciones" class="form-label">Observaciones</label>
+                <asp:TextBox ID="txtObservaciones" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+            </div>
 
-                    <!-- Especialidad -->
-                    <div class=" form-group mb-3">
-                        <label for="ddlEspecialidad" class="form-label">Especialidad</label>
-                        <asp:DropDownList
-                            ID="ddlEspecialidad"
-                            runat="server"
-                            AutoPostBack="true"
-                            OnSelectedIndexChanged="ddlEspecialidad_SelectedIndexChanged"
-                            CssClass="form-control" />
-                    </div>
+            <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>
 
-
-                    <!-- Fecha -->
-                    <div class=" form-group mb-3">
-                        <label for="txtFecha" class="form-label">Fecha</label>
-                        <asp:TextBox
-                            ID="txtFecha"
-                            runat="server"
-                            TextMode="Date"
-                            CssClass="form-control" />
-                    </div>
-
-                    <!-- Horario Disponible -->
-                    <div class=" form-group mb-3">
-                        <label for="ddlHorario" class="form-label">Horario disponible</label>
-                        <asp:DropDownList
-                            ID="ddlHorario"
-                            runat="server"
-                            CssClass="form-control" />
-                    </div>
-
-                    <!-- Motivo Consulta -->
-                    <div class=" form-group mb-3">
-                        <label for="txtMotivoConsulta" class="form-label">MotivoConsulta</label>
-                        <asp:TextBox
-                            ID="txtMotivoConsulta"
-                            runat="server"
-                            CssClass="form-control"
-                            TextMode="MultiLine" />
-                    </div>
-
-                    <!-- Observaciones -->
-                    <div class=" form-group mb-3">
-                        <label for="txtObservaciones" class="form-label">Observaciones</label>
-                        <asp:TextBox
-                            ID="txtObsercvaciones"
-                            runat="server"
-                            CssClass="form-control"
-                            TextMode="MultiLine" />
-                    </div>
-
-                    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
-
-                    <!-- Boton Guardar -->
-                    <div class=" mt-5 mb-5">
-                        <asp:Button
-                            ID="btnGuardarTurno"
-                            runat="server"
-                            Text="💾 Guardar Turno"
-                            OnClick="btnGuardarTurno_Click"
-                            CssClass="btn btn-success px-4" />
-                    </div>
-                    <!-- Boton Cancelar -->
-                    <div class=" mt-5 mb-5">
-                        <asp:Button
-                            ID="Button2"
-                            runat="server"
-                            Text="Cancelar"
-                            CssClass="btn btn-secondary mb-4"
-                            PostBackUrl="~/TurnoLista.aspx" />
-                    </div>
-                </div>
+            <div class="text-center mt-4">
+                <asp:Button ID="btnGuardarTurno" runat="server" Text="💾 Guardar Turno" CssClass="btn btn-primary px-4" OnClick="btnGuardarTurno_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-secondary ms-2" PostBackUrl="TurnoLista.aspx" />
             </div>
         </div>
     </div>

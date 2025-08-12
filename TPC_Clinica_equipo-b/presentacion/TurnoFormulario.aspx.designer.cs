@@ -24,15 +24,6 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.TextBox txtDni;
 
         /// <summary>
-        /// Control btnRegistrarPaciente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegistrarPaciente;
-
-        /// <summary>
         /// Control txtNombre.
         /// </summary>
         /// <remarks>
@@ -51,13 +42,13 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
 
         /// <summary>
-        /// Control ddlSexo.
+        /// Control txtSexo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
+        protected global::System.Web.UI.WebControls.TextBox txtSexo;
 
         /// <summary>
         /// Control txtFechaNacimiento.
@@ -87,22 +78,22 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// Control ddlCobertura.
+        /// Control txtCobertura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCobertura;
+        protected global::System.Web.UI.WebControls.TextBox txtCobertura;
 
         /// <summary>
-        /// Control ddlMedico.
+        /// Control btnRegistrarPaciente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMedico;
+        protected global::System.Web.UI.WebControls.Button btnRegistrarPaciente;
 
         /// <summary>
         /// Control ddlEspecialidad.
@@ -114,22 +105,22 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.DropDownList ddlEspecialidad;
 
         /// <summary>
-        /// Control txtFecha.
+        /// Control ddlMedico.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFecha;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMedico;
 
         /// <summary>
-        /// Control ddlHorario.
+        /// Control ddlTurnoDisponible.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlHorario;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTurnoDisponible;
 
         /// <summary>
         /// Control txtMotivoConsulta.
@@ -141,13 +132,13 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.TextBox txtMotivoConsulta;
 
         /// <summary>
-        /// Control txtObsercvaciones.
+        /// Control txtObservaciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObsercvaciones;
+        protected global::System.Web.UI.WebControls.TextBox txtObservaciones;
 
         /// <summary>
         /// Control lblError.
@@ -168,12 +159,12 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.Button btnGuardarTurno;
 
         /// <summary>
-        /// Control Button2.
+        /// Control btnCancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnCancelar;
     }
 }

@@ -87,7 +87,7 @@ namespace presentacion
             else if (e.CommandName == "VerTurnos")
             {
                 int medicoId = Convert.ToInt32(e.CommandArgument);
-                Response.Redirect("TurnoTrabajoMedicoLista.aspx?medicoId=" + medicoId);
+                Response.Redirect("TurnoTrabajoMedicoLista.aspx?medicoId=" + medicoId, false);
             }
         }
     }    

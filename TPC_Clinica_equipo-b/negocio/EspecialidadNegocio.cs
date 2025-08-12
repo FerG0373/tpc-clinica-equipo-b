@@ -43,6 +43,37 @@ namespace negocio
             }
         }
 
+        public List<Medico> listarMedicosPorEspecialidad(int especialidadId)
+        {
+            List<Medico> lista = new List<Medico>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("SP_turnoListarMedicosPorEspecialidad");
+                datos.setearParametro("@EspecialidadId", especialidadId);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Medico aux = new Medico();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Nombre = (string)datos.Lector["NombreCompleto"];
+                    lista.Add(aux);
+                }
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public List<Especialidad> listarEspecialidades()
         {
             List<Especialidad> listaEspecialidades = new List<Especialidad>();

@@ -14,8 +14,6 @@ INSERT INTO Turno (nroTurno, fechaHora, paciente_id, estadoTurno_id, medico_id, 
 VALUES ('1','2025-07-22 14:30:00','1','1','1','1');
 
 
-
-
 // Script de (SP_turnoVistaListar)
 CREATE PROCEDURE SP_turnoVistaListar
 AS
@@ -23,28 +21,48 @@ BEGIN
     SELECT 
         t.id AS Id,
         t.nroTurno AS NumeroTurno,
-        t.fechaHora AS FechaHora,
+        t.fecha AS Fecha,
+        t.hora AS Hora,
         t.motivoConsulta AS MotivoConsulta,
         t.observacionesMedico AS ObservacionesMedico,
         pPers.nombre + ' ' + pPers.apellido AS NombrePaciente,
         mPers.nombre + ' ' + mPers.apellido AS NombreMedico,
-		e.descripcion AS Especialidad,
+        e.descripcion AS Especialidad,
         et.descripcion AS EstadoTurno
-
     FROM Turno t
     INNER JOIN Paciente p ON t.paciente_id = p.id
     INNER JOIN Persona pPers ON p.persona_id = pPers.id
     INNER JOIN Medico m ON t.medico_id = m.id
     INNER JOIN Persona mPers ON m.persona_id = mPers.id
-	INNER JOIN Especialidad e ON t.especialidad_id = e.id
+    INNER JOIN Especialidad e ON t.especialidad_id = e.id
     INNER JOIN EstadoTurno et ON t.estadoTurno_id = et.id
-    ORDER BY t.fechaHora DESC
+    ORDER BY 
+        t.fecha DESC, 
+        t.hora DESC;
 END
+
+// Script de (SP_turnoListarMedicosPorEspecialidad)
+CREATE PROCEDURE SP_turnoListarMedicosPorEspecialidad
+    @EspecialidadId INT
+AS
+BEGIN
+    SELECT 
+        m.id AS Id,
+        p.nombre + ' ' + p.apellido AS NombreCompleto
+    FROM Medico m
+    INNER JOIN Persona p ON m.persona_id = p.id
+    INNER JOIN Medico_Especialidad me ON m.id = me.medico_id
+    INNER JOIN Especialidad e ON me.especialidad_id = e.id
+    WHERE e.id = @EspecialidadId
+    ORDER BY p.apellido, p.nombre;
+END
+GO
 
 
 // Script de (SP_turnoagregar)
 CREATE PROCEDURE SP_turnoAgregar
-    @FechaHora DATETIME,
+    @Fecha DATE,
+    @Hora TIME,
     @MotivoConsulta NVARCHAR(500),
     @ObservacionesMedico NVARCHAR(500),
     @PacienteId INT,
@@ -54,7 +72,8 @@ CREATE PROCEDURE SP_turnoAgregar
 AS
 BEGIN
     INSERT INTO Turno (
-        fechaHora,
+        fecha,
+        hora,
         motivoConsulta,
         observacionesMedico,
         paciente_id,
@@ -63,7 +82,8 @@ BEGIN
         estadoTurno_id
     )
     VALUES (
-        @FechaHora,
+        @Fecha,
+        @Hora,
         @MotivoConsulta,
         @ObservacionesMedico,
         @PacienteId,
@@ -72,6 +92,8 @@ BEGIN
         @EstadoTurnoId
     );
 END
+
+
 
 
 
