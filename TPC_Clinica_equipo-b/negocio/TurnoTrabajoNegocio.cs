@@ -9,14 +9,22 @@ namespace negocio
 {
     public class TurnoTrabajoNegocio
     {
-        public List<TurnoTrabajo> listarTurnosDeTrabajo()
+        public List<TurnoTrabajo> listarTurnosDeTrabajo(string id = "")
         {
             AccesoDatos datos = new AccesoDatos();
             List<TurnoTrabajo> listaTurnosDeTrabajo = new List<TurnoTrabajo>();
 
             try
             {
-                datos.setearConsulta("SELECT id, diaSemana, horaInicio, horaFin, activo FROM TurnoTrabajo");
+                datos.setearProcedimiento("SP_turnoTrabajoListar");
+                if(!string.IsNullOrEmpty(id))
+                {
+                    if (int.TryParse(id, out int idNumerico))
+                    {
+                        datos.setearParametro("@id", idNumerico);
+                    }
+                }
+
                 datos.ejecutarLectura();
 
                 while(datos.Lector.Read())
@@ -31,40 +39,6 @@ namespace negocio
                     listaTurnosDeTrabajo.Add(aux);
                 }
                 return listaTurnosDeTrabajo;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
-        // POSIBLEMENTE BORRAR listarMedicoTurnoTrabajo()
-        public List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listarMedicoTurnoTrabajo()
-        {
-            AccesoDatos datos = new AccesoDatos();
-            List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listaTurnosDeTrabajoPorMedicos = new List<(int, TurnoTrabajo)>();
-
-            try
-            {
-                datos.setearProcedimiento("SP_turnoTrabajoListarPorMedico");
-                datos.ejecutarLectura();
-
-                while(datos.Lector.Read())
-                {
-                    TurnoTrabajo aux = new TurnoTrabajo();
-                    int MedicoId = (int)datos.Lector["Medico_Id"];
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.DiaSemana = (string)datos.Lector["DiaSemana"];
-                    aux.HoraInicio = (TimeSpan)datos.Lector["HoraInicio"];
-                    aux.HoraFin = (TimeSpan)datos.Lector["HoraFin"];
-
-                    listaTurnosDeTrabajoPorMedicos.Add((MedicoId,aux));
-                }
-                return listaTurnosDeTrabajoPorMedicos;
             }
             catch (Exception ex)
             {
@@ -99,6 +73,88 @@ namespace negocio
                     lista.Add(aux);
                 }
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void insertarTurnoTrabajo(TurnoTrabajo nuevoTurnoTrabajo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO TurnoTrabajo (DiaSemana, HoraInicio, HoraFin) VALUES (@DiaSemana, @HoraInicio, @HoraFin)");
+                datos.setearParametro("@diaSemana", nuevoTurnoTrabajo.DiaSemana);
+                datos.setearParametro("@horaInicio", nuevoTurnoTrabajo.HoraInicio);
+                datos.setearParametro("@HoraFin", nuevoTurnoTrabajo.HoraFin);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void actualizarTurnoTrabajo(TurnoTrabajo turnoTrabajo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearProcedimiento("SP_turnoTrabajoActualizar");
+                datos.setearParametro("@id", turnoTrabajo.Id);
+                datos.setearParametro("@diaSemana", turnoTrabajo.DiaSemana);
+                datos.setearParametro("@horaInicio", turnoTrabajo.HoraInicio);
+                datos.setearParametro("@horaFin", turnoTrabajo.HoraFin);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
+
+        // POSIBLEMENTE BORRAR listarMedicoTurnoTrabajo()
+        public List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listarMedicoTurnoTrabajo()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<(int MedicoId, TurnoTrabajo TurnoTrabajo)> listaTurnosDeTrabajoPorMedicos = new List<(int, TurnoTrabajo)>();
+
+            try
+            {
+                datos.setearProcedimiento("SP_turnoTrabajoListarPorMedico");
+                datos.ejecutarLectura();
+
+                while(datos.Lector.Read())
+                {
+                    TurnoTrabajo aux = new TurnoTrabajo();
+                    int MedicoId = (int)datos.Lector["Medico_Id"];
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.DiaSemana = (string)datos.Lector["DiaSemana"];
+                    aux.HoraInicio = (TimeSpan)datos.Lector["HoraInicio"];
+                    aux.HoraFin = (TimeSpan)datos.Lector["HoraFin"];
+
+                    listaTurnosDeTrabajoPorMedicos.Add((MedicoId,aux));
+                }
+                return listaTurnosDeTrabajoPorMedicos;
             }
             catch (Exception ex)
             {

@@ -13,9 +13,17 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            panelExito.Visible = false;
+
+            if (!IsPostBack)
             {
                 cargarDgvTurnoTrabajo();
+                if (Session["MensajeExito"] != null)
+                {
+                    lblMensajeExito.Text = Session["MensajeExito"].ToString();
+                    panelExito.Visible = true;
+                    Session.Remove("MensajeExito");
+                }
             }
         }
 
@@ -28,7 +36,8 @@ namespace presentacion
 
         protected void dgvTurnoTrabajo_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            string id = dgvTurnoTrabajo.SelectedDataKey.Value.ToString();
+            Response.Redirect("TurnoTrabajo.aspx?id=" + id);
         }
 
         protected void dgvTurnoTrabajo_PageIndexChanging(object sender, GridViewPageEventArgs e)

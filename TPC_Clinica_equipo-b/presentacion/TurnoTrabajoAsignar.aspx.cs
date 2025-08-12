@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace presentacion
 {
-    public partial class TurnosTrabajo : System.Web.UI.Page
+    public partial class TurnoTrabajoAsignar : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

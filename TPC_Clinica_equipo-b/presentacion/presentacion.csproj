@@ -89,7 +89,8 @@
     <Content Include="Registro.aspx" />
     <Content Include="MedicoLista.aspx" />
     <Content Include="TurnoFormulario.aspx" />
-    <Content Include="TurnoTrabajo.aspx" />
+    <Content Include="TurnoTrabajoFormulario.aspx" />
+    <Content Include="TurnoTrabajoAsignar.aspx" />
     <Content Include="TurnoTrabajoLista.aspx" />
     <Content Include="TurnoTrabajoMedicoLista.aspx" />
     <Content Include="Usuario.aspx" />
@@ -221,12 +222,19 @@
     <Compile Include="TurnoFormulario.aspx.designer.cs">
       <DependentUpon>TurnoFormulario.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TurnoTrabajo.aspx.cs">
-      <DependentUpon>TurnoTrabajo.aspx</DependentUpon>
+    <Compile Include="TurnoTrabajoFormulario.aspx.cs">
+      <DependentUpon>TurnoTrabajoFormulario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="TurnoTrabajo.aspx.designer.cs">
-      <DependentUpon>TurnoTrabajo.aspx</DependentUpon>
+    <Compile Include="TurnoTrabajoFormulario.aspx.designer.cs">
+      <DependentUpon>TurnoTrabajoFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TurnoTrabajoAsignar.aspx.cs">
+      <DependentUpon>TurnoTrabajoAsignar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TurnoTrabajoAsignar.aspx.designer.cs">
+      <DependentUpon>TurnoTrabajoAsignar.aspx</DependentUpon>
     </Compile>
     <Compile Include="TurnoTrabajoLista.aspx.cs">
       <DependentUpon>TurnoTrabajoLista.aspx</DependentUpon>
