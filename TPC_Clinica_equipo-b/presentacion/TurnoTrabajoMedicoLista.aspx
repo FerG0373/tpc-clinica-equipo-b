@@ -11,7 +11,7 @@
                 <asp:Label ID="lblMensajeExito" runat="server" Text=""></asp:Label>
             </asp:Panel>
             <asp:UpdatePanel ID="updTurnoTrabajoMedico" runat="server">
-                <contenttemplate>
+                <ContentTemplate>
                     <%--GridView--%>
                     <asp:GridView runat="server" ID="dgvTurnoTrabajoMedico" AutoGenerateColumns="false" DataKeyNames="Id"
                         OnSelectedIndexChanged="dgvTurnoTrabajoMedico_SelectedIndexChanged"
@@ -21,19 +21,23 @@
                         RowStyle-CssClass="text-center"
                         AllowPaging="True" PageSize="10"
                         OnRowCommand="dgvTurnoTrabajoMedico_RowCommand">
-                        <columns>
+                        <Columns>
                             <asp:BoundField HeaderText="Dia" DataField="DiaSemana" />
                             <asp:BoundField HeaderText="Hora Inicio" DataField="HoraInicio" DataFormatString="{0:hh\:mm}" />
                             <asp:BoundField HeaderText="Hora Fin" DataField="HoraFin" DataFormatString="{0:hh\:mm}" />
                             <asp:TemplateField HeaderText="Activo">
-                                <itemtemplate>
+                                <ItemTemplate>
                                     <%# ((bool)Eval("Activo")) ? "<span class='text-success fw-bold'>🟢 SÍ</span>" : "<span class='text-danger fw-bold'>🔴 NO</span>" %>
-                                </itemtemplate>
+                                </ItemTemplate>
                             </asp:TemplateField>
-                        </columns>
+                        </Columns>
                     </asp:GridView>
-                </contenttemplate>
+                </ContentTemplate>
             </asp:UpdatePanel>
+            <%--Botón--%>
+            <div class="text-center mt-5">
+                <a href="TurnoTrabajoAsignar.aspx" class="btn btn-success btn-lg px-4 mb-5">🞤 Agregar Turno de Trabajo</a>
+            </div>
         </div>
     </div>
 </asp:Content>
