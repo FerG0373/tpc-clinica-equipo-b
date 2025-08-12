@@ -119,20 +119,34 @@ namespace presentacion
                     // Lógica para ACTUALIZAR.
                     nuevo.Id = (int)ViewState["TurnoTrabajoId"];
                     negocio.actualizarTurnoTrabajo(nuevo);
-                    Session["MensajeExito"] = "Turno de Trabajo actualizado con éxito.";
+                    Session["MensajeExito"] = "✔️ Turno de Trabajo actualizado con éxito.";
                 }
                 else
                 {
                     // Lógica para AGREGAR.
                     negocio.insertarTurnoTrabajo(nuevo);
-                    Session["MensajeExito"] = "Turno de Trabajo agregado con éxito.";
+                    Session["MensajeExito"] = "✔️ Turno de Trabajo agregado con éxito.";
                 }
 
                 Response.Redirect("TurnoTrabajoLista.aspx", false);
             }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                // Número de error 2627 indica una violación de clave única (duplicado).
+                if (ex.Number == 2627)
+                {
+                    lblError.Text = "⚠️ Error: Ya existe un turno con la misma combinación de día y horario.";
+                }
+                else
+                {
+                    lblError.Text = "❌ Ocurrió un error en la base de datos: " + ex.Message;
+                }
+                lblError.Visible = true;
+            }
             catch (Exception ex)
             {
-                throw ex;
+                lblError.Text = "❌ Ocurrió un error inesperado: " + ex.Message;
+                lblError.Visible = true;
             }
         }
 
