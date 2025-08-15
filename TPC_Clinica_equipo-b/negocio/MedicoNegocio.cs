@@ -10,6 +10,44 @@ namespace negocio
 {
     public class MedicoNegocio
     {
+        public void guardarTurnosDeTrabajo(int medicoId, List<int> turnosSeleccionados)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.iniciarTransaccion();
+
+                // 1. Eliminar los turnos de trabajo existentes para el médico.
+                datos.setearConsulta("DELETE FROM Medico_TurnoTrabajo WHERE medico_id = @medicoId");
+                datos.setearParametro("@medicoId", medicoId);
+                datos.ejecutarAccion();
+
+                // 2. Insertar los turnos de trabajo nuevos seleccionados.
+                if (turnosSeleccionados != null && turnosSeleccionados.Count > 0)
+                {
+                    string consultaInsert = "INSERT INTO Medico_TurnoTrabajo (medico_id, turnoTrabajo_id) VALUES (@medicoId, @turnoTrabajoId)";
+                    foreach (int turnoId in turnosSeleccionados)
+                    {
+                        datos.setearConsulta(consultaInsert);
+                        datos.setearParametro("@medicoId", medicoId);
+                        datos.setearParametro("@turnoTrabajoId", turnoId);
+                        datos.ejecutarAccion();
+                    }
+                }
+
+                datos.confirmarTransaccion();
+            }
+            catch (Exception ex)
+            {
+                datos.cancelarTransaccion();
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public Medico obtenerMedicoPorId(int id)
         {
             AccesoDatos datos = new AccesoDatos();

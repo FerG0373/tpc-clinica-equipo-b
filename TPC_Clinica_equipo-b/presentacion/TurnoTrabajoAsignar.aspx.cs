@@ -51,23 +51,34 @@ namespace presentacion
         {
             // Lista para almacenar los IDs de los turnos seleccionados.
             List<int> turnosSeleccionados = new List<int>();
-
             // Recorrer todas las filas del GridView.
             foreach (GridViewRow row in dgvTurnoTrabajoAsignar.Rows)
             {
                 // Encontrar el control CheckBox en la fila actual.
                 CheckBox chkAsignar = (CheckBox)row.FindControl("chkAsignar");
-
                 // Verificar si el CheckBox existe y está marcado.
                 if (chkAsignar != null && chkAsignar.Checked)
                 {
-                    // Obtener el ID del turno de la clave de datos (DataKey) de la fila.
-                    // Es crucial que tu GridView tenga DataKeyNames="Id".
+                    // Obtener el ID del turno de la clave de datos (DataKey) de la fila. Es crucial que el GridView tenga DataKeyNames="Id".
                     int turnoTrabajoId =(int)(dgvTurnoTrabajoAsignar.DataKeys[row.RowIndex].Value);
-
                     // Agregar el ID a la lista.
                     turnosSeleccionados.Add(turnoTrabajoId);
                 }
+            }
+            // Obtener el ID del médico del ViewState.
+            if (ViewState["medicoId"] != null)
+            {
+                int medicoId = Convert.ToInt32(ViewState["medicoId"]);
+                MedicoNegocio medicoNegocio = new MedicoNegocio();
+                // Método para guardar los turnos de trabajo.
+                medicoNegocio.guardarTurnosDeTrabajo(medicoId, turnosSeleccionados);
+                Response.Redirect("TurnoTrabajoMedicoLista.aspx", false);
+            }
+            else
+            {
+                // Manejar el caso en el que no se encuentre el ID del médico.
+                // Puedes mostrar un mensaje de error o redirigir a una página de error.
+                Response.Redirect("MedicoLista.aspx", false);
             }
         }
 
@@ -80,8 +91,7 @@ namespace presentacion
             }
             else
             {
-                // En caso de que no haya un ID en ViewState (por si algo falló),
-                // puedes redirigir a la lista de médicos general.
+                // En caso de que no haya un ID en ViewState (por si algo falló), se redirige a la lista de médicos general.
                 Response.Redirect("MedicoLista.aspx", false);
             }
         }
