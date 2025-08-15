@@ -46,10 +46,14 @@ namespace presentacion
 
         private void cargarDgvTurnoTrabajoMedico()
         {
-            int medicoId = int.Parse(Request.QueryString["medicoId"]);
-            TurnoTrabajoNegocio negocio = new TurnoTrabajoNegocio();
-            dgvTurnoTrabajoMedico.DataSource = negocio.listarTurnosDeTrabajoPorMedico(medicoId);
-            dgvTurnoTrabajoMedico.DataBind();
+            // Aquí el código que me pasaste tenía "medico_id"
+            if (ViewState["medicoId"] != null)
+            {
+                int medicoId = Convert.ToInt32(ViewState["medicoId"]);
+                TurnoTrabajoNegocio negocio = new TurnoTrabajoNegocio();
+                dgvTurnoTrabajoMedico.DataSource = negocio.listarTurnosDeTrabajoPorMedico(medicoId);
+                dgvTurnoTrabajoMedico.DataBind();
+            }
         }
 
         protected void dgvTurnoTrabajoMedico_SelectedIndexChanged(object sender, EventArgs e)
@@ -86,7 +90,7 @@ namespace presentacion
 
         protected void btnAtras_Click(object sender, EventArgs e)
         {
-            Response.Redirect("MedicoLista.aspx",false);
+            Response.Redirect("MedicoLista.aspx", false);
         }
     }
 }
