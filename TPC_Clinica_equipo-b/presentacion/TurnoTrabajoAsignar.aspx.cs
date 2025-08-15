@@ -1,5 +1,4 @@
-﻿using negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -50,7 +49,26 @@ namespace presentacion
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            
+            // Lista para almacenar los IDs de los turnos seleccionados.
+            List<int> turnosSeleccionados = new List<int>();
+
+            // Recorrer todas las filas del GridView.
+            foreach (GridViewRow row in dgvTurnoTrabajoAsignar.Rows)
+            {
+                // Encontrar el control CheckBox en la fila actual.
+                CheckBox chkAsignar = (CheckBox)row.FindControl("chkAsignar");
+
+                // Verificar si el CheckBox existe y está marcado.
+                if (chkAsignar != null && chkAsignar.Checked)
+                {
+                    // Obtener el ID del turno de la clave de datos (DataKey) de la fila.
+                    // Es crucial que tu GridView tenga DataKeyNames="Id".
+                    int turnoTrabajoId =(int)(dgvTurnoTrabajoAsignar.DataKeys[row.RowIndex].Value);
+
+                    // Agregar el ID a la lista.
+                    turnosSeleccionados.Add(turnoTrabajoId);
+                }
+            }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)

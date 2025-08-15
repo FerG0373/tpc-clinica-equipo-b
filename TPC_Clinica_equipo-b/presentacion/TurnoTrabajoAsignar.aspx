@@ -19,11 +19,11 @@
                             <asp:BoundField HeaderText="Día" DataField="DiaSemana" />
                             <asp:BoundField HeaderText="Hora Inicio" DataField="HoraInicio" DataFormatString="{0:hh\:mm}" />
                             <asp:BoundField HeaderText="Hora Fin" DataField="HoraFin" DataFormatString="{0:hh\:mm}" />
-                            <%--<asp:TemplateField HeaderText="Asignar">
+                            <asp:TemplateField HeaderText="Asignar">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="chkAsignar" runat="server" Checked='<%# Eval("Asignado") %>' />
                                 </ItemTemplate>
-                            </asp:TemplateField>--%>
+                            </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>
