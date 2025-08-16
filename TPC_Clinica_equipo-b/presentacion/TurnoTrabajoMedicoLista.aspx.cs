@@ -46,7 +46,6 @@ namespace presentacion
 
         private void cargarDgvTurnoTrabajoMedico()
         {
-            // Aquí el código que me pasaste tenía "medico_id"
             if (ViewState["medicoId"] != null)
             {
                 int medicoId = Convert.ToInt32(ViewState["medicoId"]);
