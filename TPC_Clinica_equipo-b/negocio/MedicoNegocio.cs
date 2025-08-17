@@ -1,15 +1,90 @@
-﻿using dominio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using dominio;
 
 namespace negocio
 {
     public class MedicoNegocio
     {
+        public void guardarTurnosDeTrabajo(int medicoId, List<int> turnosSeleccionados)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.iniciarTransaccion();
+
+                // 1. Eliminar los turnos de trabajo existentes para el médico.
+                datos.setearConsulta("DELETE FROM Medico_TurnoTrabajo WHERE medico_id = @medicoId");
+                datos.setearParametro("@medicoId", medicoId);
+                datos.ejecutarAccion();
+
+                // 2. Insertar los turnos de trabajo nuevos seleccionados.
+                if (turnosSeleccionados != null && turnosSeleccionados.Count > 0)
+                {
+                    string consultaInsert = "INSERT INTO Medico_TurnoTrabajo (medico_id, turnoTrabajo_id) VALUES (@medicoId, @turnoTrabajoId)";
+                    foreach (int turnoId in turnosSeleccionados)
+                    {
+                        datos.setearConsulta(consultaInsert);
+                        datos.setearParametro("@medicoId", medicoId);
+                        datos.setearParametro("@turnoTrabajoId", turnoId);
+                        datos.ejecutarAccion();
+                    }
+                }
+
+                datos.confirmarTransaccion();
+            }
+            catch (Exception ex)
+            {
+                datos.cancelarTransaccion();
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public Medico obtenerMedicoPorId(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            Medico medico = null; // Inicializamos a null para el caso de que no se encuentre.
+
+            try
+            {
+                datos.setearProcedimiento("SP_medicoListar");
+                datos.setearParametro("@id", id);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read()) // Solo leemos una vez, ya que solo esperamos un resultado.
+                {
+                    medico = new Medico();
+                    medico.Id = (int)datos.Lector["MedicoId"];
+                    medico.PersonaId = (int)datos.Lector["PersonaId"];
+                    medico.Dni = (string)datos.Lector["Dni"];
+                    medico.Nombre = (string)datos.Lector["Nombre"];
+                    medico.Apellido = (string)datos.Lector["Apellido"];
+                    medico.Matricula = (string)datos.Lector["Matricula"];
+                    medico.Email = (string)datos.Lector["Email"];
+                    medico.Pass = (string)datos.Lector["Pass"];
+                    medico.Activo = (bool)datos.Lector["Activo"];
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar el error.
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+            return medico;
+        }
+
         public List<Medico> listarMedicos(string id = "")
         {
             AccesoDatos datos = new AccesoDatos();

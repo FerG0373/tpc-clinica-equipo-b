@@ -84,6 +84,46 @@ namespace negocio
             }
         }
 
+        public void guardarTurnoDeTrabajo(int medicoId, int turnoTrabajoId)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO Medico_TurnoTrabajo (medico_id, turnoTrabajo_id) VALUES (@medicoId, @turnoTrabajoId)");
+                datos.setearParametro("@medicoId", medicoId);
+                datos.setearParametro("@turnoTrabajoId", turnoTrabajoId);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminarTurnoDeTrabajo(int medicoId, int turnoTrabajoId)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("DELETE FROM Medico_TurnoTrabajo WHERE medico_id = @medicoId AND turnoTrabajo_id = @turnoTrabajoId");
+                datos.setearParametro("@medicoId", medicoId);
+                datos.setearParametro("@turnoTrabajoId", turnoTrabajoId);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void insertarTurnoTrabajo(TurnoTrabajo nuevoTurnoTrabajo)
         {
             AccesoDatos datos = new AccesoDatos();
