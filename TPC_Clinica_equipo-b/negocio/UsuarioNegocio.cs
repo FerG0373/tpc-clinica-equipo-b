@@ -9,7 +9,7 @@ namespace negocio
 {
     public class UsuarioNegocio
     {
-        public  List<Persona> listar()
+        public List<Persona> listar()
         {
             List<Persona> lista = new List<Persona>();
             AccesoDatos datos = new AccesoDatos();
@@ -41,6 +41,54 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
+        }
+
+    public Usuario Login(string dni, string pass)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta(@"
+            SELECT u.Id, 
+                   u.persona_id, 
+                   u.dni, 
+                   u.pass, 
+                   u.perfilAcceso_id, 
+                   u.activo
+            FROM Usuario u
+            WHERE u.Dni = @dni
+              AND u.Pass = @pass
+              AND u.activo = 1");
+
+                datos.setearParametro("@dni", dni);
+                datos.setearParametro("@pass", pass);
+
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    Usuario usuario = new Usuario
+                    {
+                        Id = (int)datos.Lector["Id"],
+                        PersonaId = (int)datos.Lector["persona_id"],
+                        Dni = (string)datos.Lector["Dni"],
+                        Pass = (string)datos.Lector["Pass"],
+                        PerfilAccesoId = (int)datos.Lector["perfilAcceso_id"],
+                        Activo = (bool)datos.Lector["activo"]
+                    };
+
+                    // Convertir PerfilAccesoId al enum TipoUsuario
+                    usuario.TipoUsuario = (TipoUsuario)usuario.PerfilAccesoId;
+
+                    return usuario;
+                }
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return null;
         }
     }
 }

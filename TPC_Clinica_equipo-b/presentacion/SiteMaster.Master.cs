@@ -16,7 +16,7 @@ namespace presentacion
 
         protected void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            Response.Redirect("login.aspx");
+            Response.Redirect("login.aspx", false);
         }
     }
 }
