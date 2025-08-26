@@ -13,12 +13,11 @@ namespace dominio
         public string NumeroTurno { get; set; }
         public DateTime Fecha { get; set; }
         public TimeSpan Hora { get; set; }
-        public string MotivoConsulta { get; set; }
-        public string ObservacionesMedico { get; set; }
+        public string Motivo { get; set; }
+        public string Observaciones { get; set; }
         public int PacienteId { get; set; }
-        public int EstadoTurnoId { get; set; }
         public int MedicoId { get; set; }
-        public int EspecialidadId { get; set; }
+        public string Estado { get; set; }
 
     }
 }
