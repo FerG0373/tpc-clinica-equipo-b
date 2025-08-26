@@ -18,7 +18,8 @@
                         OnPageIndexChanging="dgvTurnos_PageIndexChanging">
                         <Columns>
                             <asp:BoundField DataField="NumeroTurno" HeaderText="N° Turno" />
-                            <asp:BoundField DataField="FechaHora" HeaderText="Fecha y Hora" DataFormatString="{0:g}" />
+                            <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:g}" />
+                            <asp:BoundField DataField="Hora" HeaderText="Hora" />
                             <asp:BoundField DataField="NombrePaciente" HeaderText="Paciente" />
                             <asp:BoundField DataField="NombreMedico" HeaderText="Médico" />
                             <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" />
