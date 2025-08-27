@@ -15,9 +15,27 @@ namespace presentacion
         {
             if (!IsPostBack)
             {
+                panelExito.Visible = false;
 
+                if (!IsPostBack)
+                {
+                    cargarDgvTurno();
+                    if (Session["MensajeExito"] != null)
+                    {
+                        lblMensajeExito.Text = Session["MensajeExito"].ToString();
+                        panelExito.Visible = true;
+                        Session.Remove("MensajeExito");
+                    }
+                }
             }
-        }      
+        }
+
+        private void cargarDgvTurno()
+        {
+            TurnoNegocio negocio = new TurnoNegocio();
+            dgvTurnos.DataSource = negocio.listarTurnos();
+            dgvTurnos.DataBind();
+        }
 
         protected void dgvTurnos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
