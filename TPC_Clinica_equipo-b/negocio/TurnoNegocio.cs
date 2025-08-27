@@ -25,12 +25,11 @@ namespace negocio
                     // 1. Instancia de Turno.
                     Turno aux = new Turno();
                     aux.Id = (int)datos.Lector["TurnoId"];
-                    aux.NumeroTurno = (string)datos.Lector["nroTurno"];
                     aux.Fecha = (DateTime)datos.Lector["fecha"];
                     aux.Hora = (TimeSpan)datos.Lector["hora"];
                     aux.Motivo = (string)datos.Lector["motivoConsulta"];
                     aux.Estado = (string)datos.Lector["estado"];
-                    //aux.Observaciones = (string)datos.Lector["observacionesMedico"];
+                    aux.Observaciones = (datos.Lector["observacionesMedico"] != DBNull.Value) ? (string)datos.Lector["observacionesMedico"] : "Sin observaciones";
 
                     // 2. Instancias de Paciente.
                     aux.Paciente = new Paciente();

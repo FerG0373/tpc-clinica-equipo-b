@@ -18,9 +18,16 @@
                         OnPageIndexChanging="dgvTurnos_PageIndexChanging"
                         AllowPaging="true" PageSize="8">
                         <Columns>
-                            <asp:BoundField HeaderText="Nº Turno" DataField="NumeroTurno" />
-                            <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
-                            <asp:BoundField HeaderText="Hora" DataField="Hora" />
+                            <asp:TemplateField HeaderText="Fecha">
+                                <ItemTemplate>
+                                    <asp:Label runat="server" Text='<%# Eval("Fecha", "{0:dd/MM/yyyy}") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Hora">
+                                <ItemTemplate>
+                                    <asp:Label runat="server" Text='<%# Eval("Hora", "{0:hh\\:mm}") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:BoundField HeaderText="DNI" DataField="Paciente.Dni" />
                             <asp:TemplateField HeaderText="Paciente">
                                 <ItemTemplate>
@@ -38,6 +45,8 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField HeaderText="Estado" DataField="Estado" />
+                            <asp:CommandField HeaderText="Ver" ShowSelectButton="true" SelectText="👁️" />
+                            <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="✏️" />
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>
