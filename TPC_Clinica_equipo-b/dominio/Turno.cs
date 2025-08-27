@@ -15,9 +15,9 @@ namespace dominio
         public TimeSpan Hora { get; set; }
         public string Motivo { get; set; }
         public string Observaciones { get; set; }
-        public int PacienteId { get; set; }
-        public int MedicoId { get; set; }
         public string Estado { get; set; }
-
+        public Paciente Paciente { get; set; }
+        public Especialidad Especialidad { get; set; }
+        public Medico Medico { get; set; }
     }
 }

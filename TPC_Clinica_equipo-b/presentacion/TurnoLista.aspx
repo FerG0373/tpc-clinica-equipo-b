@@ -18,47 +18,26 @@
                         OnPageIndexChanging="dgvTurnos_PageIndexChanging"
                         AllowPaging="true" PageSize="8">
                         <Columns>
-                            <asp:BoundField DataField="NumeroTurno" HeaderText="N° Turno" />
-                            <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:g}" />
-                            <asp:BoundField DataField="Hora" HeaderText="Hora" />
-                            <asp:BoundField DataField="NombrePaciente" HeaderText="Paciente" />
-                            <asp:BoundField DataField="NombreMedico" HeaderText="Médico" />
-                            <asp:BoundField DataField="Especialidad" HeaderText="Especialidad" />
-                            <asp:BoundField DataField="EstadoTurno" HeaderText="Estado" />
-
-                            <%-- Acciones --%>
-                            <asp:TemplateField HeaderText="Ver">
+                            <asp:BoundField HeaderText="Nº Turno" DataField="NumeroTurno" />
+                            <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
+                            <asp:BoundField HeaderText="Hora" DataField="Hora" />
+                            <asp:BoundField HeaderText="DNI" DataField="Paciente.Dni" />
+                            <asp:TemplateField HeaderText="Paciente">
                                 <ItemTemplate>
-                                    <asp:Button
-                                        ID="btnVer"
-                                        runat="server"
-                                        Text="👁"
-                                        CommandName="Ver"
-                                        CssClass="btn btn-sm" />
+                                    <asp:Label runat="server" Text='<%# Eval("Paciente.Apellido") + ", " + Eval("Paciente.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="Editar">
+                            <asp:TemplateField HeaderText="Especialidad">
                                 <ItemTemplate>
-                                    <asp:Button
-                                        ID="btnEditar"
-                                        runat="server"
-                                        Text="✏️"
-                                        CommandName="Editar"
-                                        CssClass="btn btn-sm" />
+                                    <asp:Label runat="server" Text='<%# Eval("Especialidad.Descripcion") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="Cancelar">
+                            <asp:TemplateField HeaderText="Medico">
                                 <ItemTemplate>
-                                    <asp:Button
-                                        ID="btnCancelar"
-                                        runat="server"
-                                        Text="❌"
-                                        CommandName="Cancelar"
-                                        CssClass="btn btn-sm" />
+                                    <asp:Label runat="server" Text='<%# Eval("Medico.Apellido") + ", " + Eval("Medico.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField HeaderText="Estado" DataField="Estado" />
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>

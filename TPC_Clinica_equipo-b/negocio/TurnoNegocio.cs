@@ -11,6 +11,25 @@ namespace negocio
 {
     public class TurnoNegocio
     {
+        public List<Turno> listarTurnos()
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Turno> listaDeTurnos = new List<Turno>();
 
+            try
+            {
+
+
+                return listaDeTurnos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
