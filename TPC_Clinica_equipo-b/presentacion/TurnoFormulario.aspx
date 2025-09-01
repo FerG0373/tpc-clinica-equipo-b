@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
         <div class="container mt-5">
-            <h2 class="text-center mb-4">Registrar Turno</h2>
+            <asp:Label ID="lblTurnoFormulario" runat="server" Text="Alta de Turno" CssClass="text-center mb-4 d-block fs-1 fw-semibold"></asp:Label>
 
             <!-- Datos del paciente -->
             <div class="form-group mb-3">
@@ -23,34 +23,7 @@
                 <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
             </div>
 
-            <div class="form-group mb-3">
-                <label for="txtSexo" class="form-label">Sexo</label>
-                <asp:TextBox ID="txtSexo" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="txtFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                <asp:TextBox ID="txtFechaNacimiento" runat="server" TextMode="Date" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="txtTelefono" class="form-label">Teléfono</label>
-                <asp:TextBox ID="txtTelefono" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="txtEmail" class="form-label">Email</label>
-                <asp:TextBox ID="txtEmail" runat="server" TextMode="Email" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-            </div>
-
-            <div class="form-group mb-4">
-                <label for="txtCobertura" class="form-label">Cobertura</label>
-                 <asp:TextBox ID="txtCobertura" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-            </div>
-
             <asp:Button ID="btnRegistrarPaciente" runat="server" Text="Registrar Paciente" CssClass="btn btn-warning mb-4" OnClick="btnRegistrarPaciente_Click" Visible="false" />
-
-            <hr class="my-4" />
 
             <!-- Datos del turno -->
             <div class="form-group mb-3">
