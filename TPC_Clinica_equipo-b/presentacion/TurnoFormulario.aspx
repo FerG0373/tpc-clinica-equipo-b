@@ -23,8 +23,6 @@
                 <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
             </div>
 
-            <asp:Button ID="btnRegistrarPaciente" runat="server" Text="Registrar Paciente" CssClass="btn btn-warning mb-4" OnClick="btnRegistrarPaciente_Click" Visible="false" />
-
             <!-- Datos del turno -->
             <div class="form-group mb-3">
                 <label for="ddlEspecialidad" class="form-label">Especialidad</label>

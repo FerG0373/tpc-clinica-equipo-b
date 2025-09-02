@@ -17,9 +17,8 @@ namespace presentacion
             if (!IsPostBack)
             {
                 cargarEspecialidades();
-                ddlMedico.Items.Insert(0, new ListItem("Seleccione un médico", "0"));
+                cargarMedicos();
                 ddlTurnoDisponible.Items.Insert(0, new ListItem("Seleccione horario disponible", "0"));
-                btnRegistrarPaciente.Visible = false;
             }
         }
 
@@ -27,13 +26,23 @@ namespace presentacion
         {
             EspecialidadNegocio negocio = new EspecialidadNegocio();
 
-            var lista = negocio.listarEspecialidades(); 
-            ddlEspecialidad.DataSource = lista;
+            ddlEspecialidad.DataSource = negocio.listarEspecialidades();
             ddlEspecialidad.DataValueField = "Id"; 
             ddlEspecialidad.DataTextField = "Descripcion";  
             ddlEspecialidad.DataBind();
 
-            ddlEspecialidad.Items.Insert(0, new ListItem("Seleccione especialidad", "0"));
+            ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
+        }
+
+        private void cargarMedicos()
+        {
+            MedicoNegocio negocio = new MedicoNegocio();
+            ddlMedico.DataSource = negocio.listarMedicos();
+            ddlMedico.DataValueField = "Id";
+            ddlEspecialidad.DataTextField = "NombreCompleto";
+            ddlMedico.DataBind();
+
+            ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
         }
 
         protected void ddlEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,24 +72,17 @@ namespace presentacion
             {
                 txtNombre.Text = paciente.Nombre;
                 txtApellido.Text = paciente.Apellido;
-                btnRegistrarPaciente.Visible = false;
             }
             else
             {
                 txtNombre.Text = "";
                 txtApellido.Text = "";
-                btnRegistrarPaciente.Visible = true;
             }
         }
 
         protected void btnGuardarTurno_Click(object sender, EventArgs e)
         {
 
-        }
-
-        protected void btnRegistrarPaciente_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("PacienteFormulario.aspx?dni=" + txtDni.Text, false);
         }
     }
 }
