@@ -24,20 +24,32 @@
             </div>
 
             <!-- Datos del turno -->
-            <div class="form-group mb-3">
-                <label for="ddlEspecialidad" class="form-label">Especialidad</label>
-                <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlEspecialidad_SelectedIndexChanged"></asp:DropDownList>
-            </div>
+            <asp:UpdatePanel ID="updEspecialidades" runat="server">
+                <ContentTemplate>
+                    <div class="form-group mb-3">
+                        <label for="ddlEspecialidad" class="form-label">Especialidad</label>
+                        <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlEspecialidad_SelectedIndexChanged"></asp:DropDownList>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
 
-            <div class="form-group mb-3">
-                <label for="ddlMedico" class="form-label">Medico</label>
-                <asp:DropDownList ID="ddlMedico" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"></asp:DropDownList>
-            </div>
+            <asp:UpdatePanel ID="updMedicos" runat="server">
+                <ContentTemplate>
+                    <div class="form-group mb-3">
+                        <label for="ddlMedico" class="form-label">Médico</label>
+                        <asp:DropDownList ID="ddlMedico" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"></asp:DropDownList>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
 
-            <div class="form-group mb-3">
-                <label for="ddlTurnoDisponible" class="form-label">Turnos Disponibles (Fecha - Hora - Médico)</label>
-                <asp:DropDownList ID="ddlTurnoDisponible" runat="server" CssClass="form-select"></asp:DropDownList>
-            </div>
+            <asp:UpdatePanel ID="updTurnos" runat="server">
+                <ContentTemplate>
+                    <div class="form-group mb-3">
+                        <label for="ddlTurnoDisponible" class="form-label">Turnos Disponibles</label>
+                        <asp:DropDownList ID="ddlTurnoDisponible" runat="server" CssClass="form-select"></asp:DropDownList>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
 
             <div class="form-group mb-3">
                 <label for="txtMotivoConsulta" class="form-label">Motivo de consulta</label>
@@ -57,6 +69,4 @@
             </div>
         </div>
     </div>
-
-
 </asp:Content>

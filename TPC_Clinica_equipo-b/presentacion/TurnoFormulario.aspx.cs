@@ -39,7 +39,7 @@ namespace presentacion
             MedicoNegocio negocio = new MedicoNegocio();
             ddlMedico.DataSource = negocio.listarMedicos();
             ddlMedico.DataValueField = "Id";
-            ddlEspecialidad.DataTextField = "NombreCompleto";
+            ddlMedico.DataTextField = "NombreCompleto";
             ddlMedico.DataBind();
 
             ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
@@ -52,9 +52,9 @@ namespace presentacion
 
             ddlMedico.DataSource = negocio.listarMedicosPorEspecialidad(especialidadId);
             ddlMedico.DataValueField = "Id";
-            ddlMedico.DataTextField = "Nombre";
+            ddlMedico.DataTextField = "NombreCompleto";
             ddlMedico.DataBind();
-            ddlMedico.Items.Insert(0, new ListItem("Seleccione un médico", "0"));
+            ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
         }
 
         protected void ddlMedico_SelectedIndexChanged(object sender, EventArgs e)

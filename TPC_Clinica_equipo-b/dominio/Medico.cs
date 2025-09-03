@@ -13,7 +13,7 @@ namespace dominio
         public string Dni { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public string NombreCompleto { get { return Apellido + ", " + Nombre; } }
+        public string NombreCompleto { get { return "Dr/a. " + Apellido + ", " + Nombre; } }
         public string Matricula { get; set; }
         public List<Especialidad> Especialidades { get; set; }
         public List<TurnoTrabajo> TurnosDeTrabajo { get; set; }

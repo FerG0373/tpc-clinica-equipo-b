@@ -58,7 +58,8 @@ namespace negocio
                 {
                     Medico aux = new Medico();
                     aux.Id = (int)datos.Lector["Id"];
-                    aux.Nombre = (string)datos.Lector["NombreCompleto"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Apellido = (string)datos.Lector["Apellido"];
                     lista.Add(aux);
                 }
 
