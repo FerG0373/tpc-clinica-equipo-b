@@ -10,6 +10,36 @@ namespace negocio
 {
     public class MedicoNegocio
     {
+        public List<Especialidad> listarEspecialidadesPorMedico(int medicoId)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Especialidad> lista = new List<Especialidad>();
+
+            try
+            {
+                datos.setearProcedimiento("SP_turnoListarEspecialidadesPorMedico");
+                datos.setearParametro("@MedicoId", medicoId);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Especialidad aux = new Especialidad();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
         public void guardarTurnosDeTrabajo(int medicoId, List<int> turnosSeleccionados)
         {
             AccesoDatos datos = new AccesoDatos();

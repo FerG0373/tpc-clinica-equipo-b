@@ -1,12 +1,12 @@
-﻿using dominio;
-using negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
+using negocio;
 
 namespace presentacion
 {
@@ -47,19 +47,38 @@ namespace presentacion
 
         protected void ddlEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int especialidadId = int.Parse(ddlEspecialidad.SelectedValue);
-            EspecialidadNegocio negocio = new EspecialidadNegocio();
+            if (ddlEspecialidad.SelectedValue != "0")
+            {
+                int especialidadId = int.Parse(ddlEspecialidad.SelectedValue);
+                EspecialidadNegocio negocio = new EspecialidadNegocio();
 
-            ddlMedico.DataSource = negocio.listarMedicosPorEspecialidad(especialidadId);
-            ddlMedico.DataValueField = "Id";
-            ddlMedico.DataTextField = "NombreCompleto";
-            ddlMedico.DataBind();
-            ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
+                ddlMedico.DataSource = negocio.listarMedicosPorEspecialidad(especialidadId);
+                ddlMedico.DataValueField = "Id";
+                ddlMedico.DataTextField = "NombreCompleto";
+                ddlMedico.DataBind();
+                ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
+            } else
+            {
+                cargarMedicos();
+            }
         }
 
         protected void ddlMedico_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ddlMedico.SelectedValue != "0")
+            {
+                int medicoId = int.Parse(ddlMedico.SelectedValue);
+                MedicoNegocio negocio = new MedicoNegocio();
 
+                ddlEspecialidad.DataSource = negocio.listarEspecialidadesPorMedico(medicoId);
+                ddlEspecialidad.DataValueField = "Id";
+                ddlEspecialidad.DataTextField = "Descripcion";
+                ddlEspecialidad.DataBind();
+                ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
+            } else
+            {
+                cargarEspecialidades();
+            }
         }
 
         protected void txtDni_TextChanged(object sender, EventArgs e)

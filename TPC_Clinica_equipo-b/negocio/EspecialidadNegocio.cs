@@ -10,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace negocio
 {
     public class EspecialidadNegocio
-    {
+    {        
         public List<(int MedicoId, Especialidad Especialidad)> listarEspecialidadesMedicos()
         {
             List<(int MedicoId, Especialidad Especialidad)> listaEspecialidadPorMedico = new List<(int, Especialidad)>();
