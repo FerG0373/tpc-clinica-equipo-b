@@ -10,6 +10,7 @@ namespace dominio
     public class Turno
     {
         public int Id { get; set; }
+        public Especialidad Especialidad { get; set; }
         public Paciente Paciente { get; set; }
         public Medico Medico { get; set; }
         public DateTime Fecha { get; set; }
