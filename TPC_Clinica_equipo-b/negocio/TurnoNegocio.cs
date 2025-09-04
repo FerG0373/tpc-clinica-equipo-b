@@ -31,14 +31,14 @@ namespace negocio
                     aux.Estado = (string)datos.Lector["estado"];
                     aux.Observaciones = (datos.Lector["observacionesMedico"] != DBNull.Value) ? (string)datos.Lector["observacionesMedico"] : "Sin observaciones";
 
-                    // 2. Instancias de Paciente.
+                    // 2. Instancia de Paciente.
                     aux.Paciente = new Paciente();
                     aux.Paciente.Id = (int)datos.Lector["PacienteId"];
                     aux.Paciente.Dni = (string)datos.Lector["PacienteDni"];
                     aux.Paciente.Nombre = (string)datos.Lector["PacienteNombre"];
                     aux.Paciente.Apellido = (string)datos.Lector["PacienteApellido"];
 
-                    // 3. Instancias de Medico.
+                    // 3. Instancia de Medico.
                     aux.Medico = new Medico();
                     aux.Medico.Id = (int)datos.Lector["MedicoId"];
                     aux.Medico.Matricula = (string)datos.Lector["Matricula"];
@@ -63,5 +63,7 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+
     }
 }

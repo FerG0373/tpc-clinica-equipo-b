@@ -79,14 +79,14 @@ namespace presentacion
                 int medicoId = int.Parse(ddlMedico.SelectedValue);
                 MedicoNegocio negocio = new MedicoNegocio();
 
-                // 1. Cargar las especialidades asociadas al médico
+                // 1. Cargar las especialidades asociadas al médico.
                 ddlEspecialidad.DataSource = negocio.listarEspecialidadesPorMedico(medicoId);
                 ddlEspecialidad.DataValueField = "Id";
                 ddlEspecialidad.DataTextField = "Descripcion";
                 ddlEspecialidad.DataBind();
                 ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
 
-                // 2. Aquí agregamos la lógica para cargar los turnos disponibles
+                // 2. Lógica para cargar los turnos disponibles.
                 cargarTurnosDisponibles(medicoId);
             }
             else
@@ -101,7 +101,14 @@ namespace presentacion
 
         private void cargarTurnosDisponibles(int medicoId)
         {
+            TurnoTrabajoNegocio negocioTrabajoNegocio = new TurnoTrabajoNegocio();
+            List<TurnoTrabajo> horariosDelMedico = negocioTrabajoNegocio.listarTurnosDeTrabajoPorMedico(medicoId);
 
+            TurnoNegocio negocio = new TurnoNegocio();
+            List<Turno> turnosOcupados = negocio.listarTurnosPorMedico(medicoId);
+
+            List<DateTime> turnosDisponibles = new List<DateTime>();
+            DateTime fechaHoy = DateTime.Now.Date; // Asumimos que los turnos son para hoy
         }
 
 
