@@ -64,6 +64,42 @@ namespace negocio
             }
         }
 
+        public List<Turno> listarTurnosPorMedico(int medicoId)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Turno> lista = new List<Turno>();
 
+            try
+            {
+                datos.setearProcedimiento("SP_turnosListarPorMedico");
+                datos.setearParametro("@medicoId", medicoId);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Turno aux = new Turno();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Fecha = (DateTime)datos.Lector["Fecha"];
+                    aux.Hora = (TimeSpan)datos.Lector["Hora"];
+                    aux.Motivo = (string)datos.Lector["Motivo"];
+                    aux.Estado = (string)datos.Lector["Estado"];
+                    aux.Observaciones = (string)datos.Lector["Observaciones"];
+                    aux.Paciente = (Paciente)datos.Lector["Paciente"];
+                    aux.Especialidad = (Especialidad)datos.Lector["Especialidad"];
+                    aux.Medico = (Medico)datos.Lector["Medico"];
+
+                    lista.Add(aux);
+                }
+                return lista;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
