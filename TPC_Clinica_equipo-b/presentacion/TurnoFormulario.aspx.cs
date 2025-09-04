@@ -47,6 +47,8 @@ namespace presentacion
 
         protected void ddlEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string medicoSeleccionado = ddlMedico.SelectedValue;
+
             if (ddlEspecialidad.SelectedValue != "0")
             {
                 int especialidadId = int.Parse(ddlEspecialidad.SelectedValue);
@@ -57,29 +59,51 @@ namespace presentacion
                 ddlMedico.DataTextField = "NombreCompleto";
                 ddlMedico.DataBind();
                 ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
-            } else
+            }
+            else
             {
                 cargarMedicos();
             }
+            // Restaurar si sigue siendo válido
+            if (ddlMedico.Items.FindByValue(medicoSeleccionado) != null)
+                ddlMedico.SelectedValue = medicoSeleccionado;
         }
+
 
         protected void ddlMedico_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string especialidadSeleccionada = ddlEspecialidad.SelectedValue;
+
             if (ddlMedico.SelectedValue != "0")
             {
                 int medicoId = int.Parse(ddlMedico.SelectedValue);
                 MedicoNegocio negocio = new MedicoNegocio();
 
+                // 1. Cargar las especialidades asociadas al médico
                 ddlEspecialidad.DataSource = negocio.listarEspecialidadesPorMedico(medicoId);
                 ddlEspecialidad.DataValueField = "Id";
                 ddlEspecialidad.DataTextField = "Descripcion";
                 ddlEspecialidad.DataBind();
                 ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
-            } else
+
+                // 2. Aquí agregamos la lógica para cargar los turnos disponibles
+                cargarTurnosDisponibles(medicoId);
+            }
+            else
             {
                 cargarEspecialidades();
             }
+
+            // Restaurar si sigue siendo válida
+            if (ddlEspecialidad.Items.FindByValue(especialidadSeleccionada) != null)
+                ddlEspecialidad.SelectedValue = especialidadSeleccionada;
         }
+
+        private void cargarTurnosDisponibles(int medicoId)
+        {
+
+        }
+
 
         protected void txtDni_TextChanged(object sender, EventArgs e)
         {

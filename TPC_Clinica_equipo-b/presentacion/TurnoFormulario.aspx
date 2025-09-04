@@ -7,23 +7,25 @@
         <div class="container mt-5">
             <asp:Label ID="lblTurnoFormulario" runat="server" Text="Alta de Turno" CssClass="text-center mb-4 d-block fs-1 fw-semibold"></asp:Label>
 
-            <!-- Datos del paciente -->
+            <!-- DATOS DEL PACIENTE -->
+            <%--DNI--%>
             <div class="form-group mb-3">
                 <label for="txtDni" class="form-label">DNI</label>
                 <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtDni_TextChanged"></asp:TextBox>
             </div>
-
+            <%--NOMBRE--%>
             <div class="form-group mb-3">
                 <label for="txtNombre" class="form-label">Nombre</label>
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
             </div>
-
+            <%--APELLIDO--%>
             <div class="form-group mb-3">
                 <label for="txtApellido" class="form-label">Apellido</label>
                 <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
             </div>
 
-            <!-- Datos del turno -->
+            <!-- DATOS DEL TURNO -->
+            <%--ESPECIALIDADES--%>
             <asp:UpdatePanel ID="updEspecialidades" runat="server">
                 <ContentTemplate>
                     <div class="form-group mb-3">
@@ -32,7 +34,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
+            <%--MEDICO--%>
             <asp:UpdatePanel ID="updMedicos" runat="server">
                 <ContentTemplate>
                     <div class="form-group mb-3">
@@ -41,7 +43,7 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
+            <%--TURNOS--%>
             <asp:UpdatePanel ID="updTurnos" runat="server">
                 <ContentTemplate>
                     <div class="form-group mb-3">
@@ -50,15 +52,10 @@
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
-
+            <%--CONSULTA--%>
             <div class="form-group mb-3">
                 <label for="txtMotivoConsulta" class="form-label">Motivo de consulta</label>
                 <asp:TextBox ID="txtMotivoConsulta" runat="server" CssClass="form-control"></asp:TextBox>
-            </div>
-
-            <div class="form-group mb-3">
-                <label for="txtObservaciones" class="form-label">Observaciones</label>
-                <asp:TextBox ID="txtObservaciones" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
             </div>
 
             <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>
