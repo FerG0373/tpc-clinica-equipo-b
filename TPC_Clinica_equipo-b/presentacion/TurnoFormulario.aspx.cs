@@ -1,12 +1,13 @@
-﻿using System;
+﻿using dominio;
+using negocio;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using dominio;
-using negocio;
 
 namespace presentacion
 {
@@ -18,7 +19,7 @@ namespace presentacion
             {
                 cargarEspecialidades();
                 cargarMedicos();
-                ddlTurnoDisponible.Items.Insert(0, new ListItem("Seleccione horario disponible", "0"));
+                ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
             }
         }
 
@@ -103,31 +104,25 @@ namespace presentacion
         {
             try
             {
-                TurnoTrabajoNegocio turnoTrabajoNegocio = new TurnoTrabajoNegocio();
-                List<TurnoTrabajo> horariosDelMedico = turnoTrabajoNegocio.listarTurnosDeTrabajoPorMedico(medicoId);
+                var negocioTT = new TurnoTrabajoNegocio();  // Se instancia para obtener los horarios de trabajo.
+                var negocioT = new TurnoNegocio();  // Se instancia para obtener los turnos ya agendados.
 
-                TurnoNegocio turnoNegocio = new TurnoNegocio();
-                List<DateTime> turnosDisponibles = new List<DateTime>();
+                var horariosDelMedico = negocioTT.listarTurnosDeTrabajoPorMedico(medicoId);  // Se llama al método para obtener la agenda del médico (ej: "Lunes de 8 a 12").
+                var turnosDisponibles = new List<DateTime>();  // Lista para guardar los turnos que se encuentren libres.
+                var fechaBusqueda = DateTime.Today;  // Se inicializa con la fecha actual.
+                                
+                for (int i = 0; i < 7 && turnosDisponibles.Count < 3; i++)  // Bucle para buscar turnos en los próximos 7 días o hasta encontrar 3.
+                {                    
+                    fechaBusqueda = fechaBusqueda.AddDays(1);  // Pasa al siguiente día en cada iteración para no asignar el turno el mismo día.                    
 
-                DateTime fechaBusqueda = DateTime.Today;
-
-                // Bucle para buscar turnos en los próximos 7 días
-                for (int i = 0; i < 7 && turnosDisponibles.Count < 3; i++)
-                {
-                    // Pasa al siguiente día en cada iteración
-                    fechaBusqueda = fechaBusqueda.AddDays(1);
-
-                    // Obtener el día de la semana en español
-                    string diaSemanaBusqueda = obtenerNombreDiaSemana(fechaBusqueda.DayOfWeek);
-
+                    string diaSemanaBusqueda = obtenerNombreDiaSemana(fechaBusqueda.DayOfWeek);  // Obtiene el día de la semana en español.
                     // Buscar si el médico trabaja este día
                     List<TurnoTrabajo> horariosDelDia = horariosDelMedico.FindAll(h => h.DiaSemana.ToLower() == diaSemanaBusqueda.ToLower());
-
                     // Si el médico trabaja este día, busca turnos disponibles
                     if (horariosDelDia.Count > 0)
                     {
                         // Obtener los turnos ocupados para esa fecha
-                        List<Turno> turnosOcupados = turnoNegocio.listarTurnosPorMedicoYFecha(medicoId, fechaBusqueda);
+                        List<Turno> turnosOcupados = negocioT.listarTurnosPorMedicoYFecha(medicoId, fechaBusqueda);
 
                         foreach (var horario in horariosDelDia)
                         {
@@ -164,20 +159,11 @@ namespace presentacion
             }
         }
 
-        // Método auxiliar para convertir el nombre del día de la semana
-        private string obtenerNombreDiaSemana(DayOfWeek dayOfWeek)
+        // Método auxiliar para convertir el nombre del día de la semana.
+        // Aunque no se vea el nombre del día en el formulario del paciente necesita saber si el médico trabaja el día de la semana que está procesando.        
+        private string obtenerNombreDiaSemana(DayOfWeek diaSemana)
         {
-            switch (dayOfWeek)
-            {
-                case DayOfWeek.Monday: return "Lunes";
-                case DayOfWeek.Tuesday: return "Martes";
-                case DayOfWeek.Wednesday: return "Miércoles";
-                case DayOfWeek.Thursday: return "Jueves";
-                case DayOfWeek.Friday: return "Viernes";
-                case DayOfWeek.Saturday: return "Sábado";
-                case DayOfWeek.Sunday: return "Domingo";
-                default: return "";
-            }
+            return new CultureInfo("es-ES").DateTimeFormat.GetDayName(diaSemana);
         }
 
 

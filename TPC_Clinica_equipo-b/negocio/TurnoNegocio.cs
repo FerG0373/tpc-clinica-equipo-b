@@ -64,38 +64,6 @@ namespace negocio
             }
         }
 
-        public List<Turno> listarTurnosPorMedico(int medicoId)
-        {
-            AccesoDatos datos = new AccesoDatos();
-            List<Turno> lista = new List<Turno>();
-
-            try
-            {
-                datos.setearProcedimiento("SP_turnoListarPorMedico");
-                datos.setearParametro("@medicoId", medicoId);
-                datos.ejecutarLectura();
-
-                while (datos.Lector.Read())
-                {
-                    Turno aux = new Turno();
-                    aux.Id = (int)datos.Lector["TurnoId"];
-                    aux.Fecha = (DateTime)datos.Lector["fecha"];
-                    aux.Hora = (TimeSpan)datos.Lector["hora"];
-
-                    lista.Add(aux);
-                }
-                return lista;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                datos.cerrarConexion();
-            }
-        }
-
         public List<Turno> listarTurnosPorMedicoYFecha(int medicoId, DateTime fecha)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -111,15 +79,13 @@ namespace negocio
                 while (datos.Lector.Read())
                 {
                     Turno aux = new Turno();
-
-                    // Para la lógica de turnos disponibles, solo necesitas la fecha y la hora.
+                    // Para la lógica de turnos disponibles, solo se necesita la fecha y la hora. No se preocupa por la presentación de los datos al usuario.
                     aux.Id = (int)datos.Lector["TurnoId"];
                     aux.Fecha = (DateTime)datos.Lector["fecha"];
                     aux.Hora = (TimeSpan)datos.Lector["hora"];
 
                     listaDeTurnos.Add(aux);
                 }
-
                 return listaDeTurnos;
             }
             catch (Exception ex)
