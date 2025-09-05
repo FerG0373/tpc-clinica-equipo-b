@@ -71,22 +71,16 @@ namespace negocio
 
             try
             {
-                datos.setearProcedimiento("SP_turnosListarPorMedico");
+                datos.setearProcedimiento("SP_turnoListarPorMedico");
                 datos.setearParametro("@medicoId", medicoId);
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
                     Turno aux = new Turno();
-                    aux.Id = (int)datos.Lector["Id"];
-                    aux.Fecha = (DateTime)datos.Lector["Fecha"];
-                    aux.Hora = (TimeSpan)datos.Lector["Hora"];
-                    aux.Motivo = (string)datos.Lector["Motivo"];
-                    aux.Estado = (string)datos.Lector["Estado"];
-                    aux.Observaciones = (string)datos.Lector["Observaciones"];
-                    aux.Paciente = (Paciente)datos.Lector["Paciente"];
-                    aux.Especialidad = (Especialidad)datos.Lector["Especialidad"];
-                    aux.Medico = (Medico)datos.Lector["Medico"];
+                    aux.Id = (int)datos.Lector["TurnoId"];
+                    aux.Fecha = (DateTime)datos.Lector["fecha"];
+                    aux.Hora = (TimeSpan)datos.Lector["hora"];
 
                     lista.Add(aux);
                 }
@@ -95,6 +89,42 @@ namespace negocio
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public List<Turno> listarTurnosPorMedicoYFecha(int medicoId, DateTime fecha)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            List<Turno> listaDeTurnos = new List<Turno>();
+
+            try
+            {
+                datos.setearProcedimiento("SP_turnoListarPorMedicoYFecha");
+                datos.setearParametro("@medicoId", medicoId);
+                datos.setearParametro("@fecha", fecha);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Turno aux = new Turno();
+
+                    // Para la lógica de turnos disponibles, solo necesitas la fecha y la hora.
+                    aux.Id = (int)datos.Lector["TurnoId"];
+                    aux.Fecha = (DateTime)datos.Lector["fecha"];
+                    aux.Hora = (TimeSpan)datos.Lector["hora"];
+
+                    listaDeTurnos.Add(aux);
+                }
+
+                return listaDeTurnos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             finally
             {
