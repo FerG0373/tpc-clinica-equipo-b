@@ -116,8 +116,8 @@ namespace presentacion
                     fechaBusqueda = fechaBusqueda.AddDays(1);  // Pasa al siguiente día en cada iteración para no asignar el turno el mismo día.                    
 
                     string diaSemanaBusqueda = obtenerNombreDiaSemana(fechaBusqueda.DayOfWeek);  // Obtiene el día de la semana en español.
-                    // Buscar si el médico trabaja este día
-                    List<TurnoTrabajo> horariosDelDia = horariosDelMedico.FindAll(h => h.DiaSemana.ToLower() == diaSemanaBusqueda.ToLower());
+                    // Buscar si el médico trabaja este día. FindAll busca en una lista y retorna otra lista con los elementos que cumplen una condición.
+                    List<TurnoTrabajo> horariosDelDia = horariosDelMedico.FindAll(tt => tt.DiaSemana.ToLower() == diaSemanaBusqueda.ToLower());
                     // Si el médico trabaja este día, busca turnos disponibles
                     if (horariosDelDia.Count > 0)
                     {
