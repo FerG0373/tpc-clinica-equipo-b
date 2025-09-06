@@ -1,8 +1,10 @@
 ﻿using dominio;
 using negocio;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -21,30 +23,7 @@ namespace presentacion
                 cargarMedicos();
                 ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
             }
-        }
-
-        private void cargarEspecialidades()
-        {
-            EspecialidadNegocio negocio = new EspecialidadNegocio();
-
-            ddlEspecialidad.DataSource = negocio.listarEspecialidades();
-            ddlEspecialidad.DataValueField = "Id"; 
-            ddlEspecialidad.DataTextField = "Descripcion";  
-            ddlEspecialidad.DataBind();
-
-            ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
-        }
-
-        private void cargarMedicos()
-        {
-            MedicoNegocio negocio = new MedicoNegocio();
-            ddlMedico.DataSource = negocio.listarMedicos();
-            ddlMedico.DataValueField = "Id";
-            ddlMedico.DataTextField = "NombreCompleto";
-            ddlMedico.DataBind();
-
-            ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
-        }
+        }        
 
         protected void ddlEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -70,7 +49,6 @@ namespace presentacion
                 ddlMedico.SelectedValue = medicoSeleccionado;
         }
 
-
         protected void ddlMedico_SelectedIndexChanged(object sender, EventArgs e)
         {
             string especialidadSeleccionada = ddlEspecialidad.SelectedValue;
@@ -93,6 +71,8 @@ namespace presentacion
             else
             {
                 cargarEspecialidades();
+                ddlTurnoDisponible.Items.Clear();
+                ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
             }
 
             // Restaurar si sigue siendo válida
@@ -100,72 +80,119 @@ namespace presentacion
                 ddlEspecialidad.SelectedValue = especialidadSeleccionada;
         }
 
+        private void cargarEspecialidades()
+        {
+            EspecialidadNegocio negocio = new EspecialidadNegocio();
+
+            ddlEspecialidad.DataSource = negocio.listarEspecialidades();
+            ddlEspecialidad.DataValueField = "Id";
+            ddlEspecialidad.DataTextField = "Descripcion";
+            ddlEspecialidad.DataBind();
+
+            ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
+        }
+
+        private void cargarMedicos()
+        {
+            MedicoNegocio negocio = new MedicoNegocio();
+            ddlMedico.DataSource = negocio.listarMedicos();
+            ddlMedico.DataValueField = "Id";
+            ddlMedico.DataTextField = "NombreCompleto";
+            ddlMedico.DataBind();
+
+            ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
+        }
+
         private void cargarTurnosDisponibles(int medicoId)
         {
             try
             {
-                var negocioTT = new TurnoTrabajoNegocio();  // Se instancia para obtener los horarios de trabajo.
-                var negocioT = new TurnoNegocio();  // Se instancia para obtener los turnos ya agendados.
+                // Llama al método que se encarga de la lógica de búsqueda.
+                var turnosDisponibles = buscarProximosTurnos(medicoId);
 
-                var horariosDelMedico = negocioTT.listarTurnosDeTrabajoPorMedico(medicoId);  // Se llama al método para obtener la agenda del médico (ej: "Lunes de 8 a 12").
-                var turnosDisponibles = new List<DateTime>();  // Lista para guardar los turnos que se encuentren libres.
-                var fechaBusqueda = DateTime.Today;  // Se inicializa con la fecha actual.
-                                
-                for (int i = 0; i < 7 && turnosDisponibles.Count < 3; i++)  // Bucle para buscar turnos en los próximos 7 días o hasta encontrar 3.
-                {                    
-                    fechaBusqueda = fechaBusqueda.AddDays(1);  // Pasa al siguiente día en cada iteración para no asignar el turno el mismo día.                    
-
-                    string diaSemanaBusqueda = obtenerNombreDiaSemana(fechaBusqueda.DayOfWeek);  // Obtiene el día de la semana en español.
-                    // Buscar si el médico trabaja este día. FindAll busca en una lista y retorna otra lista con los elementos que cumplen una condición.
-                    List<TurnoTrabajo> horariosDelDia = horariosDelMedico.FindAll(tt => tt.DiaSemana.ToLower() == diaSemanaBusqueda.ToLower());
-                    // Si el médico trabaja este día, busca turnos disponibles
-                    if (horariosDelDia.Count > 0)
-                    {
-                        // Obtener los turnos ocupados para esa fecha
-                        List<Turno> turnosOcupados = negocioT.listarTurnosPorMedicoYFecha(medicoId, fechaBusqueda);
-
-                        foreach (var horario in horariosDelDia)
-                        {
-                            DateTime horaActual = fechaBusqueda.Date.Add(horario.HoraInicio);
-                            DateTime horaFin = fechaBusqueda.Date.Add(horario.HoraFin);
-
-                            while (horaActual < horaFin && turnosDisponibles.Count < 3)
-                            {
-                                if (!turnosOcupados.Any(t => t.Fecha.Date == horaActual.Date && t.Hora.Hours == horaActual.Hour))
-                                {
-                                    turnosDisponibles.Add(horaActual);
-                                }
-                                horaActual = horaActual.AddHours(1);
-                            }
-                        }
-                    }
-                }
-                // Cargar el DropDownList con la lista filtrada
-                if (turnosDisponibles.Count > 0)
-                {
-                    ddlTurnoDisponible.DataSource = turnosDisponibles;
-                    ddlTurnoDisponible.DataBind();
-                    ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
-                }
-                else
-                {
-                    ddlTurnoDisponible.Items.Insert(0, new ListItem("-- No hay turnos disponibles --", "0"));
-                }
+                // Llama al método que carga el DropDownList.
+                cargarDropDownList(turnosDisponibles);
             }
             catch (Exception ex)
             {
-                lblError.Text = "❌ Ocurrió un error al cargar los turnos disponibles: " + ex.Message;
+                lblError.Text = "❌ Ocurrió un error: " + ex.Message;
                 lblError.Visible = true;
             }
         }
 
-        // Método auxiliar para convertir el nombre del día de la semana.
-        // Aunque no se vea el nombre del día en el formulario del paciente necesita saber si el médico trabaja el día de la semana que está procesando.        
+        private List<DateTime> buscarProximosTurnos(int medicoId)
+        {
+            var negocioTT = new TurnoTrabajoNegocio();  // Se instancia para obtener los horarios de trabajo.
+            var negocioT = new TurnoNegocio();  // Se instancia para obtener los turnos ya agendados.
+
+            var horariosDelMedico = negocioTT.listarTurnosDeTrabajoPorMedico(medicoId);  // Se llama al método para obtener la agenda del médico (ej: "Lunes de 8 a 12").
+            var fechaBusqueda = DateTime.Today;  // Se inicializa con la fecha actual.
+            var turnosDisponibles = new List<DateTime>();  // Lista para guardar los turnos que se encuentren libres.
+
+            for (int i = 0; i < 7 && turnosDisponibles.Count < 5; i++)  // Bucle para buscar turnos en los próximos 7 días o hasta encontrar 5.
+            {
+                fechaBusqueda = fechaBusqueda.AddDays(1);  // Pasa al siguiente día en cada iteración para no asignar el turno el mismo día.
+                string diaSemanaBusqueda = obtenerNombreDiaSemana(fechaBusqueda.DayOfWeek);  // Obtiene el día de la semana en español.
+
+                // Esta lista contiene los horarios de trabajo del médico, pero solo para un día específico. FindAll() busca en una lista y retorna otra lista con los elementos que cumplen una condición.
+                List<TurnoTrabajo> horariosDelDia = horariosDelMedico.FindAll(h => h.DiaSemana.ToLower() == diaSemanaBusqueda.ToLower());
+
+                // Verifica si la lista horariosDelDia contiene algún elemento. O sea, cuenta cuántos horarios de trabajo tiene el médico para ese día de la semana que se está buscando.
+                if (horariosDelDia.Count > 0)
+                {
+                    // Obtener los turnos de una fecha. Es la lista de objetos Turno que se obtuvo de la base de datos (los que están agendados).
+                    List<Turno> turnosOcupados = negocioT.listarTurnosPorMedicoYFecha(medicoId, fechaBusqueda);
+
+                    // Recorre cada rango de horario de trabajo del médico para el día actual.
+                    // Por ejemplo, si el médico trabaja de 8 a 12 y de 16 a 20, este bucle se ejecutará dos veces.
+                    foreach (var horario in horariosDelDia)
+                    {
+                        // Combina la fecha de búsqueda con la hora de inicio del turno de trabajo. Esto crea un punto de partida para generar los turnos. Por ejemplo: 08/09/2025 08:00:00.
+                        DateTime fechaHoraActual = fechaBusqueda.Date.Add(horario.HoraInicio);
+                        // Combina la fecha con la hora de fin del turno de trabajo. Esto es el límite hasta donde se generarán turnos. Por ejemplo: 08/09/2025 12:00:00.
+                        DateTime fechaHoraFin = fechaBusqueda.Date.Add(horario.HoraFin);
+
+                        // Asegura que el bucle no genere turnos más allá del horario de trabajo del médico y verifica si la cantidad de turnos que ya se han encontrado y añadido a la lista es menor que 5.
+                        while (fechaHoraActual < fechaHoraFin && turnosDisponibles.Count < 5)
+                        {
+                            // Any() pregunta si algún elemento en la lista cumple una condición.
+                            // Compara solo la fecha de un turno ocupado (t.Fecha) con la fecha del turno que estamos generando (fechaHoraActual).
+                            // Compara solo la hora de un turno ocupado(t.Hora) con la hora del turno que estamos generando(fechaHoraActual).
+                            // O sea, si NO hay ningún turno ocupado que coincida con la fecha y hora que estamos buscando, entonces este turno está disponible y lo agrego a la lista.
+                            if (!turnosOcupados.Any(t => t.Fecha.Date == fechaHoraActual.Date && t.Hora.Hours == fechaHoraActual.Hour))
+                            {
+                                turnosDisponibles.Add(fechaHoraActual);
+                            }
+                            fechaHoraActual = fechaHoraActual.AddHours(1);  // Contador.
+                        }
+                    }
+                }
+            }
+            return turnosDisponibles;
+        }
+
         private string obtenerNombreDiaSemana(DayOfWeek diaSemana)
         {
+            // Método auxiliar para convertir el nombre del día de la semana.
+            // Aunque no se vea el nombre del día en el formulario del paciente necesita saber si el médico trabaja el día de la semana que está procesando.
             return new CultureInfo("es-ES").DateTimeFormat.GetDayName(diaSemana);
         }
 
+        private void cargarDropDownList(List<DateTime> turnosDisponibles)
+        {
+            ddlTurnoDisponible.Items.Clear();
+
+            if (turnosDisponibles.Count > 0)
+            {
+                ddlTurnoDisponible.DataSource = turnosDisponibles;
+                ddlTurnoDisponible.DataBind();
+                ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
+            }
+            else
+            {
+                ddlTurnoDisponible.Items.Insert(0, new ListItem("-- No hay turnos disponibles --", "0"));
+            }
+        }
 
         protected void txtDni_TextChanged(object sender, EventArgs e)
         {
