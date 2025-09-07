@@ -60,10 +60,11 @@
             <div class="form-group mb-3">
                 <label for="txtMotivoConsulta" class="form-label">Motivo de consulta</label>
                 <asp:TextBox ID="txtMotivoConsulta" runat="server" CssClass="form-control"></asp:TextBox>
+                <asp:Label ID="lblErrorMotivoConsulta" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
             </div>            
             <%--BOTÓN GUARDAR--%>
             <div class="text-center mt-4">
-                <asp:Button ID="btnGuardarTurno" runat="server" Text="💾 Guardar Turno" CssClass="btn btn-primary px-4 mt-3 mb-4" OnClick="btnGuardarTurno_Click" />
+                <asp:Button ID="btnGuardarTurno" runat="server" Text="💾 Guardar Turno" CssClass="btn btn-success px-4 me-4 mt-3 mb-4" OnClick="btnGuardarTurno_Click" />
                 <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-secondary ms-2 mt-3 mb-4" PostBackUrl="TurnoLista.aspx" />
             </div>
             <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>

@@ -255,6 +255,13 @@ namespace presentacion
                 validacionExitosa = false;
             }
 
+            if (string.IsNullOrWhiteSpace(txtMotivoConsulta.Text))
+            {
+                lblErrorMotivoConsulta.Text = "⚠️ Debe ingresar el motivo de la consulta.";
+                lblErrorMotivoConsulta.Visible = true;
+                validacionExitosa = false;
+            }
+
             return validacionExitosa;
         }
 
@@ -285,11 +292,13 @@ namespace presentacion
                 nuevo.Hora = nuevo.Fecha.TimeOfDay;
 
                 nuevo.Motivo = txtMotivoConsulta.Text;
-                nuevo.Estado = "Agendado";
+                nuevo.Estado = "Nuevo";
                 
                 turnoNegocio.insertarTurno(nuevo);
 
                 Session["MensajeExito"] = "✅ Turno agendado con éxito.";
+
+                Response.Redirect("TurnoLista.aspx", false);
             }
             catch (Exception ex)
             {

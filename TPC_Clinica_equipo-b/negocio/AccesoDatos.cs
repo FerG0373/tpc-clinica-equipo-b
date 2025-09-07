@@ -45,7 +45,7 @@ namespace negocio
 
         public void setearParametro(string nombre, object valor)
         {
-            comando.Parameters.AddWithValue(nombre, valor);  // Para parámetros comunes de entrada.
+            comando.Parameters.AddWithValue(nombre, valor ?? DBNull.Value);  // Para parámetros comunes de entrada.
         }
 
         public void setearParametroSalida(SqlParameter parametro)

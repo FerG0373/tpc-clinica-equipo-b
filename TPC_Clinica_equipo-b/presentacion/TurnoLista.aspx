@@ -14,7 +14,7 @@
                 <ContentTemplate>
                     <%--GridView--%>
                     <asp:GridView runat="server" ID="dgvTurnos" AutoGenerateColumns="false" DataKeyNames="Id"
-                        CssClass="table table-bordered table-hover text-center"
+                        CssClass="table table-bordered table-hover table-striped" HeaderStyle-CssClass="text-center table-success" RowStyle-CssClass="text-center"
                         OnPageIndexChanging="dgvTurnos_PageIndexChanging"
                         AllowPaging="true" PageSize="8">
                         <Columns>

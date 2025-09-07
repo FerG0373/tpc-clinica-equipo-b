@@ -179,6 +179,7 @@ namespace negocio
                     Paciente paciente = new Paciente();
 
                     // Mapea los datos de la Persona
+                    paciente.Id = (int)datos.Lector["PacienteId"];
                     paciente.Dni = (string)datos.Lector["dni"];
                     paciente.Nombre = (string)datos.Lector["nombre"];
                     paciente.Apellido = (string)datos.Lector["apellido"];
