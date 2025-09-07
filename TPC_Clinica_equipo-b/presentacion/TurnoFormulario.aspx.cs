@@ -212,9 +212,91 @@ namespace presentacion
             }
         }
 
+        private bool validarFormulario()
+        {
+            lblErrorDni.Visible = false;
+            lblErrorEspecialidad.Visible = false;
+            lblErrorMedico.Visible = false;
+            lblErrorTurno.Visible = false;
+
+            bool validacionExitosa = true;
+
+            if (string.IsNullOrWhiteSpace(txtDni.Text))
+            {
+                lblErrorDni.Text = "⚠️ Debe ingresar el DNI del paciente.";
+                lblErrorDni.Visible = true;
+                validacionExitosa = false;
+            }
+            else if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                lblErrorDni.Text = "⚠️ El DNI ingresado no corresponde a un paciente existente.";
+                lblErrorDni.Visible = true;
+                validacionExitosa = false;
+            }
+
+            if (ddlEspecialidad.SelectedValue == "0")
+            {
+                lblErrorEspecialidad.Text = "⚠️ Debe seleccionar una especialidad.";
+                lblErrorEspecialidad.Visible = true;
+                validacionExitosa = false;
+            }
+
+            if (ddlMedico.SelectedValue == "0")
+            {
+                lblErrorMedico.Text = "⚠️ Debe seleccionar un médico.";
+                lblErrorMedico.Visible = true;
+                validacionExitosa = false;
+            }
+
+            if (ddlTurnoDisponible.SelectedValue == "0")
+            {
+                lblErrorTurno.Text = "⚠️ Debe seleccionar un horario de turno.";
+                lblErrorTurno.Visible = true;
+                validacionExitosa = false;
+            }
+
+            return validacionExitosa;
+        }
+
         protected void btnGuardarTurno_Click(object sender, EventArgs e)
         {
+            if (!validarFormulario())
+            {
+                return;
+            }
 
+            try
+            {
+                Turno nuevo = new Turno();
+                TurnoNegocio turnoNegocio = new TurnoNegocio();
+                PacienteNegocio pacienteNegocio = new PacienteNegocio();
+                EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
+                MedicoNegocio medicoNegocio = new MedicoNegocio();
+
+                nuevo.Paciente = pacienteNegocio.buscarPorDni(txtDni.Text);
+
+                int especialidadId = int.Parse(ddlEspecialidad.SelectedValue);
+                nuevo.Especialidad = especialidadNegocio.obtenerEspecialidadPorId(especialidadId);
+
+                int medicoId = int.Parse(ddlMedico.SelectedValue);
+                nuevo.Medico = medicoNegocio.obtenerMedicoPorId(medicoId);
+
+                nuevo.Fecha = DateTime.Parse(ddlTurnoDisponible.SelectedValue);
+                nuevo.Hora = nuevo.Fecha.TimeOfDay;
+
+                nuevo.Motivo = txtMotivoConsulta.Text;
+                nuevo.Estado = "Agendado";
+                
+                turnoNegocio.insertarTurno(nuevo);
+
+                Session["MensajeExito"] = "✅ Turno agendado con éxito.";
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = "❌ Error al guardar el turno: " + ex.Message;
+                lblError.Visible = true;
+                throw ex;
+            }
         }
     }
 }
