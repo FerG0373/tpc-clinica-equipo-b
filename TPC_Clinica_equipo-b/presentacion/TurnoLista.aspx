@@ -45,14 +45,15 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField HeaderText="Estado" DataField="Estado" />
-                            <asp:CommandField HeaderText="Ver" ShowSelectButton="true" SelectText="👁️" />
+                            <asp:CommandField HeaderText="Ver" ShowSelectButton="true" SelectText="🔍" />
                             <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="✏️" />
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="text-center mt-5">
-                <a href="TurnoFormulario.aspx" class="btn btn-success btn-lg px-4 mb-4">🗓️ Nuevo Turno</a>
+                <a href="TurnoFormulario.aspx" class="btn btn-success px-4 mb-4 me-4">🗓️ Nuevo Turno</a>
+                <a href="Default.aspx" class="btn btn-warning px-4 mb-4">Atrás</a>
             </div>
         </div>
     </div>

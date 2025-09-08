@@ -70,8 +70,8 @@
             </asp:UpdatePanel>
             <%--Botón--%>
             <div class="text-center mt-5">
-                <a href="MedicoFormulario.aspx" class="btn btn-success btn-lg px-4 mb-5 me-5">🞤 Agregar Médico</a>
-                <a href="Default.aspx" class="btn btn-warning btn-lg px-4 mb-5">Atrás</a>
+                <a href="MedicoFormulario.aspx" class="btn btn-success px-4 mb-5 me-4">🞤 Agregar Médico</a>
+                <a href="Default.aspx" class="btn btn-warning px-4 mb-5">Atrás</a>
             </div>
         </div>
     </div>

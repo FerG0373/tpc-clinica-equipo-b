@@ -129,7 +129,13 @@ namespace presentacion
             var fechaBusqueda = DateTime.Today;  // Se inicializa con la fecha actual.
             var turnosDisponibles = new List<DateTime>();  // Lista para guardar los turnos que se encuentren libres.
 
-            for (int i = 0; i < 7 && turnosDisponibles.Count < 5; i++)  // Bucle para buscar turnos en los próximos 7 días o hasta encontrar 5.
+            // Si el médico no tiene horarios de trabajo, se devuelve una lista vacía.
+            if (horariosDelMedico.Count == 0)
+            {
+                return turnosDisponibles;
+            }
+
+            while (turnosDisponibles.Count < 5)  // Bucle para buscar 5 turnos en los próximos días.
             {
                 fechaBusqueda = fechaBusqueda.AddDays(1);  // Pasa al siguiente día en cada iteración para no asignar el turno el mismo día.
                 string diaSemanaBusqueda = obtenerNombreDiaSemana(fechaBusqueda.DayOfWeek);  // Obtiene el día de la semana en español.

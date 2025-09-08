@@ -48,10 +48,10 @@
         </header>
 
         <!-- Main -->
-        <div class="flex-grow-1">
+        <main class="flex-grow-1">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-        </div>
+        </main>
 
         <!-- Footer -->
         <footer class="bg-success text-white text-center py-3 mt-auto">

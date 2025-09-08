@@ -63,7 +63,7 @@
                 </div>
                 <%--Botón guardar--%>
                 <div class="text-center mt-5 mb-5">
-                    <asp:Button ID="btnGuardar" runat="server" Text="💾 Guardar" CssClass="btn btn-success px-4 me-5" OnClick="btnGuardar_Click" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="💾 Guardar" CssClass="btn btn-success px-4 me-4" OnClick="btnGuardar_Click" />
                     <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-danger px-4" OnClick="btnCancelar_Click" />
                 </div>
                  <asp:Label ID="lblError" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />

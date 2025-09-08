@@ -3,7 +3,6 @@
 <%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>--%>
 <asp:Content ID="IndexMainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <main>
         <%--Carrusel--%>
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
@@ -65,5 +64,4 @@
                 <span class="btn-text">Pacientes</span>
             </a>
         </div>
-    </main>
 </asp:Content>
