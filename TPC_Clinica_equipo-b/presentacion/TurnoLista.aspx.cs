@@ -37,10 +37,35 @@ namespace presentacion
             dgvTurnos.DataBind();
         }
 
+        protected string GetEstadoCssClass(object estado)
+        {
+            string estadoTexto = estado.ToString().Trim().ToLower();
+
+            switch (estadoTexto)
+            {
+                case "nuevo":
+                    return "fw-bold text-success"; // Verde y negrita.
+                case "reprogramado":
+                    return "fw-bold text-info"; // Azul claro y negrita.
+                case "cancelado":
+                    return "fw-bold text-danger"; // Rojo y negrita.
+                case "no asistio":
+                case "cerrado":
+                    return "fw-bold text-dark"; // Negro y negrita.
+                default:
+                    return "fw-bold"; // Negrita por defecto para cualquier otro caso.
+            }
+        }
+
+        protected void dgvTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvTurnos.SelectedDataKey.Value.ToString();
+            Response.Redirect("TurnoListaDetalle.aspx?id=" + id);
+        }
+
         protected void dgvTurnos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
 
         }
-
     }
 }

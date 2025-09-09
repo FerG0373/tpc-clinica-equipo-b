@@ -14,13 +14,10 @@
                 <ContentTemplate>
                     <%--GridView--%>
                     <asp:GridView runat="server" ID="dgvTurnoTrabajoMedico" AutoGenerateColumns="false" DataKeyNames="Id"
-                        OnSelectedIndexChanged="dgvTurnoTrabajoMedico_SelectedIndexChanged"
-                        OnPageIndexChanging="dgvTurnoTrabajoMedico_PageIndexChanging"
                         CssClass="table table-bordered table-hover table-striped"
                         HeaderStyle-CssClass="text-center table-primary"
                         RowStyle-CssClass="text-center"
-                        AllowPaging="True" PageSize="10"
-                        OnRowCommand="dgvTurnoTrabajoMedico_RowCommand">
+                        AllowPaging="True" PageSize="10">
                         <Columns>
                             <asp:BoundField HeaderText="Dia" DataField="DiaSemana" />
                             <asp:BoundField HeaderText="Hora Inicio" DataField="HoraInicio" DataFormatString="{0:hh\:mm}" />
@@ -36,8 +33,8 @@
             </asp:UpdatePanel>
             <%--Botón--%>
             <div class="text-center mt-5">
-                <asp:Button ID="btnAsignar" runat="server" Text="🞤 Asignar" CssClass="btn btn-success btn-lg px-4 me-5" OnClick="btnAsignar_Click" />
-                <asp:Button ID="btnAtras" runat="server" Text="Atrás" CssClass="btn btn-warning btn-lg px-4" OnClick="btnAtras_Click" />
+                <asp:Button ID="btnAsignar" runat="server" Text="🞤 Asignar" CssClass="btn btn-success px-4 me-4" OnClick="btnAsignar_Click" />
+                <asp:Button ID="btnAtras" runat="server" Text="Atrás" CssClass="btn btn-warning px-4" OnClick="btnAtras_Click" />
             </div>
         </div>
     </div>

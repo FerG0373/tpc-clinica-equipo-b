@@ -31,8 +31,8 @@
             
             <%-- Botones Aceptar y Cancelar --%>
             <div class="text-center mt-5">
-                <asp:Button ID="btnAceptar" runat="server" Text="💾 Aceptar" CssClass="btn btn-success btn-lg px-4 me-5" OnClick="btnAceptar_Click" />
-                <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-danger btn-lg px-4" OnClick="btnCancelar_Click" />
+                <asp:Button ID="btnAceptar" runat="server" Text="💾 Aceptar" CssClass="btn btn-success px-4 me-4" OnClick="btnAceptar_Click" />
+                <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-danger px-4" OnClick="btnCancelar_Click" />
             </div>
             
         </div>

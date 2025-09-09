@@ -15,36 +15,42 @@
                     <%--GridView--%>
                     <asp:GridView runat="server" ID="dgvTurnos" AutoGenerateColumns="false" DataKeyNames="Id"
                         CssClass="table table-bordered table-hover table-striped" HeaderStyle-CssClass="text-center table-success" RowStyle-CssClass="text-center"
+                        OnSelectedIndexChanged="dgvTurnos_SelectedIndexChanged"
                         OnPageIndexChanging="dgvTurnos_PageIndexChanging"
                         AllowPaging="true" PageSize="8">
                         <Columns>
                             <asp:TemplateField HeaderText="Fecha">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# Eval("Fecha", "{0:dd/MM/yyyy}") %>'></asp:Label>
+                                    <asp:Label ID="lblFecha" runat="server" Text='<%# Eval("Fecha", "{0:dd/MM/yyyy}") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Hora">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# Eval("Hora", "{0:hh\\:mm}") %>'></asp:Label>
+                                    <asp:Label ID="lblHora" runat="server" Text='<%# Eval("Hora", "{0:hh\\:mm}") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField HeaderText="DNI" DataField="Paciente.Dni" />
                             <asp:TemplateField HeaderText="Paciente">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# Eval("Paciente.Apellido") + ", " + Eval("Paciente.Nombre") %>'></asp:Label>
+                                    <asp:Label ID="lblDni" runat="server" Text='<%# Eval("Paciente.Apellido") + ", " + Eval("Paciente.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Especialidad">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# Eval("Especialidad.Descripcion") %>'></asp:Label>
+                                    <asp:Label ID="lblEspecialidad" runat="server" Text='<%# Eval("Especialidad.Descripcion") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Medico">
                                 <ItemTemplate>
-                                    <asp:Label runat="server" Text='<%# Eval("Medico.Apellido") + ", " + Eval("Medico.Nombre") %>'></asp:Label>
+                                    <asp:Label ID="lblMedico" runat="server" Text='<%# Eval("Medico.Apellido") + ", " + Eval("Medico.Nombre") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField HeaderText="Estado" DataField="Estado" />
+                            <asp:TemplateField HeaderText="Estado" SortExpression="Estado">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblEstado" runat="server" Text='<%# Eval("Estado") %>' CssClass='<%# GetEstadoCssClass(Eval("Estado")) %>'>
+                                    </asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <asp:CommandField HeaderText="Ver" ShowSelectButton="true" SelectText="🔍" />
                             <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="✏️" />
                         </Columns>

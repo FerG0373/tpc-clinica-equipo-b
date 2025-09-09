@@ -89,6 +89,7 @@
     <Content Include="Registro.aspx" />
     <Content Include="MedicoLista.aspx" />
     <Content Include="TurnoFormulario.aspx" />
+    <Content Include="TurnoListaDetalle.aspx" />
     <Content Include="TurnoTrabajoFormulario.aspx" />
     <Content Include="TurnoTrabajoAsignar.aspx" />
     <Content Include="TurnoTrabajoLista.aspx" />
@@ -221,6 +222,13 @@
     </Compile>
     <Compile Include="TurnoFormulario.aspx.designer.cs">
       <DependentUpon>TurnoFormulario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TurnoListaDetalle.aspx.cs">
+      <DependentUpon>TurnoListaDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TurnoListaDetalle.aspx.designer.cs">
+      <DependentUpon>TurnoListaDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="TurnoTrabajoFormulario.aspx.cs">
       <DependentUpon>TurnoTrabajoFormulario.aspx</DependentUpon>

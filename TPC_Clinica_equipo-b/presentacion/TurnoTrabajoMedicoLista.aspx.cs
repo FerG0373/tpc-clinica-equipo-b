@@ -55,21 +55,6 @@ namespace presentacion
             }
         }
 
-        protected void dgvTurnoTrabajoMedico_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void dgvTurnoTrabajoMedico_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-
-        }
-
-        protected void dgvTurnoTrabajoMedico_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-
-        }
-
         protected void btnAsignar_Click(object sender, EventArgs e)
         {
             // Obtener el ID del médico guardado en ViewState

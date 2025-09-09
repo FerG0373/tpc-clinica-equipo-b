@@ -40,8 +40,8 @@
 
                 <%--Botón guardar--%>
                 <div class="text-center mt-5 mb-5">
-                    <asp:Button ID="btnGuardar" runat="server" Text="💾 Guardar" CssClass="btn btn-success btn-lg px-4 me-5" OnClick="btnGuardar_Click" />
-                    <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-danger btn-lg px-4" OnClick="btnCancelar_Click" />
+                    <asp:Button ID="btnGuardar" runat="server" Text="💾 Guardar" CssClass="btn btn-success px-4 me-4" OnClick="btnGuardar_Click" />
+                    <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-danger px-4" OnClick="btnCancelar_Click" />
                 </div>
                 <div class="text-center mt-3">
                     <asp:Label ID="lblError" runat="server" CssClass="text-danger fw-bold" Visible="false" />
