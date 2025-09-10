@@ -4,90 +4,69 @@
 </asp:Content>--%>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">
-        <h2 class="text-center mb-4">Detalle del Turno</h2>
-
-        <div class="row">
-            <div class="col-md-10 mx-auto">
-                <table class="table table-bordered">
-                    <!-- Cabecera: izquierda (Detalles del Turno) y derecha (Motivo de Consulta) -->
-                    <tr class="table-success">
-                        <th colspan="2">Detalles del Turno</th>
-                        <th colspan="2">Motivo de Consulta</th>
-                    </tr>
-
-                    <!-- Primera fila de datos: Fecha (izq) y CELDA DERECHA que ocupa varias filas -->
-                    <tr>
-                        <th>Fecha:</th>
-                        <td>
-                            <asp:Label ID="lblFecha" runat="server" />
-                        </td>
-
-                        <!-- IMPORTANTE: rowspan debe cubrir todas las filas de la columna izquierda -->
-                        <td colspan="2" rowspan="7" class="align-top p-0">
-                            <table class="table mb-0">
-                                <!-- Fila Motivo de consulta -->
-
-                                <tr>
-                                    <td style="border-bottom: none;">
-                                        <asp:Label ID="lblMotivo" runat="server" />
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td style="height: 82px;"></td>
-                                </tr>
-                                <!-- Fila Observaciones del médico -->
-                                <tr class="table-success">
-                                    <th>Observaciones del Médico:</th>
-                                </tr>
-                                <tr>
-                                    <td style="border-bottom: none;">
-                                        <asp:Label ID="lblObservaciones" runat="server" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-
-                    <!-- Resto de filas de la columna izquierda -->
-                    <tr>
-                        <th>Hora:</th>
-                        <td>
-                            <asp:Label ID="lblHora" runat="server" /></td>
-                    </tr>
-                    <tr>
-                        <th>DNI:</th>
-                        <td>
-                            <asp:Label ID="lblDNI" runat="server" /></td>
-                    </tr>
-                    <tr>
-                        <th>Paciente:</th>
-                        <td>
-                            <asp:Label ID="lblPaciente" runat="server" /></td>
-                    </tr>
-                    <tr>
-                        <th>Especialidad:</th>
-                        <td>
-                            <asp:Label ID="lblEspecialidad" runat="server" /></td>
-                    </tr>
-                    <tr>
-                        <th>Médico:</th>
-                        <td>
-                            <asp:Label ID="lblMedico" runat="server" /></td>
-                    </tr>
-                    <tr>
-                        <th>Estado:</th>
-                        <td>
-                            <asp:Label ID="lblEstado" runat="server" /></td>
-                    </tr>
-
-                </table>
+    <h2 class="text-center mb-5">Detalle del Turno</h2>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header bg-success-subtle p-0">
+                    <div class="row g-0">
+                        <div class="col-6 py-2 px-3 fw-bold border-end">Información del Turno:</div>
+                        <div class="col-6 py-2 px-3 fw-bold">Motivo de la Consulta:</div>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        <div class="col-6 border-end">
+                            <div class="p-3">
+                                <div class="row mb-2">
+                                    <div class="col-4 fw-bold">Fecha:</div>
+                                    <div class="col-8"><asp:Label ID="lblFecha" runat="server" /></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4 fw-bold">Hora:</div>
+                                    <div class="col-8"><asp:Label ID="lblHora" runat="server" /></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4 fw-bold">DNI:</div>
+                                    <div class="col-8"><asp:Label ID="lblDNI" runat="server" /></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4 fw-bold">Paciente:</div>
+                                    <div class="col-8"><asp:Label ID="lblPaciente" runat="server" /></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4 fw-bold">Especialidad:</div>
+                                    <div class="col-8"><asp:Label ID="lblEspecialidad" runat="server" /></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4 fw-bold">Médico:</div>
+                                    <div class="col-8"><asp:Label ID="lblMedico" runat="server" /></div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4 fw-bold">Estado:</div>
+                                    <div class="col-8"><asp:Label ID="lblEstado" runat="server" /></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3">
+                                <asp:Label ID="lblMotivo" runat="server" />
+                            </div>
+                            
+                            <div class="card-header bg-success-subtle py-2 mt-4 px-3 fw-bold">Observaciones del Médico:</div>
+                            <div class="p-3">
+                                <asp:Label ID="lblObservaciones" runat="server" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="d-flex justify-content-center mt-4">
-            <asp:Button ID="btnEditar" runat="server" Text="✏️ Editar" CssClass="btn btn-success me-2 me-4" />
-            <asp:Button ID="btnCerrar" runat="server" Text="Atrás" PostBackUrl="~/TurnoLista.aspx" CssClass="btn btn-warning" />
-        </div>
     </div>
+
+    <div class="d-flex justify-content-center mt-4">
+        <asp:Button ID="btnEditar" runat="server" Text="✏️ Editar" CssClass="btn btn-success px-4 me-4 mt-4" />
+        <a href="TurnoLista.aspx" class="btn btn-warning px-4 mt-4">Atrás</a>
+    </div>
+</div>
 </asp:Content>
