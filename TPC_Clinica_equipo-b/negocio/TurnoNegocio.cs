@@ -11,7 +11,7 @@ namespace negocio
 {
     public class TurnoNegocio
     {
-        public List<Turno> listarTurnos()
+        public List<Turno> listarTurnos(string id = "")
         {
             AccesoDatos datos = new AccesoDatos();
             List<Turno> listaDeTurnos = new List<Turno>();
@@ -19,6 +19,15 @@ namespace negocio
             try
             {
                 datos.setearProcedimiento("SP_turnoListar");
+
+                if (!string.IsNullOrEmpty(id))
+                {
+                    if (int.TryParse(id, out int idNumerico))
+                    {
+                        datos.setearParametro("@id", idNumerico);
+                    }
+                }
+
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {

@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Clinica_DB]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Database [Clinica_DB]    Script Date: 09/09/2025 23:40:49 ******/
 CREATE DATABASE [Clinica_DB]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [Clinica_DB] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANU
 GO
 USE [Clinica_DB]
 GO
-/****** Object:  Table [dbo].[Especialidad]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[Especialidad]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[Especialidad](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Medico]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[Medico]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -112,7 +112,7 @@ CREATE TABLE [dbo].[Medico](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Medico_Especialidad]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[Medico_Especialidad]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -127,7 +127,7 @@ CREATE TABLE [dbo].[Medico_Especialidad](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Medico_TurnoTrabajo]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[Medico_TurnoTrabajo]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -142,7 +142,7 @@ CREATE TABLE [dbo].[Medico_TurnoTrabajo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Paciente]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[Paciente]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -159,7 +159,7 @@ CREATE TABLE [dbo].[Paciente](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PerfilAcceso]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[PerfilAcceso]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -173,7 +173,7 @@ CREATE TABLE [dbo].[PerfilAcceso](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Persona]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[Persona]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -193,7 +193,7 @@ CREATE TABLE [dbo].[Persona](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Turno]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[Turno]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -213,7 +213,7 @@ CREATE TABLE [dbo].[Turno](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TurnoTrabajo]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[TurnoTrabajo]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -230,7 +230,7 @@ CREATE TABLE [dbo].[TurnoTrabajo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Usuario]    Script Date: 08/09/2025 9:02:00 ******/
+/****** Object:  Table [dbo].[Usuario]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -395,7 +395,7 @@ SET IDENTITY_INSERT [dbo].[Usuario] OFF
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_especialidad]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_especialidad]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[Especialidad] ADD  CONSTRAINT [UQ_especialidad] UNIQUE NONCLUSTERED 
 (
 	[descripcion] ASC
@@ -403,19 +403,19 @@ ALTER TABLE [dbo].[Especialidad] ADD  CONSTRAINT [UQ_especialidad] UNIQUE NONCLU
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_medico_matricula]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_medico_matricula]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[Medico] ADD  CONSTRAINT [UQ_medico_matricula] UNIQUE NONCLUSTERED 
 (
 	[matricula] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [UQ_medico_persona_id]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_medico_persona_id]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[Medico] ADD  CONSTRAINT [UQ_medico_persona_id] UNIQUE NONCLUSTERED 
 (
 	[persona_id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [UQ_paciente_id]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_paciente_id]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[Paciente] ADD  CONSTRAINT [UQ_paciente_id] UNIQUE NONCLUSTERED 
 (
 	[persona_id] ASC
@@ -423,7 +423,7 @@ ALTER TABLE [dbo].[Paciente] ADD  CONSTRAINT [UQ_paciente_id] UNIQUE NONCLUSTERE
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_persona_dni]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_persona_dni]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_dni] UNIQUE NONCLUSTERED 
 (
 	[dni] ASC
@@ -431,13 +431,13 @@ ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_dni] UNIQUE NONCLUSTERED
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_persona_email]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_persona_email]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[Persona] ADD  CONSTRAINT [UQ_persona_email] UNIQUE NONCLUSTERED 
 (
 	[email] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [UQ_Turno_Medico_Fecha_Hora]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_Turno_Medico_Fecha_Hora]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[Turno] ADD  CONSTRAINT [UQ_Turno_Medico_Fecha_Hora] UNIQUE NONCLUSTERED 
 (
 	[medico_id] ASC,
@@ -447,7 +447,7 @@ ALTER TABLE [dbo].[Turno] ADD  CONSTRAINT [UQ_Turno_Medico_Fecha_Hora] UNIQUE NO
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [UQ_TurnoTrabajo]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_TurnoTrabajo]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[TurnoTrabajo] ADD  CONSTRAINT [UQ_TurnoTrabajo] UNIQUE NONCLUSTERED 
 (
 	[diaSemana] ASC,
@@ -455,7 +455,7 @@ ALTER TABLE [dbo].[TurnoTrabajo] ADD  CONSTRAINT [UQ_TurnoTrabajo] UNIQUE NONCLU
 	[horaFin] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 GO
-/****** Object:  Index [UQ_usuario_persona_id]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  Index [UQ_usuario_persona_id]    Script Date: 09/09/2025 23:40:49 ******/
 ALTER TABLE [dbo].[Usuario] ADD  CONSTRAINT [UQ_usuario_persona_id] UNIQUE NONCLUSTERED 
 (
 	[persona_id] ASC
@@ -519,7 +519,7 @@ REFERENCES [dbo].[Persona] ([id])
 GO
 ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [FK_Usuario_Persona]
 GO
-/****** Object:  StoredProcedure [dbo].[SP_buscarPacientePorDni]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_buscarPacientePorDni]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -551,7 +551,7 @@ BEGIN
         P.dni = @Dni;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_insertarPacientes]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_insertarPacientes]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -603,7 +603,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_listarPaciente]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_listarPaciente]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -615,7 +615,7 @@ CREATE PROCEDURE [dbo].[SP_listarPaciente] AS
 	FROM Persona P, Paciente Pa
 	WHERE P.id = Pa.persona_id
 GO
-/****** Object:  StoredProcedure [dbo].[SP_medicoInsertar]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_medicoInsertar]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -659,7 +659,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_medicoListar]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_medicoListar]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -671,7 +671,7 @@ CREATE PROCEDURE [dbo].[SP_medicoListar]
 	WHERE P.id = U.persona_id AND P.id = M.persona_id AND (@id IS NULL OR M.id = @id)
 	ORDER BY P.apellido
 GO
-/****** Object:  StoredProcedure [dbo].[SP_medicoListarPorEspecialidades]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_medicoListarPorEspecialidades]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -681,7 +681,7 @@ SELECT ME.medico_id, E.Id, E.Descripcion
 FROM Medico_Especialidad ME, Especialidad E
 WHERE E.Id = ME.especialidad_id
 GO
-/****** Object:  StoredProcedure [dbo].[SP_medicoModificar]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_medicoModificar]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -726,7 +726,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_modificarPaciente]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_modificarPaciente]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -793,7 +793,7 @@ BEGIN
     END CATCH
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoInsertar]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoInsertar]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -828,18 +828,19 @@ BEGIN
     );
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoListar]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoListar]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[SP_turnoListar]
+	@id INT = NULL
 AS
-BEGIN
+BEGIN	
 	SELECT
 		-- Turno
 		T.id 'TurnoId',
-		T.fecha, T.hora, T.motivoConsulta, T.observacionesMedico,T.estado,
+		T.fecha, T.hora, T.motivoConsulta, T.observacionesMedico, T.estado,
 		-- Paciente
 		P.id 'PacienteId',
 		PP.nombre 'PacienteNombre', PP.apellido 'PacienteApellido', PP.dni 'PacienteDni',
@@ -855,9 +856,12 @@ BEGIN
 	INNER JOIN Persona PM ON M.persona_id = PM.id
 	INNER JOIN Medico_Especialidad ME ON M.id = ME.medico_id
 	INNER JOIN Especialidad E ON ME.especialidad_id = E.id
+	WHERE
+		(@id IS NULL OR T.id = @id)
+	ORDER BY T.fecha DESC, T.hora ASC;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoListarEspecialidadesPorMedico]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoListarEspecialidadesPorMedico]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -876,7 +880,7 @@ BEGIN
 	ORDER BY E.descripcion
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoListarMedicosPorEspecialidad]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoListarMedicosPorEspecialidad]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -896,7 +900,7 @@ BEGIN
     ORDER BY P.apellido, P.nombre;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoListarPorMedico]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoListarPorMedico]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -911,7 +915,7 @@ BEGIN
 	ORDER BY fecha, hora ASC;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoListarPorMedicoYFecha]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoListarPorMedicoYFecha]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -927,7 +931,7 @@ BEGIN
 	AND CONVERT(DATE, fecha) = @fecha; --Toma la columna fecha y la convierte al tipo de dato DATE.
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoTrabajoActualizar]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoTrabajoActualizar]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -946,7 +950,7 @@ AS
 	WHERE
 		id = @id
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoTrabajoListar]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoTrabajoListar]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -968,7 +972,7 @@ AS
         END,
 		horaInicio ASC;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_turnoTrabajoListarPorMedico]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_turnoTrabajoListarPorMedico]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -987,7 +991,7 @@ FROM
 WHERE
     MTT.turnoTrabajo_id = TT.id AND MTT.medico_id = @medicoId;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_verificarDniExistente]    Script Date: 08/09/2025 9:02:01 ******/
+/****** Object:  StoredProcedure [dbo].[SP_verificarDniExistente]    Script Date: 09/09/2025 23:40:49 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

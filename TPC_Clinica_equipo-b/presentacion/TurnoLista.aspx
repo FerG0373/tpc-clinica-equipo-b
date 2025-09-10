@@ -52,7 +52,6 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:CommandField HeaderText="Ver" ShowSelectButton="true" SelectText="🔍" />
-                            <asp:CommandField HeaderText="Editar" ShowSelectButton="true" SelectText="✏️" />
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>
