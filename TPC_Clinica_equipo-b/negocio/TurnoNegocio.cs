@@ -56,6 +56,7 @@ namespace negocio
 
                     // 4. Instancia de Especialidad.
                     aux.Especialidad = new Especialidad();
+                    aux.Especialidad.Id = (int)datos.Lector["EspecialidadId"];
                     aux.Especialidad.Descripcion = (string)datos.Lector["Especialidad"];
 
                     listaDeTurnos.Add(aux);

@@ -38,14 +38,12 @@ namespace presentacion
                         txtApellido.Text = seleccionado.Paciente.Apellido;
                         txtMotivoConsulta.Text = seleccionado.Motivo;
 
-                        // Precargar especialidad
+                        // Precargar especialidad y médico correspondiente.
                         ddlEspecialidad.SelectedValue = seleccionado.Especialidad.Id.ToString();
-
-                        // Recargar médicos de esa especialidad antes de seleccionar
                         ddlEspecialidad_SelectedIndexChanged(null, null);
-                        ddlMedico.SelectedValue = seleccionado.Medico.Id.ToString();
 
-                        // Recargar turnos del médico antes de seleccionar
+                        // Precarga médico de esa especialidad y turnos según corresponda.
+                        ddlMedico.SelectedValue = seleccionado.Medico.Id.ToString();
                         ddlMedico_SelectedIndexChanged(null, null);
 
                         // Seleccionar el turno en el ddl
@@ -125,6 +123,7 @@ namespace presentacion
             ddlEspecialidad.DataSource = negocio.listarEspecialidades();
             ddlEspecialidad.DataValueField = "Id";
             ddlEspecialidad.DataTextField = "Descripcion";
+            var lista = negocio.listarEspecialidades();
             ddlEspecialidad.DataBind();
 
             ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
