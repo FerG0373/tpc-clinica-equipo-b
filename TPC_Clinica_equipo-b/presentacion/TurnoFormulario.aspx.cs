@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
 
 namespace presentacion
 {
@@ -22,8 +23,45 @@ namespace presentacion
                 cargarEspecialidades();
                 cargarMedicos();
                 ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
+
+                string turnoId = Request.QueryString["id"];
+                if (!string.IsNullOrEmpty(turnoId))
+                {
+                    try
+                    {
+                        TurnoNegocio negocio = new TurnoNegocio();
+                        Turno seleccionado = negocio.listarTurnos(turnoId)[0];
+
+                        // Precarga campos de texto
+                        txtDni.Text = seleccionado.Paciente.Dni;
+                        txtNombre.Text = seleccionado.Paciente.Nombre;
+                        txtApellido.Text = seleccionado.Paciente.Apellido;
+                        txtMotivoConsulta.Text = seleccionado.Motivo;
+
+                        // Precargar especialidad
+                        ddlEspecialidad.SelectedValue = seleccionado.Especialidad.Id.ToString();
+
+                        // Recargar médicos de esa especialidad antes de seleccionar
+                        ddlEspecialidad_SelectedIndexChanged(null, null);
+                        ddlMedico.SelectedValue = seleccionado.Medico.Id.ToString();
+
+                        // Recargar turnos del médico antes de seleccionar
+                        ddlMedico_SelectedIndexChanged(null, null);
+
+                        // Seleccionar el turno en el ddl
+                        string fechaYHoraSeleccionada = seleccionado.Fecha.ToShortDateString() + " " + seleccionado.Hora.ToString(@"hh\:mm");
+                        ListItem item = ddlTurnoDisponible.Items.FindByText(fechaYHoraSeleccionada);
+                        if (item != null)
+                            item.Selected = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        lblError.Text = "❌ Error al cargar los datos del turno: " + ex.Message;
+                        lblError.Visible = true;
+                    }
+                }
             }
-        }        
+        }
 
         protected void ddlEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -190,9 +228,12 @@ namespace presentacion
 
             if (turnosDisponibles.Count > 0)
             {
-                ddlTurnoDisponible.DataSource = turnosDisponibles;
-                ddlTurnoDisponible.DataBind();
                 ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
+
+                foreach (DateTime turno in turnosDisponibles)
+                {
+                    ddlTurnoDisponible.Items.Add(new ListItem(turno.ToShortDateString() + " " + turno.ToString(@"hh\:mm"), turno.ToString()));
+                }
             }
             else
             {

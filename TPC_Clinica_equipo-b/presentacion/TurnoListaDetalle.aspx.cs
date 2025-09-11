@@ -21,7 +21,8 @@ namespace presentacion
                 {
                     try
                     {
-                        //ViewState["medicoId"] = turnoId;
+                        btnEditar.PostBackUrl = "~/TurnoFormulario.aspx?id=" + turnoId;
+
                         TurnoNegocio negocio = new TurnoNegocio();
                         Turno seleccionado = (negocio.listarTurnos(turnoId))[0];
 
