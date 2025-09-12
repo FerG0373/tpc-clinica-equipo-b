@@ -40,11 +40,14 @@ namespace presentacion
 
                         // Precargar especialidad y médico correspondiente.
                         ddlEspecialidad.SelectedValue = seleccionado.Especialidad.Id.ToString();
-                        ddlEspecialidad_SelectedIndexChanged(null, null);
+                        cargarMedicosPorEspecialidad(seleccionado.Especialidad.Id);
+                        ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
 
                         // Precarga médico de esa especialidad y turnos según corresponda.
                         ddlMedico.SelectedValue = seleccionado.Medico.Id.ToString();
-                        ddlMedico_SelectedIndexChanged(null, null);
+                        cargarEspecialidadesPorMedico(seleccionado.Medico.Id);
+                        ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
+                        cargarTurnosDisponibles(seleccionado.Medico.Id);
 
                         // Seleccionar el turno en el ddl
                         string fechaYHoraSeleccionada = seleccionado.Fecha.ToShortDateString() + " " + seleccionado.Hora.ToString(@"hh\:mm");
@@ -61,6 +64,24 @@ namespace presentacion
             }
         }
 
+        private void cargarMedicosPorEspecialidad(int especialidadId)
+        {
+            EspecialidadNegocio negocio = new EspecialidadNegocio();
+            ddlMedico.DataSource = negocio.listarMedicosPorEspecialidad(especialidadId);
+            ddlMedico.DataValueField = "Id";
+            ddlMedico.DataTextField = "NombreCompleto";
+            ddlMedico.DataBind();
+        }
+
+        private void cargarEspecialidadesPorMedico(int medicoId)
+        {
+            MedicoNegocio negocio = new MedicoNegocio();
+            ddlEspecialidad.DataSource = negocio.listarEspecialidadesPorMedico(medicoId);
+            ddlEspecialidad.DataValueField = "Id";
+            ddlEspecialidad.DataTextField = "Descripcion";
+            ddlEspecialidad.DataBind();
+        }
+
         protected void ddlEspecialidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             string medicoSeleccionado = ddlMedico.SelectedValue;
@@ -68,19 +89,15 @@ namespace presentacion
             if (ddlEspecialidad.SelectedValue != "0")
             {
                 int especialidadId = int.Parse(ddlEspecialidad.SelectedValue);
-                EspecialidadNegocio negocio = new EspecialidadNegocio();
-
-                ddlMedico.DataSource = negocio.listarMedicosPorEspecialidad(especialidadId);
-                ddlMedico.DataValueField = "Id";
-                ddlMedico.DataTextField = "NombreCompleto";
-                ddlMedico.DataBind();
+                cargarMedicosPorEspecialidad(especialidadId);
+                // Insertar opción por defecto.
                 ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
             }
             else
             {
                 cargarMedicos();
             }
-            // Restaurar si sigue siendo válido
+            // Restaurar selección si el médico sigue existiendo en la lista.
             if (ddlMedico.Items.FindByValue(medicoSeleccionado) != null)
                 ddlMedico.SelectedValue = medicoSeleccionado;
         }
@@ -92,13 +109,9 @@ namespace presentacion
             if (ddlMedico.SelectedValue != "0")
             {
                 int medicoId = int.Parse(ddlMedico.SelectedValue);
-                MedicoNegocio negocio = new MedicoNegocio();
 
                 // 1. Cargar las especialidades asociadas al médico.
-                ddlEspecialidad.DataSource = negocio.listarEspecialidadesPorMedico(medicoId);
-                ddlEspecialidad.DataValueField = "Id";
-                ddlEspecialidad.DataTextField = "Descripcion";
-                ddlEspecialidad.DataBind();
+                cargarEspecialidadesPorMedico(medicoId);
                 ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
 
                 // 2. Lógica para cargar los turnos disponibles.
