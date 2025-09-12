@@ -18,7 +18,7 @@ namespace presentacion
 
             try
             {
-                // Configuración inicial del formulario (lista de médicos).
+                // Configuración inicial del formulario (Agregar médico).
                 if (!IsPostBack)
                 {
                     ddlEspecialidad.DataSource = especialidadNegocio.listarEspecialidades();

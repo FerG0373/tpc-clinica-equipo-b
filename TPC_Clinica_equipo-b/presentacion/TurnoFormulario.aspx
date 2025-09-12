@@ -62,9 +62,9 @@
                 <asp:TextBox ID="txtMotivoConsulta" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:Label ID="lblErrorMotivoConsulta" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
             </div>            
-            <%--BOTÓN GUARDAR--%>
+            <%--BOTÓN ACEPTAR--%>
             <div class="text-center mt-4">
-                <asp:Button ID="btnGuardarTurno" runat="server" Text="💾 Guardar Turno" CssClass="btn btn-success px-4 me-4 mt-3 mb-4" OnClick="btnGuardarTurno_Click" />
+                <asp:Button ID="btnAceptar" runat="server" Text="💾 Aceptar" CssClass="btn btn-success px-4 me-4 mt-3 mb-4" OnClick="btnAceptar_Click" />
                 <asp:Button ID="btnCancelar" runat="server" Text="✖ Cancelar" CssClass="btn btn-secondary ms-2 mt-3 mb-4" PostBackUrl="TurnoLista.aspx" />
             </div>
             <asp:Label ID="lblError" runat="server" CssClass="text-danger"></asp:Label>

@@ -18,17 +18,21 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                cargarEspecialidades();
-                cargarMedicos();
-                ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
-
-                string turnoId = Request.QueryString["id"];
-                if (!string.IsNullOrEmpty(turnoId))
+                // Configuración inicial del formulario.
+                if (!IsPostBack)
                 {
-                    try
+                    cargarEspecialidades();
+                    cargarMedicos();
+                    ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
+
+                    // Configuración de edición.
+                    string turnoId = Request.QueryString["id"];
+                    if (!string.IsNullOrEmpty(turnoId) && !IsPostBack)
                     {
+                        lblTurnoFormulario.Text = "Editar turno";
+
                         TurnoNegocio negocio = new TurnoNegocio();
                         Turno seleccionado = negocio.listarTurnos(turnoId)[0];
 
@@ -43,24 +47,24 @@ namespace presentacion
                         cargarMedicosPorEspecialidad(seleccionado.Especialidad.Id);
                         ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
 
-                        // Precarga médico de esa especialidad y turnos según corresponda.
+                        // Precarga médico de esa especialidad y turno según corresponda.
                         ddlMedico.SelectedValue = seleccionado.Medico.Id.ToString();
                         cargarEspecialidadesPorMedico(seleccionado.Medico.Id);
                         ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
                         cargarTurnosDisponibles(seleccionado.Medico.Id);
 
                         // Seleccionar el turno en el ddl
-                        string fechaYHoraSeleccionada = seleccionado.Fecha.ToShortDateString() + " " + seleccionado.Hora.ToString(@"hh\:mm");
-                        ListItem item = ddlTurnoDisponible.Items.FindByText(fechaYHoraSeleccionada);
+                        string fechaHoraSeleccionada = seleccionado.Fecha.Add(seleccionado.Hora).ToString("yyyy-MM-dd HH:mm");
+                        ListItem item = ddlTurnoDisponible.Items.FindByText(fechaHoraSeleccionada);
                         if (item != null)
                             item.Selected = true;
                     }
-                    catch (Exception ex)
-                    {
-                        lblError.Text = "❌ Error al cargar los datos del turno: " + ex.Message;
-                        lblError.Visible = true;
-                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = "❌ Error al cargar los datos del turno: " + ex.Message;
+                lblError.Visible = true;
             }
         }
 
@@ -243,8 +247,11 @@ namespace presentacion
                 ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
 
                 foreach (DateTime turno in turnosDisponibles)
-                {
-                    ddlTurnoDisponible.Items.Add(new ListItem(turno.ToShortDateString() + " " + turno.ToString(@"hh\:mm"), turno.ToString()));
+                {                   
+                    string value = turno.ToString("yyyy-MM-dd HH:mm");
+                    string text = turno.ToShortDateString() + " " + turno.ToString(@"HH\:mm");
+
+                    ddlTurnoDisponible.Items.Add(new ListItem(text, value));
                 }
             }
             else
@@ -324,7 +331,7 @@ namespace presentacion
             return validacionExitosa;
         }
 
-        protected void btnGuardarTurno_Click(object sender, EventArgs e)
+        protected void btnAceptar_Click(object sender, EventArgs e)
         {
             if (!validarFormulario())
             {
@@ -352,10 +359,15 @@ namespace presentacion
 
                 nuevo.Motivo = txtMotivoConsulta.Text;
                 nuevo.Estado = "Nuevo";
-                
-                turnoNegocio.insertarTurno(nuevo);
 
-                Session["MensajeExito"] = "✅ Turno agendado con éxito.";
+                if (Request.QueryString["id"] != null)
+                {
+                    turnoNegocio.modificarTurno(nuevo);
+                    Session["MensajeExito"] = "✅ Turno modificado con éxito.";
+                }
+                else
+                    turnoNegocio.insertarTurno(nuevo);
+                    Session["MensajeExito"] = "✅ Turno agendado con éxito.";
 
                 Response.Redirect("TurnoLista.aspx", false);
             }

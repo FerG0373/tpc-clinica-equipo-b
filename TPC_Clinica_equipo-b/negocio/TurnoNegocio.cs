@@ -134,5 +134,31 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void modificarTurno(Turno turno)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearProcedimiento("SP_turnoModificar");
+                datos.setearParametro("@TurnoId", turno.Id);
+                datos.setearParametro("@PacienteId", turno.Paciente.Id);
+                datos.setearParametro("@MedicoId", turno.Medico.Id);
+                datos.setearParametro("@Fecha", turno.Fecha.Date);
+                datos.setearParametro("@Hora", turno.Hora);
+                datos.setearParametro("@Motivo", turno.Motivo);
+                datos.setearParametro("@Estado", turno.Estado);
+                datos.setearParametro("@observacionesMedico", turno.Observaciones);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }
