@@ -61,7 +61,17 @@
                 <label for="txtMotivoConsulta" class="form-label">Motivo de consulta</label>
                 <asp:TextBox ID="txtMotivoConsulta" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:Label ID="lblErrorMotivoConsulta" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
-            </div>            
+            </div>
+            <%--ESTADO--%>
+            <asp:UpdatePanel ID="updEstado" runat="server" Visible="false">
+                <ContentTemplate>
+                    <div class="form-group mb-3">
+                        <label for="ddlEstado" class="form-label">Estado</label>
+                        <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-select"></asp:DropDownList>
+                        <asp:Label ID="lblErrorEstado" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
             <%--BOTÓN ACEPTAR--%>
             <div class="text-center mt-4">
                 <asp:Button ID="btnAceptar" runat="server" Text="💾 Aceptar" CssClass="btn btn-success px-4 me-4 mt-3 mb-4" OnClick="btnAceptar_Click" />

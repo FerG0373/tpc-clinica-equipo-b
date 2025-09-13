@@ -32,6 +32,10 @@ namespace presentacion
                     if (!string.IsNullOrEmpty(turnoId) && !IsPostBack)
                     {
                         lblTurnoFormulario.Text = "Editar turno";
+                        txtDni.ReadOnly = true;
+                        updEstado.Visible = true;
+                        cargarDdlEstados();
+                        ddlEstado.Items.Insert(0, new ListItem("-- Seleccionar estado --", "0"));
 
                         TurnoNegocio negocio = new TurnoNegocio();
                         Turno seleccionado = negocio.listarTurnos(turnoId)[0];
@@ -51,7 +55,7 @@ namespace presentacion
                         ddlMedico.SelectedValue = seleccionado.Medico.Id.ToString();
                         cargarEspecialidadesPorMedico(seleccionado.Medico.Id);
                         ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
-                        cargarTurnosDisponibles(seleccionado.Medico.Id);
+                        cargarTurnosDisponibles(seleccionado.Medico.Id);                        
 
                         // Seleccionar el turno en el ddl
                         string fechaHoraSeleccionada = seleccionado.Fecha.Add(seleccionado.Hora).ToString("yyyy-MM-dd HH:mm");
@@ -284,6 +288,7 @@ namespace presentacion
             lblErrorEspecialidad.Visible = false;
             lblErrorMedico.Visible = false;
             lblErrorTurno.Visible = false;
+            lblErrorEstado.Visible = false;
 
             bool validacionExitosa = true;
 
@@ -316,7 +321,7 @@ namespace presentacion
 
             if (ddlTurnoDisponible.SelectedValue == "0")
             {
-                lblErrorTurno.Text = "⚠️ Debe seleccionar un horario de turno.";
+                lblErrorTurno.Text = "⚠️ Debe seleccionar un horario.";
                 lblErrorTurno.Visible = true;
                 validacionExitosa = false;
             }
@@ -328,7 +333,24 @@ namespace presentacion
                 validacionExitosa = false;
             }
 
+            if (ddlEstado.SelectedValue == "0")
+            {
+                lblErrorEstado.Text = "⚠️ Debe seleccionar el estado del turno.";
+                lblErrorEstado.Visible = true;
+                validacionExitosa = false;
+            }
+
             return validacionExitosa;
+        }
+
+        private void cargarDdlEstados()
+        {
+            ddlEstado.Items.Clear();
+
+            ddlEstado.Items.Add(new ListItem("Reprogramado", "Reprogramado"));
+            ddlEstado.Items.Add(new ListItem("Cancelado", "Cancelado"));
+            ddlEstado.Items.Add(new ListItem("No asistió", "No asistió"));
+            ddlEstado.Items.Add(new ListItem("Cerrado", "Cerrado"));
         }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
