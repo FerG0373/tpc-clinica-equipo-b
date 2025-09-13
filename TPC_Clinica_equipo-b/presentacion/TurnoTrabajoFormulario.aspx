@@ -11,7 +11,7 @@
 
                 <!-- Día de la semana -->
                 <div class="mb-3">
-                    <label for="<%= ddlDiaSemana.ClientID %>" class="form-label">Día de la semana</label>
+                    <label for="<%= ddlDiaSemana.ClientID %>" class="form-label fw-semibold">Día de la semana</label>
                     <asp:DropDownList ID="ddlDiaSemana" runat="server" CssClass="form-select">
                         <asp:ListItem Text="Seleccionar día" Value="" />
                         <asp:ListItem>Lunes</asp:ListItem>
@@ -26,14 +26,14 @@
 
                 <!-- Hora inicio -->
                 <div class="mb-3">
-                    <label for="<%= txtHoraInicio.ClientID %>" class="form-label">Hora de inicio</label>
+                    <label for="<%= txtHoraInicio.ClientID %>" class="form-label fw-semibold">Hora de inicio</label>
                     <asp:TextBox ID="txtHoraInicio" runat="server" CssClass="form-control" TextMode="Time" />
                     <asp:Label ID="lblErrorHoraInicio" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                 </div>
 
                 <!-- Hora fin -->
                 <div class="mb-3">
-                    <label for="<%= txtHoraFin.ClientID %>" class="form-label">Hora de fin</label>
+                    <label for="<%= txtHoraFin.ClientID %>" class="form-label fw-semibold">Hora de fin</label>
                     <asp:TextBox ID="txtHoraFin" runat="server" CssClass="form-control" TextMode="Time" />
                     <asp:Label ID="lblErrorHoraFin" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                 </div>

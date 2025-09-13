@@ -10,18 +10,18 @@
             <!-- DATOS DEL PACIENTE -->
             <%--DNI--%>
             <div class="form-group mb-3">
-                <label for="txtDni" class="form-label">DNI</label>
+                <label for="txtDni" class="form-label fw-semibold">DNI</label>
                 <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="txtDni_TextChanged"></asp:TextBox>
                 <asp:Label ID="lblErrorDni" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
             </div>
             <%--NOMBRE--%>
             <div class="form-group mb-3">
-                <label for="txtNombre" class="form-label">Nombre</label>
+                <label for="txtNombre" class="form-label fw-semibold">Nombre</label>
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
             </div>
             <%--APELLIDO--%>
             <div class="form-group mb-3">
-                <label for="txtApellido" class="form-label">Apellido</label>
+                <label for="txtApellido" class="form-label fw-semibold">Apellido</label>
                 <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
             </div>
 
@@ -30,7 +30,7 @@
             <asp:UpdatePanel ID="updEspecialidades" runat="server">
                 <ContentTemplate>
                     <div class="form-group mb-3">
-                        <label for="ddlEspecialidad" class="form-label">Especialidad</label>
+                        <label for="ddlEspecialidad" class="form-label fw-semibold">Especialidad</label>
                         <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlEspecialidad_SelectedIndexChanged"></asp:DropDownList>
                         <asp:Label ID="lblErrorEspecialidad" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                     </div>
@@ -40,7 +40,7 @@
             <asp:UpdatePanel ID="updMedicos" runat="server">
                 <ContentTemplate>
                     <div class="form-group mb-3">
-                        <label for="ddlMedico" class="form-label">Médico</label>
+                        <label for="ddlMedico" class="form-label fw-semibold">Médico</label>
                         <asp:DropDownList ID="ddlMedico" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlMedico_SelectedIndexChanged"></asp:DropDownList>
                         <asp:Label ID="lblErrorMedico" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                     </div>
@@ -50,7 +50,7 @@
             <asp:UpdatePanel ID="updTurnos" runat="server">
                 <ContentTemplate>
                     <div class="form-group mb-3">
-                        <label for="ddlTurnoDisponible" class="form-label">Turnos Disponibles</label>
+                        <label for="ddlTurnoDisponible" class="form-label fw-semibold">Turnos Disponibles</label>
                         <asp:DropDownList ID="ddlTurnoDisponible" runat="server" CssClass="form-select"></asp:DropDownList>
                         <asp:Label ID="lblErrorTurno" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                     </div>
@@ -58,7 +58,7 @@
             </asp:UpdatePanel>
             <%--CONSULTA--%>
             <div class="form-group mb-3">
-                <label for="txtMotivoConsulta" class="form-label">Motivo de consulta</label>
+                <label for="txtMotivoConsulta" class="form-label fw-semibold">Motivo de consulta</label>
                 <asp:TextBox ID="txtMotivoConsulta" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:Label ID="lblErrorMotivoConsulta" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
             </div>
@@ -66,7 +66,7 @@
             <asp:UpdatePanel ID="updEstado" runat="server" Visible="false">
                 <ContentTemplate>
                     <div class="form-group mb-3">
-                        <label for="ddlEstado" class="form-label">Estado</label>
+                        <label for="ddlEstado" class="form-label fw-semibold">Estado</label>
                         <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-select"></asp:DropDownList>
                         <asp:Label ID="lblErrorEstado" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                     </div>

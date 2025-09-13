@@ -57,7 +57,7 @@ namespace presentacion
                 case "nuevo":
                     return "fw-bold text-success"; // Verde y negrita.
                 case "reprogramado":
-                    return "fw-bold text-info"; // Azul claro y negrita.
+                    return "fw-bold text-primary"; // Azul claro y negrita.
                 case "cancelado":
                     return "fw-bold text-danger"; // Rojo y negrita.
                 case "no asistio":

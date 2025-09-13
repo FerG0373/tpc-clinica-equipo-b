@@ -12,25 +12,25 @@
             <div class="col-md-6 offset-md-3">
                 <%--DNI--%>
                 <div class="mb-3">
-                    <label for="txtDni" class="form-label">DNI</label>
+                    <label for="txtDni" class="form-label fw-semibold">DNI</label>
                     <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" />
                     <asp:Label ID="lblErrorDni" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                 </div>
                 <%--Nombre--%>
                 <div class="mb-3">
-                    <label for="txtNombre" class="form-label">Nombre</label>
+                    <label for="txtNombre" class="form-label fw-semibold">Nombre</label>
                     <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control" />
                     <asp:Label ID="lblErrorNombre" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                 </div>
                 <%--Apellido--%>
                 <div class="mb-3">
-                    <label for="txtApellido" class="form-label">Apellido</label>
+                    <label for="txtApellido" class="form-label fw-semibold">Apellido</label>
                     <asp:TextBox ID="txtApellido" runat="server" CssClass="form-control" />
                     <asp:Label ID="lblErrorApellido" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                 </div>
                 <%--Matrícula--%>
                 <div class="mb-3">
-                    <label for="txtMatricula" class="form-label">Matrícula</label>
+                    <label for="txtMatricula" class="form-label fw-semibold">Matrícula</label>
                     <asp:TextBox ID="txtMatricula" runat="server" CssClass="form-control" />
                     <asp:Label ID="lblErrorMatricula" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                 </div>
@@ -38,7 +38,7 @@
                 <asp:UpdatePanel ID="updEspecialidades" runat="server">
                     <ContentTemplate>
                         <div class="mb-3">
-                            <label for="ddlEspecialidad" class="form-label">Especialidad</label>
+                            <label for="ddlEspecialidad" class="form-label fw-semibold">Especialidad</label>
                             <asp:DropDownList ID="ddlEspecialidad" runat="server" CssClass="form-select" />
                             <%--Botón Agregar Especialidad--%>
                             <asp:Button ID="btnAgrearEspecialidad" runat="server" Text="Agregar" CssClass="btn btn-outline-primary mt-2" OnClick="btnAgregarEspecialidad_Click" />
@@ -51,13 +51,13 @@
                 </asp:UpdatePanel>
                 <%--Email--%>
                 <div class="mb-3">
-                    <label for="txtEmail" class="form-label">Email</label>
+                    <label for="txtEmail" class="form-label fw-semibold">Email</label>
                     <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" TextMode="Email" />
                     <asp:Label ID="lblErrorEmail" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                 </div>
                 <%--Contraseña--%>
                 <div class="mb-3">
-                    <label for="txtPassword" class="form-label">Contraseña</label>
+                    <label for="txtPassword" class="form-label fw-semibold">Contraseña</label>
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" />
                     <asp:Label ID="lblErrorPass" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
                 </div>
