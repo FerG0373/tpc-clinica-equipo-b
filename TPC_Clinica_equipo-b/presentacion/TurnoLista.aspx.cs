@@ -60,7 +60,7 @@ namespace presentacion
         protected void dgvTurnos_SelectedIndexChanged(object sender, EventArgs e)
         {
             string id = dgvTurnos.SelectedDataKey.Value.ToString();
-            Response.Redirect("TurnoListaDetalle.aspx?id=" + id);
+            Response.Redirect("TurnoListaDetalle.aspx?id=" + id, false);
         }
 
         protected void dgvTurnos_PageIndexChanging(object sender, GridViewPageEventArgs e)
