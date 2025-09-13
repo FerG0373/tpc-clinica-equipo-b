@@ -55,13 +55,31 @@ namespace presentacion
                         ddlMedico.SelectedValue = seleccionado.Medico.Id.ToString();
                         cargarEspecialidadesPorMedico(seleccionado.Medico.Id);
                         ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
-                        cargarTurnosDisponibles(seleccionado.Medico.Id);                        
+                        cargarTurnosDisponibles(seleccionado.Medico.Id);
 
-                        // Seleccionar el turno en el ddl
-                        string fechaHoraSeleccionada = seleccionado.Fecha.Add(seleccionado.Hora).ToString("yyyy-MM-dd HH:mm");
-                        ListItem item = ddlTurnoDisponible.Items.FindByText(fechaHoraSeleccionada);
-                        if (item != null)
-                            item.Selected = true;
+                        // --- COMIENZA LA LÓGICA DE ORDENACIÓN ---
+
+                        // 1. Obtiene los turnos disponibles.
+                        var turnosDisponibles = buscarProximosTurnos(seleccionado.Medico.Id);
+
+                        // 2. Si el turno actual no está en la lista de disponibles, agrégalo.
+                        DateTime fechaHoraSeleccionada = seleccionado.Fecha.Add(seleccionado.Hora);
+                        if (!turnosDisponibles.Any(t => t == fechaHoraSeleccionada))
+                        {
+                            turnosDisponibles.Add(fechaHoraSeleccionada);
+                        }
+
+                        // 3. Ordena la lista completa por fecha y hora.
+                        turnosDisponibles = turnosDisponibles.OrderBy(t => t).ToList();
+
+                        // 4. Carga el DropDownList con la lista ordenada.
+                        cargarDropDownList(turnosDisponibles);
+
+                        // 5. Selecciona el turno actual en el DropDownList.
+                        string valorSeleccionado = fechaHoraSeleccionada.ToString("yyyy-MM-dd HH:mm");
+                        ddlTurnoDisponible.SelectedValue = valorSeleccionado;
+
+                        // --- TERMINA LA LÓGICA DE ORDENACIÓN ---
                     }
                 }
             }

@@ -120,7 +120,6 @@ namespace negocio
                 datos.setearParametro("@Fecha", turno.Fecha.Date);
                 datos.setearParametro("@Hora", turno.Hora);
                 datos.setearParametro("@Motivo", turno.Motivo);
-                //datos.setearParametro("@Estado", turno.Estado);
                 datos.setearParametro("@observacionesMedico", turno.Observaciones);
 
                 datos.ejecutarAccion();
