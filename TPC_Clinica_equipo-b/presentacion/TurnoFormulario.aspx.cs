@@ -380,16 +380,19 @@ namespace presentacion
                 nuevo.Hora = nuevo.Fecha.TimeOfDay;
 
                 nuevo.Motivo = txtMotivoConsulta.Text;
-                nuevo.Estado = "Nuevo";
+                nuevo.Estado = ddlEstado.SelectedValue;
 
                 if (Request.QueryString["id"] != null)
                 {
+                    nuevo.Id = int.Parse(Request.QueryString["id"]);
                     turnoNegocio.modificarTurno(nuevo);
                     Session["MensajeExito"] = "✅ Turno modificado con éxito.";
                 }
                 else
+                {
                     turnoNegocio.insertarTurno(nuevo);
                     Session["MensajeExito"] = "✅ Turno agendado con éxito.";
+                }                    
 
                 Response.Redirect("TurnoLista.aspx", false);
             }
