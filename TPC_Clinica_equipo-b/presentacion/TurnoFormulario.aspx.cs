@@ -20,16 +20,11 @@ namespace presentacion
         {
             try
             {
-                // Configuración inicial del formulario.
                 if (!IsPostBack)
                 {
-                    cargarEspecialidades();
-                    cargarMedicos();
-                    ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
-
-                    // Configuración de edición.
                     string turnoId = Request.QueryString["id"];
-                    if (!string.IsNullOrEmpty(turnoId) && !IsPostBack)
+                    // MODO EDICIÓN.
+                    if (!string.IsNullOrEmpty(turnoId))
                     {
                         lblTurnoFormulario.Text = "Editar turno";
                         txtDni.ReadOnly = true;
@@ -40,7 +35,7 @@ namespace presentacion
                         TurnoNegocio negocio = new TurnoNegocio();
                         Turno seleccionado = negocio.listarTurnos(turnoId)[0];
 
-                        // Precarga campos de texto
+                        // Precargar de campos de texto.
                         txtDni.Text = seleccionado.Paciente.Dni;
                         txtNombre.Text = seleccionado.Paciente.Nombre;
                         txtApellido.Text = seleccionado.Paciente.Apellido;
@@ -51,35 +46,22 @@ namespace presentacion
                         cargarMedicosPorEspecialidad(seleccionado.Especialidad.Id);
                         ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
 
-                        // Precarga médico de esa especialidad y turno según corresponda.
+                        // Precargar médico de esa especialidad.
                         ddlMedico.SelectedValue = seleccionado.Medico.Id.ToString();
                         cargarEspecialidadesPorMedico(seleccionado.Medico.Id);
                         ddlEspecialidad.Items.Insert(0, new ListItem("-- Seleccionar especialidad --", "0"));
-                        cargarTurnosDisponibles(seleccionado.Medico.Id);
 
-                        // --- COMIENZA LA LÓGICA DE ORDENACIÓN ---
+                        cargarTurnosDisponibles(seleccionado.Medico.Id, seleccionado);
 
-                        // 1. Obtiene los turnos disponibles.
-                        var turnosDisponibles = buscarProximosTurnos(seleccionado.Medico.Id);
-
-                        // 2. Si el turno actual no está en la lista de disponibles, agrégalo.
-                        DateTime fechaHoraSeleccionada = seleccionado.Fecha.Add(seleccionado.Hora);
-                        if (!turnosDisponibles.Any(t => t == fechaHoraSeleccionada))
-                        {
-                            turnosDisponibles.Add(fechaHoraSeleccionada);
-                        }
-
-                        // 3. Ordena la lista completa por fecha y hora.
-                        turnosDisponibles = turnosDisponibles.OrderBy(t => t).ToList();
-
-                        // 4. Carga el DropDownList con la lista ordenada.
-                        cargarDropDownList(turnosDisponibles);
-
-                        // 5. Selecciona el turno actual en el DropDownList.
-                        string valorSeleccionado = fechaHoraSeleccionada.ToString("yyyy-MM-dd HH:mm");
+                        // Seleccionar el turno actual en el DropDownList.
+                        string valorSeleccionado = seleccionado.Fecha.Add(seleccionado.Hora).ToString("yyyy-MM-dd HH:mm");
                         ddlTurnoDisponible.SelectedValue = valorSeleccionado;
-
-                        // --- TERMINA LA LÓGICA DE ORDENACIÓN ---
+                    }
+                    else // Modo de alta
+                    {
+                        cargarEspecialidades();
+                        cargarMedicos();
+                        ddlTurnoDisponible.Items.Insert(0, new ListItem("-- Seleccionar horario disponible --", "0"));
                     }
                 }
             }
@@ -179,12 +161,24 @@ namespace presentacion
             ddlMedico.Items.Insert(0, new ListItem("-- Seleccionar médico --", "0"));
         }
 
-        private void cargarTurnosDisponibles(int medicoId)
+        private void cargarTurnosDisponibles(int medicoId, Turno turnoActual = null)
         {
             try
             {
-                // Llama al método que se encarga de la lógica de búsqueda.
+                // Obtiene la lista de turnos disponibles del médico.
                 var turnosDisponibles = buscarProximosTurnos(medicoId);
+
+                // Si se está editando un turno, agrega el turno actual a la lista si no existe.
+                if (turnoActual != null)
+                {
+                    DateTime fechaHoraSeleccionada = turnoActual.Fecha.Add(turnoActual.Hora);
+                    if (!turnosDisponibles.Any(t => t == fechaHoraSeleccionada))
+                    {
+                        turnosDisponibles.Add(fechaHoraSeleccionada);
+                    }
+                }
+                // Ordena la lista completa por fecha y hora.
+                turnosDisponibles = turnosDisponibles.OrderBy(t => t).ToList();
 
                 // Llama al método que carga el DropDownList.
                 cargarDropDownList(turnosDisponibles);
