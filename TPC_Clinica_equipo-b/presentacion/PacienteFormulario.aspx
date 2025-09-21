@@ -1,10 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="PacienteFormulario.aspx.cs" Inherits="presentacion.FormularioPaciente" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    
-
     <div class="container mt-5">
         <h2 class="text-center mb-4">Agregar Paciente</h2>
 
@@ -71,5 +67,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>

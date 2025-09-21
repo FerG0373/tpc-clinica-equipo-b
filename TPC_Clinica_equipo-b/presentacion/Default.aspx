@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="App Turnos" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="presentacion.Index" %>
 
-<%--<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>--%>
 <asp:Content ID="IndexMainContent" ContentPlaceHolderID="MainContent" runat="server">
         <%--Carrusel--%>
         <div id="carouselExample" class="carousel slide">
@@ -27,37 +25,37 @@
         </div>
 
         <div class="d-flex flex-wrap justify-content-center gap-4 mt-5">
-            <!--Botón Médicos-->
+            <!--MÉDICOS-->
             <a href="MedicoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-users"></i></span>
                 <span class="btn-text">Médicos</span>
             </a>
 
-            <!--Botón Turnos-->
+            <!--TURNOS-->
             <a href="TurnoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
                 <span class="btn-text">Turnos</span>
             </a>
 
-            <!--Botón Especialidades-->
+            <!--ESPECIALIDADES-->
             <a href="EspecialidadLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
                 <span class="btn-text">Especialidades</span>
             </a>
 
-            <!--Botón Turnos de Trabajo-->
+            <!--TURNOS DE TRABAJO-->
             <a href="TurnoTrabajoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
                 <span class="icon-circle"><i class="fas fa-briefcase-medical"></i></span>
                 <span class="btn-text">Turnos de trabajo</span>
             </a>
 
-            <!--Botón Mis Turnos-->
+            <!--MIS TURNOS-->
             <a href="" class="btn custom-btn gap-2 ">
                 <span class="icon-circle"><i class="fas fa-user-md"></i></span>
                 <span class="btn-text">Mis Turnos</span>
             </a>
 
-            <!--Botón Pacientes-->
+            <%--PACIENTES--%> 
             <a href="PacienteLista.aspx" class="btn custom-btn gap-2 ">
                 <span class="icon-circle">
                     <i class="fas fa-user"></i></span>

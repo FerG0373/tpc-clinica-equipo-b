@@ -7,11 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace presentacion
 {
-    public partial class VerDetalleTurno : System.Web.UI.Page
+    public partial class UsuarioLogin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnIngresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }
