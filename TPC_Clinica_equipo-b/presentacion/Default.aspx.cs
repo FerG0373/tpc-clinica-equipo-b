@@ -11,7 +11,24 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] == null)
+            {
+                btnMedicos.Visible = false;
+                btnTurnos.Visible = false;
+                btnEspecialidades.Visible = false;
+                btnTurnosTrabajo.Visible = false;
+                btnMisTurnos.Visible = false;
+                btnPacientes.Visible = false;
+            }
+            else
+            {
+                btnMedicos.Visible = true;
+                btnTurnos.Visible = true;
+                btnEspecialidades.Visible = true;
+                btnTurnosTrabajo.Visible = true;
+                btnMisTurnos.Visible = true;
+                btnPacientes.Visible = true;
+            }
         }
     }
 }

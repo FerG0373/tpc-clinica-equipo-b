@@ -26,37 +26,37 @@
 
         <div class="d-flex flex-wrap justify-content-center gap-4 mt-5">
             <!--MÉDICOS-->
-            <a href="MedicoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="MedicoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none" id="btnMedicos" runat="server">
                 <span class="icon-circle"><i class="fas fa-users"></i></span>
                 <span class="btn-text">Médicos</span>
             </a>
 
             <!--TURNOS-->
-            <a href="TurnoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="TurnoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none" id="btnTurnos" runat="server">
                 <span class="icon-circle"><i class="fas fa-calendar-alt"></i></span>
                 <span class="btn-text">Turnos</span>
             </a>
 
             <!--ESPECIALIDADES-->
-            <a href="EspecialidadLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="EspecialidadLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none" id="btnEspecialidades" runat="server">
                 <span class="icon-circle"><i class="fas fa-stethoscope"></i></span>
                 <span class="btn-text">Especialidades</span>
             </a>
 
             <!--TURNOS DE TRABAJO-->
-            <a href="TurnoTrabajoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none">
+            <a href="TurnoTrabajoLista.aspx" class="btn custom-btn d-flex align-items-center gap-2 text-decoration-none" id="btnTurnosTrabajo" runat="server">
                 <span class="icon-circle"><i class="fas fa-briefcase-medical"></i></span>
                 <span class="btn-text">Turnos de trabajo</span>
             </a>
 
             <!--MIS TURNOS-->
-            <a href="" class="btn custom-btn gap-2 ">
+            <a href="" class="btn custom-btn gap-2 " id="btnMisTurnos" runat="server">
                 <span class="icon-circle"><i class="fas fa-user-md"></i></span>
                 <span class="btn-text">Mis Turnos</span>
             </a>
 
             <%--PACIENTES--%> 
-            <a href="PacienteLista.aspx" class="btn custom-btn gap-2 ">
+            <a href="PacienteLista.aspx" class="btn custom-btn gap-2" id="btnPacientes" runat="server">
                 <span class="icon-circle">
                     <i class="fas fa-user"></i></span>
                 <span class="btn-text">Pacientes</span>

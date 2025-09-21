@@ -5,13 +5,15 @@
         <div class="login-box text-center">
             <h5 class="mb-4"><i class="bi bi-lock"></i>Iniciar Sesión</h5>
             <div class="mb-3 text-start">
-                <label for="txtUsuario" class="form-label">DNI</label>
-                <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" />
+                <label for="txtDni" class="form-label">DNI</label>
+                <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" />
             </div>
             <div class="mb-3 text-start">
-                <label for="txtPassword" class="form-label">Contraseña</label>
-                <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" />
+                <label for="txtPass" class="form-label">Contraseña</label>
+                <asp:TextBox ID="txtPass" runat="server" CssClass="form-control" TextMode="Password" />
             </div>
+            <asp:Label ID="lblError" runat="server" CssClass="text-danger mt-2 d-block" Visible="false" />
+            <%--BOTÓN--%>
             <div class="d-grid mb-2">
                 <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary mt-3 mb-3" OnClick="btnIngresar_Click" />
             </div>
