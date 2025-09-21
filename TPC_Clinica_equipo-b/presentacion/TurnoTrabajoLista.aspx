@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="TurnoTrabajoLista.aspx.cs" Inherits="presentacion.TurnoTrabajoLista" %>
+﻿<%@ Page Title="Lista de Turnos de trabajo" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="TurnoTrabajoLista.aspx.cs" Inherits="presentacion.TurnoTrabajoLista" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">

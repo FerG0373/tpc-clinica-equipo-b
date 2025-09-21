@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="PacienteFormulario.aspx.cs" Inherits="presentacion.FormularioPaciente" %>
+﻿<%@ Page Title="Formulario de pacientes" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="PacienteFormulario.aspx.cs" Inherits="presentacion.FormularioPaciente" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-5">

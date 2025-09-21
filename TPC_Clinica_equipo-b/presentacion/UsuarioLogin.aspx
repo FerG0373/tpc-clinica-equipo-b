@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="UsuarioLogin.aspx.cs" Inherits="presentacion.UsuarioLogin" %>
+﻿<%@ Page Title="Iniciar Sesión" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="UsuarioLogin.aspx.cs" Inherits="presentacion.UsuarioLogin" %>
 
 <asp:Content ID="LoginMainContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
