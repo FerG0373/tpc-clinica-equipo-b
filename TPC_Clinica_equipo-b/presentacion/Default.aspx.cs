@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using dominio;
 
 namespace presentacion
 {
@@ -11,23 +12,39 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["usuario"] == null)
+            btnMedicos.Visible = false;
+            btnTurnos.Visible = false;
+            btnEspecialidades.Visible = false;
+            btnTurnosTrabajo.Visible = false;
+            btnMisTurnos.Visible = false;
+            btnPacientes.Visible = false;
+
+            if (Session["usuario"] != null)
             {
-                btnMedicos.Visible = false;
-                btnTurnos.Visible = false;
-                btnEspecialidades.Visible = false;
-                btnTurnosTrabajo.Visible = false;
-                btnMisTurnos.Visible = false;
-                btnPacientes.Visible = false;
-            }
-            else
-            {
-                btnMedicos.Visible = true;
-                btnTurnos.Visible = true;
-                btnEspecialidades.Visible = true;
-                btnTurnosTrabajo.Visible = true;
-                btnMisTurnos.Visible = true;
-                btnPacientes.Visible = true;
+                Usuario logueado = (Usuario)Session["usuario"];
+
+                if (logueado.TipoUsuario == "Administrador")
+                {
+                    btnMedicos.Visible = true;
+                    btnTurnos.Visible = true;
+                    btnEspecialidades.Visible = true;
+                    btnTurnosTrabajo.Visible = true;
+                    btnMisTurnos.Visible = true;
+                    btnPacientes.Visible = true;
+                }
+                else if (logueado.TipoUsuario == "Recepcionista")
+                {
+                    btnMedicos.Visible = true;
+                    btnTurnos.Visible = true;
+                    btnEspecialidades.Visible = true;
+                    btnPacientes.Visible = true;
+                }
+                else if (logueado.TipoUsuario == "Medico")
+                {
+                    btnMisTurnos.Visible = true;
+                    btnTurnosTrabajo.Visible = true; // Solo lectura.
+                    btnPacientes.Visible = true;  // Debería solo lectura.
+                }
             }
         }
     }

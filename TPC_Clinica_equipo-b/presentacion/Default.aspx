@@ -4,7 +4,7 @@
         <%--Carrusel--%>
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item active mb-5">
                     <img src="<%= ResolveUrl("~/assets/img/Carrousel-1.png") %>" class="d-block w-100" alt="Imagen del carrusel: mano del dr. sobre mano del paciente">
                 </div>
                 <div class="carousel-item">
