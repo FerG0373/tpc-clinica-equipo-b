@@ -14,6 +14,19 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("UsuarioLogin.aspx", false);
+            }
+            else
+            {
+                Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
+                if (logueado.TipoUsuario != "Administrador")
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
+            }
+
             EspecialidadNegocio especialidadNegocio = new EspecialidadNegocio();
 
             try

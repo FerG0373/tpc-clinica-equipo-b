@@ -50,7 +50,7 @@
             </a>
 
             <!--MIS TURNOS-->
-            <a href="" class="btn custom-btn gap-2 " id="btnMisTurnos" runat="server">
+            <a href="#" class="btn custom-btn gap-2 " id="btnMisTurnos" runat="server">
                 <span class="icon-circle"><i class="fas fa-user-md"></i></span>
                 <span class="btn-text">Mis Turnos</span>
             </a>
