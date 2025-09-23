@@ -82,7 +82,7 @@
                                 HtmlEncode="false"
                                 Visible="false" />
                             <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
-                            <asp:BoundField HeaderText="Telefono" DataField="Telefono" Visible="false"/>
+                            <asp:BoundField HeaderText="Telefono" DataField="Telefono" Visible="false" />
                             <asp:BoundField HeaderText="Email" DataField="Email" Visible="false" />
                             <asp:BoundField HeaderText="Historial Clinico" DataField="HistorialClinico" Visible="false" />
                             <asp:BoundField HeaderText="Tipo de Cobertura" DataField="TipoCobertura" />
@@ -100,56 +100,25 @@
                             </asp:TemplateField>
 
                             <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
-
-                            <%--<%-- Checkbox Estado -->
-                    <asp:TemplateField HeaderText="Activo">
-                        <ItemTemplate>
-                            <asp:CheckBox
-                                ID="chkActivo"
-                                runat="server"
-                                Checked='<%# Eval("Activo") %>'
-                                AutoPostBack="true"
-                                OnCheckedChanged="chkActivo_CheckedChanged" />
-                        </ItemTemplate>
-                    </asp:TemplateField>--%>
                             <asp:TemplateField HeaderText="Ver">
                                 <ItemTemplate>
-                                    <asp:Button 
-                                        ID="btnVer" 
-                                        runat="server" 
+                                    <asp:Button
+                                        ID="btnVer"
+                                        runat="server"
                                         CommandName="Ver"
                                         Text="🔍"
                                         CssClass="btn btn-sm"
-                                        CommandArgument='<%# Eval("Dni") %>' 
-                                        OnClick="btnVer_Click"/>
+                                        CommandArgument='<%# Eval("Dni") %>'
+                                        OnClick="btnVer_Click" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                    <%--<asp:Panel ID="pnlConfirmarEstado" runat="server" CssClass="alert alert-warning mt-3" Visible="false">
-                <asp:Label ID="lblConfirmacionEstado" runat="server" />
-                <div class="mt-2">
-                    <asp:Button
-                        ID="btnConfirmarEstado"
-                        runat="server"
-                        Text="Sí, confirmar"
-                        CssClass="btn btn-success btn-sm"
-                        OnClick="btnConfirmarEstado_Click" />
-                    <asp:Button
-                        ID="btnCancelarEstado"
-                        runat="server"
-                        Text="Cancelar"
-                        CssClass="btn btn-secondary btn-sm"
-                        OnClick="btnCancelarEstado_Click" />
-                </div>
-                <asp:Label ID="lblErrorEstadoPaciente" runat="server" CssClass="text-danger" Visible="false" />
-                <asp:Label ID="lblExitoEstadoPaciente" runat="server" CssClass="text-success" Visible="false" />
-            </asp:Panel>--%>
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="text-center mt-5">
-                <a href="PacienteFormulario.aspx" class="btn btn-success btn-lg px-4 mb-4">+ Agregar Paciente
-                </a>
+                <a href="PacienteFormulario.aspx" class="btn btn-success px-4 mb-5 me-4" id="btnAgregarPaciente" runat="server">🞤 Agregar Paciente</a>
+                <a href="Default.aspx" class="btn btn-warning px-4 mb-5">Atrás</a>
             </div>
         </div>
     </div>
