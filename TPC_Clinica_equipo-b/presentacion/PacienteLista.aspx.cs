@@ -21,10 +21,8 @@ namespace presentacion
             else
             {
                 Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
-                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista" && logueado.TipoUsuario != "Medico")
+                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista")
                 {
-                    btnAgregarPaciente.Visible = false;
-
                     Response.Redirect("Default.aspx", false);
                 }
             }
