@@ -13,6 +13,19 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("UsuarioLogin.aspx", false);
+            }
+            else
+            {
+                Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
+                if (logueado.TipoUsuario != "Administrador")
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
+            }
+
             if (!IsPostBack)
             {
                 string medicoId = Request.QueryString["medicoId"] != null ? Request.QueryString["medicoId"].ToString() : "";

@@ -149,11 +149,11 @@
                     </asp:Panel>
                 </div>
 
-                <h3 class="text-center mb-4 mt-4">Agregar Especialidad</h3>
+                <h3 class="text-center mb-4 mt-4" id="h3Agregar" runat="server">Agregar Especialidad</h3>
 
                 <!-- Formulario -->
                 <div class="mb-3">
-                    <label for="txtEspecialidad" class="form-label">Nombre de la especialidad</label>
+                    <label id="lblNombreEsp" for="txtEspecialidad" class="form-label" runat="server">Nombre de la especialidad</label>
 
                     <asp:TextBox 
                         ID="txtEspecialidad" 

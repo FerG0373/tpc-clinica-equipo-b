@@ -19,10 +19,19 @@ namespace presentacion
             }
             else
             {
-               Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
-                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista")
+                dominio.Usuario usuarioLogueado = (dominio.Usuario)Session["usuario"];
+                if (usuarioLogueado.TipoUsuario != "Administrador")
                 {
-                    Response.Redirect("Default.aspx", false);
+                    btnAgregarMedico.Visible = false;
+
+                    // Busca la columna por su HeaderText y la oculta
+                    foreach (System.Web.UI.WebControls.DataControlField column in dgvMedicos.Columns)
+                    {
+                        if (column.HeaderText == "Turnos de Trabajo" || column.HeaderText == "Email" || column.HeaderText == "Editar" || column.HeaderText == "Activar/Desactivar" )
+                        {
+                            column.Visible = false;
+                        }
+                    }
                 }
             }
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="App Turnos" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="presentacion.Index" %>
+﻿<%@ Page Title="Clínica Médica" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="presentacion.Index" %>
 
 <asp:Content ID="IndexMainContent" ContentPlaceHolderID="MainContent" runat="server">
         <%--Carrusel--%>

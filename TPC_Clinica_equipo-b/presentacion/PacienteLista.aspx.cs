@@ -14,14 +14,24 @@ namespace presentacion
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("UsuarioLogin.aspx", false);
+            }
+            else
+            {
+                Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
+                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista")
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
+            }
 
             if (!IsPostBack)
             {
                 CargarPaciente();
             }
         }
-
-
 
         //Evento para cargar los pacientes al iniciar la pagina
         private void CargarPaciente()

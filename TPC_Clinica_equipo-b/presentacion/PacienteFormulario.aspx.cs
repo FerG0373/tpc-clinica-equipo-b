@@ -1,4 +1,5 @@
-﻿using negocio;
+﻿using dominio;
+using negocio;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -14,7 +15,18 @@ namespace presentacion
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("UsuarioLogin.aspx", false);
+            }
+            else
+            {
+                Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
+                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista")
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
+            }
         }
 
         protected void btnGuardarPaciente_Click(object sender, EventArgs e)

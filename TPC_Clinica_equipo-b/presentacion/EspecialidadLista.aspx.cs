@@ -9,14 +9,42 @@ using dominio;
 
 namespace presentacion
 {
-
-
     public partial class Especialidad : System.Web.UI.Page
     {
 
         // Al cargar la página, cargamos las especialidades
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usuario"] == null)
+            {
+                Response.Redirect("UsuarioLogin.aspx", false);
+            }
+            else
+            {
+                Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
+                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista")
+                {
+                    Response.Redirect("Default.aspx", false);
+                }
+
+                if (logueado.TipoUsuario != "Administrador")
+                {
+                    // Ocultar las columnas "Editar" y "Borrar"
+                    foreach (DataControlField column in dgvEspecialidades.Columns)
+                    {
+                        if (column.HeaderText == "Editar" || column.HeaderText == "Borrar")
+                        {
+                            column.Visible = false;
+                        }
+                    }
+
+                    h3Agregar.Visible = false;
+                    lblNombreEsp.Visible = false;
+                    txtEspecialidad.Visible = false;
+                    btnAgregarEspecialidad.Visible = false;
+                }
+            }
+
             if (!IsPostBack)
             {
                 CargarEspecialidades();

@@ -19,21 +19,37 @@
             <!-- NAVBAR -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-success">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="Default.aspx">🚑 Clínica Médica</a>
+                    <a class="navbar-brand me-5" href="Default.aspx">🚑 Clínica Médica</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" title="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3 gap-3">
+                            <li class="nav-item" id="liMedicos" runat="server" visible="true">
+                                <a class="nav-link" href="MedicoLista.aspx">Médicos</a>
+                            </li>
+                            <li class="nav-item" id="liTurnos" runat="server" visible="true">
+                                <a class="nav-link" href="TurnoLista.aspx">Turnos</a>
+                            </li>
+                            <li class="nav-item" id="liEspecialidades" runat="server" visible="true">
+                                <a class="nav-link" href="EspecialidadLista.aspx">Especialidades</a>
+                            </li>
+                            <li class="nav-item" id="liTurnosTrabajo" runat="server" visible="true">
+                                <a class="nav-link" href="TurnoTrabajoLista.aspx">Turnos de Trabajo</a>
+                            </li>
+                            <li class="nav-item" id="liPacientes" runat="server" visible="true">
+                                <a class="nav-link" href="PacienteLista.aspx">Pacientes</a>
+                            </li>
+                        </ul>
                         <ul class="navbar-nav">
                             <%--BOTÓN INICIAR SESIÓN--%>
-                            <li class="nav-item">
+                            <li class="nav-item" id="liLogin" runat="server">
                                 <asp:Button CssClass="btn btn-light text-success me-3" ID="btnIniciarSesion" OnClick="btnIniciarSesion_Click" runat="server" Text="Iniciar Sesión" />
                             </li>
                             <%--USUARIO LOGUEADO--%>
                             <li class="nav-item me-3" id="liUsuario" runat="server" visible="false">
                                 <asp:Label ID="lblUsuario" runat="server" CssClass="nav-link text-white fw-bold"></asp:Label>
                             </li>
-                            <!-- OPCIONES -->
                             <li class="nav-item dropdown" id="liOpciones" runat="server" visible="false">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Opciones
@@ -42,8 +58,8 @@
                                     <li><a class="dropdown-item" href="#">Ver perfil</a></li>
                                     <li>
                                         <asp:LinkButton ID="lkbCerrarSesion" runat="server" CssClass="dropdown-item" OnClick="lkbCerrarSesion_Click">
-                                            Cerrar sesión
-                                        </asp:LinkButton>
+                                Cerrar sesión
+                            </asp:LinkButton>
                                     </li>
                                 </ul>
                             </li>

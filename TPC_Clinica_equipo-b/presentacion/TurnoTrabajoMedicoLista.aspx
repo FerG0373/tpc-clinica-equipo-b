@@ -20,11 +20,6 @@
                             <asp:BoundField HeaderText="Dia" DataField="DiaSemana" />
                             <asp:BoundField HeaderText="Hora Inicio" DataField="HoraInicio" DataFormatString="{0:hh\:mm}" />
                             <asp:BoundField HeaderText="Hora Fin" DataField="HoraFin" DataFormatString="{0:hh\:mm}" />
-                            <%--<asp:TemplateField HeaderText="Activo">
-                                <ItemTemplate>
-                                    <%# ((bool)Eval("Activo")) ? "<span class='text-success fw-bold'>🟢 SÍ</span>" : "<span class='text-danger fw-bold'>🔴 NO</span>" %>
-                                </ItemTemplate>
-                            </asp:TemplateField>--%>
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>

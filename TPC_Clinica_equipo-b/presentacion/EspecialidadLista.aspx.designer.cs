@@ -150,6 +150,24 @@ namespace presentacion
         protected global::System.Web.UI.WebControls.Button btnCancelarEdicion;
 
         /// <summary>
+        /// Control h3Agregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl h3Agregar;
+
+        /// <summary>
+        /// Control lblNombreEsp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblNombreEsp;
+
+        /// <summary>
         /// Control txtEspecialidad.
         /// </summary>
         /// <remarks>
