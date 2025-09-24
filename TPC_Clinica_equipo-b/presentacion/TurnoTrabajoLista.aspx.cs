@@ -20,9 +20,21 @@ namespace presentacion
             else
             {
                 Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
-                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista")
+                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista" && logueado.TipoUsuario != "Medico")
                 {
                     Response.Redirect("Default.aspx", false);
+                    return;
+                }
+                if (logueado.TipoUsuario == "Medico")
+                {
+                    foreach (DataControlField column in dgvTurnoTrabajo.Columns)
+                    {
+                        if (column.HeaderText == "Editar" || column.HeaderText == "Activar/Desactivar")
+                        {
+                            column.Visible = false;
+                        }
+                    }
+                    btnAgregarTurnoTrabajo.Visible = false;
                 }
             }
 

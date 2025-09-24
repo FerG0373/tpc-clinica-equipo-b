@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
+using System.Net.Mail;
 
 namespace presentacion
 {
@@ -378,6 +379,25 @@ namespace presentacion
             ddlEstado.Items.Add(new ListItem("Cerrado", "Cerrado"));
         }
 
+        private void enviarEmailTurno(Turno turno)
+        {
+            try
+            {
+                EmailService emailService = new EmailService();
+
+                // Armar el correo
+                string asunto = "Confirmación de Turno Médico";
+                string cuerpo = $"<h1>Hola {turno.Paciente.Nombre},</h1><p>Te confirmamos tu turno con el Dr/a. {turno.Medico.Apellido} para el día {turno.Fecha.ToShortDateString()} a las {turno.Fecha.ToShortTimeString()}.</p><p>¡Te esperamos!</p>";
+                MailMessage mail = emailService.armarCorreo("emaildeprueba@gmail.com", asunto, cuerpo);
+
+                emailService.enviarMail(mail);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", "Ocurrió un error al enviar el correo de confirmación: " + ex.Message);
+            }
+        }
+
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
             if (!validarFormulario())
@@ -417,6 +437,9 @@ namespace presentacion
                 {
                     turnoNegocio.insertarTurno(nuevo);
                     Session["MensajeExito"] = "✅ Turno agendado con éxito.";
+
+                    // Llama al método para enviar el correo solo si es un nuevo turno
+                    enviarEmailTurno(nuevo);
                 }                    
 
                 Response.Redirect("TurnoLista.aspx", false);
