@@ -11,7 +11,7 @@ namespace negocio
 {
     public class TurnoNegocio
     {
-        public List<Turno> listarTurnos(string id = "", int medicoId = -1)
+        public List<Turno> listarTurnos(string id = "", int medicoId = -1)  // Filtrar por ID de turno o por ID de médico.
         {
             AccesoDatos datos = new AccesoDatos();
             List<Turno> listaDeTurnos = new List<Turno>();
