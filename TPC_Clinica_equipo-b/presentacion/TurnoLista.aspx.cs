@@ -16,29 +16,38 @@ namespace presentacion
             if (Session["usuario"] == null)
             {
                 Response.Redirect("UsuarioLogin.aspx", false);
+                return;
             }
-            else
+
+            Usuario logueado = (Usuario)Session["usuario"];
+            if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista" && logueado.TipoUsuario != "Medico")
             {
-                Usuario logueado = (Usuario)Session["usuario"];  // Obtener el objeto del usuario y verificar su perfil.
-                if (logueado.TipoUsuario != "Administrador" && logueado.TipoUsuario != "Recepcionista" && logueado.TipoUsuario != "Medico")
+                Response.Redirect("Default.aspx", false);
+                return;
+            }
+
+            // Si un médico intenta ver la lista de turnos sin su ID en la URL, se le prohíbe el acceso y es redirigido.
+            if (logueado.TipoUsuario == "Medico")
+            {
+                if (Request.QueryString["medicoId"] == null)
                 {
                     Response.Redirect("Default.aspx", false);
+                    return;
                 }
+
+                btnNuevoTurno.Visible = false;
             }
 
             if (!IsPostBack)
             {
                 panelExito.Visible = false;
 
-                if (!IsPostBack)
+                cargarDgvTurno();
+                if (Session["MensajeExito"] != null)
                 {
-                    cargarDgvTurno();
-                    if (Session["MensajeExito"] != null)
-                    {
-                        lblMensajeExito.Text = Session["MensajeExito"].ToString();
-                        panelExito.Visible = true;
-                        Session.Remove("MensajeExito");
-                    }
+                    lblMensajeExito.Text = Session["MensajeExito"].ToString();
+                    panelExito.Visible = true;
+                    Session.Remove("MensajeExito");
                 }
             }
         }
