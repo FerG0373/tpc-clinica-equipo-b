@@ -29,7 +29,6 @@ namespace presentacion
                     btnTurnos.Visible = true;
                     btnEspecialidades.Visible = true;
                     btnTurnosTrabajo.Visible = true;
-                    btnMisTurnos.Visible = true;
                     btnPacientes.Visible = true;
                 }
                 else if (logueado.TipoUsuario == "Recepcionista")
