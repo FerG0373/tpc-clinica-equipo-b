@@ -18,19 +18,33 @@ namespace presentacion
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            UsuarioNegocio negocio = new UsuarioNegocio();
+            UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+            MedicoNegocio medicoNegocio = new MedicoNegocio();
+
             Usuario usuario = new Usuario();
+
             try
             {
                 usuario.Dni = txtDni.Text;
                 usuario.Pass = txtPass.Text;
 
-                Usuario logueado = negocio.iniciarSesion(usuario);
+                Usuario logueado = usuarioNegocio.iniciarSesion(usuario);
 
-                // Verificar el resultado.
                 if (logueado != null && logueado.Activo)
                 {
-                    Session.Add("usuario", logueado);
+                    Session.Add("usuario", logueado); // Guarda el objeto Usuario genérico.
+                    // Lógica para médicos: buscar el ID del médico y guardarlo en la sesión.
+                    if (logueado.TipoUsuario == "Medico")
+                    {
+                        //Buscamos al médico por DNI.
+                        Medico medico = medicoNegocio.listarMedicos().FirstOrDefault(m => m.Dni == logueado.Dni);
+                        // Si se encuentra el médico, guarda su ID en una variable de sesión.
+                        if (medico != null)
+                        {
+                            Session.Add("medicoId", medico.Id);
+                        }
+                    }
+
                     Response.Redirect("Default.aspx", false);
                 }
                 else

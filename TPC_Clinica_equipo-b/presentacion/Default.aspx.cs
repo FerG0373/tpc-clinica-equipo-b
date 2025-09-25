@@ -43,6 +43,13 @@ namespace presentacion
                     btnMisTurnos.Visible = true;
                     btnTurnosTrabajo.Visible = true; // Solo lectura.
                     btnPacientes.Visible = true;  // Debería solo lectura.
+
+                    // 💡 Modificación clave: Obtén el ID de la sesión.
+                    if (Session["medicoId"] != null)
+                    {
+                        int medicoId = (int)Session["medicoId"];
+                        btnMisTurnos.HRef = "TurnoLista.aspx?medicoId=" + medicoId;
+                    }
                 }
             }
         }

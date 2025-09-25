@@ -106,25 +106,25 @@
                         <asp:Label ID="lblEditarTitulo" runat="server" Text="Editar especialidad" CssClass="fw-bold d-block mb-2"></asp:Label>
 
                         <!--Text box de Editar-->
-                        <asp:TextBox 
-                            ID="txtEditarDescripcion" 
-                            runat="server" 
-                            ValidationGroup="GrupoEditar" 
+                        <asp:TextBox
+                            ID="txtEditarDescripcion"
+                            runat="server"
+                            ValidationGroup="GrupoEditar"
                             CssClass="form-control mb-2" />
 
                         <!--Label Validación de Exito-->
-                        <asp:Label 
-                            ID="lblExitoEdicion" 
-                            runat="server" 
-                            CssClass="text-success fw-bold" 
+                        <asp:Label
+                            ID="lblExitoEdicion"
+                            runat="server"
+                            CssClass="text-success fw-bold"
                             Visible="false">
                         </asp:Label>
 
                         <!--Label Validación de Error-->
-                        <asp:Label 
-                            ID="lblErrorEdicion" 
-                            runat="server" 
-                            CssClass="text-danger fw-bold" 
+                        <asp:Label
+                            ID="lblErrorEdicion"
+                            runat="server"
+                            CssClass="text-danger fw-bold"
                             Visible="false">
                         </asp:Label>
 
@@ -155,11 +155,11 @@
                 <div class="mb-3">
                     <label id="lblNombreEsp" for="txtEspecialidad" class="form-label" runat="server">Nombre de la especialidad</label>
 
-                    <asp:TextBox 
-                        ID="txtEspecialidad" 
-                        runat="server" 
-                        CssClass="form-control" 
-                        ValidationGroup="GrupoAgregar" 
+                    <asp:TextBox
+                        ID="txtEspecialidad"
+                        runat="server"
+                        CssClass="form-control"
+                        ValidationGroup="GrupoAgregar"
                         placeholder="Ej. Cardiología" />
 
                     <asp:Label ID="lblExito" runat="server" CssClass="text-success fw-bold" Visible="false"></asp:Label>
@@ -176,6 +176,9 @@
                     CausesValidation="false">
                     <i class="fas fa-calendar-plus me-2"></i>Agregar
                 </asp:LinkButton>
+                <a href="Default.aspx" class="btn btn-warning d-grid mb-3">
+                    <i class="fas fa-arrow-left me-2"></i>Atrás
+                </a>
             </div>
         </div>
     </div>

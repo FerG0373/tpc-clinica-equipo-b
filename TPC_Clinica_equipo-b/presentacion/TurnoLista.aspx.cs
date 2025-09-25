@@ -46,10 +46,26 @@ namespace presentacion
         private void cargarDgvTurno()
         {
             TurnoNegocio negocio = new TurnoNegocio();
+            int medicoId;
+
+            // Obtener el medicoId de la URL.
+            if (int.TryParse(Request.QueryString["medicoId"], out medicoId))
+            {
+                // Si el medicoId es válido, verifica que el usuario logueado sea el mismo médico.
+                Usuario logueado = (Usuario)Session["usuario"];
+                if (logueado.TipoUsuario == "Medico" && (int)Session["medicoId"] == medicoId)
+                {
+                    // Cargar la grilla con los turnos filtrados por el medicoId.
+                    dgvTurnos.DataSource = negocio.listarTurnos(medicoId: medicoId);
+                    dgvTurnos.DataBind();
+                    return; // Salir del método para evitar cargar todos los turnos.
+                }
+            }
+            // Si no hay un medicoId válido en la URL o el usuario no es el médico correcto,
+            // se cargan todos los turnos (comportamiento por defecto para Admin/Recepcionista).
             dgvTurnos.DataSource = negocio.listarTurnos();
             dgvTurnos.DataBind();
         }
-
         protected string GetEstadoCssClass(object estado)
         {
             string estadoTexto = estado.ToString().Trim().ToLower();
